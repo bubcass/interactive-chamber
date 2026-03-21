@@ -1,0 +1,1631 @@
+{
+  "A-20": {
+    "seat_label": "A-20",
+    "memberCode": "Louise-O'Reilly.D.2016-10-03",
+    "name": "Louise O'Reilly",
+    "party": "Sinn Féin",
+    "constituency": "Dublin Fingal West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Louise-O'Reilly.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Louise-O'Reilly.D.2016-10-03/"
+  },
+  "A-19": {
+    "seat_label": "A-19",
+    "memberCode": "David-Cullinane.S.2011-05-25",
+    "name": "David Cullinane",
+    "party": "Sinn Féin",
+    "constituency": "Waterford",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/David-Cullinane.S.2011-05-25/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/David-Cullinane.S.2011-05-25/"
+  },
+  "A-18": {
+    "seat_label": "A-18",
+    "memberCode": "Martin-Kenny.D.2016-10-03",
+    "name": "Martin Kenny",
+    "party": "Sinn Féin",
+    "constituency": "Sligo-Leitrim",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Martin-Kenny.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Martin-Kenny.D.2016-10-03/"
+  },
+  "A-17": {
+    "seat_label": "A-17",
+    "memberCode": "Donnchadh-Ó-Laoghaire.D.2016-10-03",
+    "name": "Donnchadh Ó Laoghaire",
+    "party": "Sinn Féin",
+    "constituency": "Cork South-Central",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Donnchadh-Ó-Laoghaire.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Donnchadh-Ó-Laoghaire.D.2016-10-03/"
+  },
+  "A-16": {
+    "seat_label": "A-16",
+    "memberCode": "Joanna-Byrne.D.2024-11-29",
+    "name": "Joanna Byrne",
+    "party": "Sinn Féin",
+    "constituency": "Louth",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Joanna-Byrne.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Joanna-Byrne.D.2024-11-29/"
+  },
+  "A-15": {
+    "seat_label": "A-15",
+    "memberCode": "Pa-Daly.D.2020-02-08",
+    "name": "Pa Daly",
+    "party": "Sinn Féin",
+    "constituency": "Kerry",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Pa-Daly.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Pa-Daly.D.2020-02-08/"
+  },
+  "A-14": {
+    "seat_label": "A-14",
+    "memberCode": "Máire-Devine.S.2016-04-25",
+    "name": "Máire Devine",
+    "party": "Sinn Féin",
+    "constituency": "Dublin South-Central",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Máire-Devine.S.2016-04-25/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Máire-Devine.S.2016-04-25/"
+  },
+  "A-13": {
+    "seat_label": "A-13",
+    "memberCode": "Conor-Sheehan.D.2024-11-29",
+    "name": "Conor Sheehan",
+    "party": "Labour Party",
+    "constituency": "Limerick City",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Conor-Sheehan.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Conor-Sheehan.D.2024-11-29/"
+  },
+  "A-12": {
+    "seat_label": "A-12",
+    "memberCode": "Pádraig-Rice.D.2024-11-29",
+    "name": "Pádraig Rice",
+    "party": "Social Democrats",
+    "constituency": "Cork South-Central",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Pádraig-Rice.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Pádraig-Rice.D.2024-11-29/"
+  },
+  "A-11": {
+    "seat_label": "A-11",
+    "memberCode": "Rory-Hearne.D.2024-11-29",
+    "name": "Rory Hearne",
+    "party": "Social Democrats",
+    "constituency": "Dublin North-West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Rory-Hearne.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Rory-Hearne.D.2024-11-29/"
+  },
+  "A-10": {
+    "seat_label": "A-10",
+    "memberCode": "James-Lawless.D.2016-10-03",
+    "name": "James Lawless",
+    "party": "Fianna Fáil",
+    "constituency": "Kildare North",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/James-Lawless.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/James-Lawless.D.2016-10-03/"
+  },
+  "A-09": {
+    "seat_label": "A-09",
+    "memberCode": "Hildegarde-Naughton.S.2013-07-19",
+    "name": "Hildegarde Naughton",
+    "party": "Fine Gael",
+    "constituency": "Galway West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Hildegarde-Naughton.S.2013-07-19/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Hildegarde-Naughton.S.2013-07-19/"
+  },
+  "A-08": {
+    "seat_label": "A-08",
+    "memberCode": "Emer-Currie.S.2020-06-29",
+    "name": "Emer Currie",
+    "party": "Fine Gael",
+    "constituency": "Dublin West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Emer-Currie.S.2020-06-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Emer-Currie.S.2020-06-29/"
+  },
+  "A-07": {
+    "seat_label": "A-07",
+    "memberCode": "Naoise-Ó-Cearúil.D.2024-11-29",
+    "name": "Naoise Ó Cearúil",
+    "party": "Fianna Fáil",
+    "constituency": "Kildare North",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Naoise-Ó-Cearúil.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Naoise-Ó-Cearúil.D.2024-11-29/"
+  },
+  "A-06": {
+    "seat_label": "A-06",
+    "memberCode": "Shane-Moynihan.D.2024-11-29",
+    "name": "Shane Moynihan",
+    "party": "Fianna Fáil",
+    "constituency": "Dublin Mid-West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Shane-Moynihan.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Shane-Moynihan.D.2024-11-29/"
+  },
+  "A-05": {
+    "seat_label": "A-05",
+    "memberCode": "Catherine-Ardagh.S.2016-04-25",
+    "name": "Catherine Ardagh",
+    "party": "Fianna Fáil",
+    "constituency": "Dublin South-Central",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Catherine-Ardagh.S.2016-04-25/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Catherine-Ardagh.S.2016-04-25/"
+  },
+  "A-04": {
+    "seat_label": "A-04",
+    "memberCode": "Ryan-O'Meara.D.2024-11-29",
+    "name": "Ryan O'Meara",
+    "party": "Fianna Fáil",
+    "constituency": "Tipperary North",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Ryan-O'Meara.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Ryan-O'Meara.D.2024-11-29/"
+  },
+  "A-03": {
+    "seat_label": "A-03",
+    "memberCode": "Erin-McGreehan.S.2020-06-29",
+    "name": "Erin McGreehan",
+    "party": "Fianna Fáil",
+    "constituency": "Louth",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Erin-McGreehan.S.2020-06-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Erin-McGreehan.S.2020-06-29/"
+  },
+  "A-02": {
+    "seat_label": "A-02",
+    "memberCode": "Albert-Dolan.D.2024-11-29",
+    "name": "Albert Dolan",
+    "party": "Fianna Fáil",
+    "constituency": "Galway East",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Albert-Dolan.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Albert-Dolan.D.2024-11-29/"
+  },
+  "A-01": {
+    "seat_label": "A-01",
+    "memberCode": "Aisling-Dempsey.D.2024-11-29",
+    "name": "Aisling Dempsey",
+    "party": "Fianna Fáil",
+    "constituency": "Meath West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Aisling-Dempsey.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Aisling-Dempsey.D.2024-11-29/"
+  },
+  "B-29": {
+    "seat_label": "B-29",
+    "memberCode": "Ken-O'Flynn.D.2024-11-29",
+    "name": "Ken O'Flynn",
+    "party": "Independent Ireland",
+    "constituency": "Cork North-Central",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Ken-O'Flynn.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Ken-O'Flynn.D.2024-11-29/"
+  },
+  "B-28": {
+    "seat_label": "B-28",
+    "memberCode": "Richard-O'Donoghue.D.2020-02-08",
+    "name": "Richard O'Donoghue",
+    "party": "Independent Ireland",
+    "constituency": "Limerick County",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Richard-O'Donoghue.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Richard-O'Donoghue.D.2020-02-08/"
+  },
+  "B-27": {
+    "seat_label": "B-27",
+    "memberCode": "Michael-Collins.D.2016-10-03",
+    "name": "Michael Collins",
+    "party": "Independent Ireland",
+    "constituency": "Cork South-West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Michael-Collins.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Michael-Collins.D.2016-10-03/"
+  },
+  "B-26": {
+    "seat_label": "B-26",
+    "memberCode": "Mary-Lou-McDonald.D.2011-03-09",
+    "name": "Mary Lou McDonald",
+    "party": "Sinn Féin",
+    "constituency": "Dublin Central",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Mary-Lou-McDonald.D.2011-03-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Mary-Lou-McDonald.D.2011-03-09/"
+  },
+  "B-25": {
+    "seat_label": "B-25",
+    "memberCode": "Pearse-Doherty.S.2007-07-23",
+    "name": "Pearse Doherty",
+    "party": "Sinn Féin",
+    "constituency": "Donegal",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Pearse-Doherty.S.2007-07-23/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Pearse-Doherty.S.2007-07-23/"
+  },
+  "B-24": {
+    "seat_label": "B-24",
+    "memberCode": "Eoin-Ó-Broin.D.2016-10-03",
+    "name": "Eoin Ó Broin",
+    "party": "Sinn Féin",
+    "constituency": "Dublin Mid-West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Eoin-Ó-Broin.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Eoin-Ó-Broin.D.2016-10-03/"
+  },
+  "B-23": {
+    "seat_label": "B-23",
+    "memberCode": "Mairéad-Farrell.D.2020-02-08",
+    "name": "Mairéad Farrell",
+    "party": "Sinn Féin",
+    "constituency": "Galway West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Mairéad-Farrell.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Mairéad-Farrell.D.2020-02-08/"
+  },
+  "B-22": {
+    "seat_label": "B-22",
+    "memberCode": "Matt-Carthy.D.2020-02-08",
+    "name": "Matt Carthy",
+    "party": "Sinn Féin",
+    "constituency": "Cavan-Monaghan",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Matt-Carthy.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Matt-Carthy.D.2020-02-08/"
+  },
+  "B-21": {
+    "seat_label": "B-21",
+    "memberCode": "Rose-Conway-Walsh.S.2016-04-25",
+    "name": "Rose Conway-Walsh",
+    "party": "Sinn Féin",
+    "constituency": "Mayo",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Rose-Conway-Walsh.S.2016-04-25/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Rose-Conway-Walsh.S.2016-04-25/"
+  },
+  "B-20": {
+    "seat_label": "B-20",
+    "memberCode": "Darren-O'Rourke.D.2020-02-08",
+    "name": "Darren O'Rourke",
+    "party": "Sinn Féin",
+    "constituency": "Meath East",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Darren-O'Rourke.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Darren-O'Rourke.D.2020-02-08/"
+  },
+  "B-19": {
+    "seat_label": "B-19",
+    "memberCode": "Claire-Kerrane.D.2020-02-08",
+    "name": "Claire Kerrane",
+    "party": "Sinn Féin",
+    "constituency": "Roscommon-Galway",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Claire-Kerrane.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Claire-Kerrane.D.2020-02-08/"
+  },
+  "B-18": {
+    "seat_label": "B-18",
+    "memberCode": "Ivana-Bacik.S.2007-07-23",
+    "name": "Ivana Bacik",
+    "party": "Labour Party",
+    "constituency": "Dublin Bay South",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Ivana-Bacik.S.2007-07-23/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Ivana-Bacik.S.2007-07-23/"
+  },
+  "B-17": {
+    "seat_label": "B-17",
+    "memberCode": "Gerald-Nash.D.2011-03-09",
+    "name": "Ged Nash",
+    "party": "Labour Party",
+    "constituency": "Louth",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Gerald-Nash.D.2011-03-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Gerald-Nash.D.2011-03-09/"
+  },
+  "B-16": {
+    "seat_label": "B-16",
+    "memberCode": "Jennifer-Whitmore.D.2020-02-08",
+    "name": "Jennifer Whitmore",
+    "party": "Social Democrats",
+    "constituency": "Wicklow",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Jennifer-Whitmore.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Jennifer-Whitmore.D.2020-02-08/"
+  },
+  "B-15": {
+    "seat_label": "B-15",
+    "memberCode": "Cian-O'Callaghan.D.2020-02-08",
+    "name": "Cian O'Callaghan",
+    "party": "Social Democrats",
+    "constituency": "Dublin Bay North",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Cian-O'Callaghan.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Cian-O'Callaghan.D.2020-02-08/"
+  },
+  "B-14": {
+    "seat_label": "B-14",
+    "memberCode": "Holly-Cairns.D.2020-02-08",
+    "name": "Holly Cairns",
+    "party": "Social Democrats",
+    "constituency": "Cork South-West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Holly-Cairns.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Holly-Cairns.D.2020-02-08/"
+  },
+  "B-13": {
+    "seat_label": "B-13",
+    "memberCode": "Martin-Heydon.D.2011-03-09",
+    "name": "Martin Heydon",
+    "party": "Fine Gael",
+    "constituency": "Kildare South",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Martin-Heydon.D.2011-03-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Martin-Heydon.D.2011-03-09/"
+  },
+  "B-12": {
+    "seat_label": "B-12",
+    "memberCode": "Jim-O'Callaghan.D.2016-10-03",
+    "name": "Jim O'Callaghan",
+    "party": "Fianna Fáil",
+    "constituency": "Dublin Bay South",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Jim-O'Callaghan.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Jim-O'Callaghan.D.2016-10-03/"
+  },
+  "B-11": {
+    "seat_label": "B-11",
+    "memberCode": "James-Browne.D.2016-10-03",
+    "name": "James Browne",
+    "party": "Fianna Fáil",
+    "constituency": "Wexford",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/James-Browne.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/James-Browne.D.2016-10-03/"
+  },
+  "B-10": {
+    "seat_label": "B-10",
+    "memberCode": "Jennifer-Carroll-MacNeill.D.2020-02-08",
+    "name": "Jennifer Carroll MacNeill",
+    "party": "Fine Gael",
+    "constituency": "Dún Laoghaire",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Jennifer-Carroll-MacNeill.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Jennifer-Carroll-MacNeill.D.2020-02-08/"
+  },
+  "B-09": {
+    "seat_label": "B-09",
+    "memberCode": "Patrick-O'Donovan.D.2011-03-09",
+    "name": "Patrick O'Donovan",
+    "party": "Fine Gael",
+    "constituency": "Limerick County",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Patrick-O'Donovan.D.2011-03-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Patrick-O'Donovan.D.2011-03-09/"
+  },
+  "B-08": {
+    "seat_label": "B-08",
+    "memberCode": "Dara-Calleary.D.2007-06-14",
+    "name": "Dara Calleary",
+    "party": "Fianna Fáil",
+    "constituency": "Mayo",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Dara-Calleary.D.2007-06-14/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Dara-Calleary.D.2007-06-14/"
+  },
+  "B-07": {
+    "seat_label": "B-07",
+    "memberCode": "Peter-Burke.D.2016-10-03",
+    "name": "Peter Burke",
+    "party": "Fine Gael",
+    "constituency": "Longford-Westmeath",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Peter-Burke.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Peter-Burke.D.2016-10-03/"
+  },
+  "B-06": {
+    "seat_label": "B-06",
+    "memberCode": "Norma-Foley.D.2020-02-08",
+    "name": "Norma Foley",
+    "party": "Fianna Fáil",
+    "constituency": "Kerry",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Norma-Foley.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Norma-Foley.D.2020-02-08/"
+  },
+  "B-05": {
+    "seat_label": "B-05",
+    "memberCode": "Darragh-O'Brien.D.2007-06-14",
+    "name": "Darragh O'Brien",
+    "party": "Fianna Fáil",
+    "constituency": "Dublin Fingal East",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Darragh-O'Brien.D.2007-06-14/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Darragh-O'Brien.D.2007-06-14/"
+  },
+  "B-04": {
+    "seat_label": "B-04",
+    "memberCode": "Helen-McEntee.D.2013-03-27",
+    "name": "Helen McEntee",
+    "party": "Fine Gael",
+    "constituency": "Meath East",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Helen-McEntee.D.2013-03-27/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Helen-McEntee.D.2013-03-27/"
+  },
+  "B-03": {
+    "seat_label": "B-03",
+    "memberCode": "Jack-Chambers.D.2016-10-03",
+    "name": "Jack Chambers",
+    "party": "Fianna Fáil",
+    "constituency": "Dublin West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Jack-Chambers.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Jack-Chambers.D.2016-10-03/"
+  },
+  "B-02": {
+    "seat_label": "B-02",
+    "memberCode": "Simon-Harris.D.2011-03-09",
+    "name": "Simon Harris",
+    "party": "Fine Gael",
+    "constituency": "Wicklow",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Simon-Harris.D.2011-03-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Simon-Harris.D.2011-03-09/"
+  },
+  "B-01": {
+    "seat_label": "B-01",
+    "memberCode": "Micheál-Martin.D.1989-06-29",
+    "name": "Micheál Martin",
+    "party": "Fianna Fáil",
+    "constituency": "Cork South-Central",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Micheál-Martin.D.1989-06-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Micheál-Martin.D.1989-06-29/"
+  },
+  "B-32": {
+    "seat_label": "B-32",
+    "memberCode": "",
+    "name": "",
+    "party": "",
+    "constituency": "",
+    "image": "",
+    "url": ""
+  },
+  "B-31": {
+    "seat_label": "B-31",
+    "memberCode": "",
+    "name": "",
+    "party": "",
+    "constituency": "",
+    "image": "",
+    "url": ""
+  },
+  "B-30": {
+    "seat_label": "B-30",
+    "memberCode": "",
+    "name": "",
+    "party": "",
+    "constituency": "",
+    "image": "",
+    "url": ""
+  },
+  "C-35": {
+    "seat_label": "C-35",
+    "memberCode": "Paul-Lawless.D.2024-11-29",
+    "name": "Paul Lawless",
+    "party": "Aontú",
+    "constituency": "Mayo",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Paul-Lawless.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Paul-Lawless.D.2024-11-29/"
+  },
+  "C-34": {
+    "seat_label": "C-34",
+    "memberCode": "Peadar-Tóibín.D.2011-03-09",
+    "name": "Peadar Tóibín",
+    "party": "Aontú",
+    "constituency": "Meath West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Peadar-Tóibín.D.2011-03-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Peadar-Tóibín.D.2011-03-09/"
+  },
+  "C-33": {
+    "seat_label": "C-33",
+    "memberCode": "Michael-Fitzmaurice.D.2014-10-10",
+    "name": "Michael Fitzmaurice",
+    "party": "Independent Ireland",
+    "constituency": "Roscommon-Galway",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Michael-Fitzmaurice.D.2014-10-10/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Michael-Fitzmaurice.D.2014-10-10/"
+  },
+  "C-32": {
+    "seat_label": "C-32",
+    "memberCode": "Pádraig-MacLochlainn.D.2011-03-09",
+    "name": "Pádraig Mac Lochlainn",
+    "party": "Sinn Féin",
+    "constituency": "Donegal",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Pádraig-MacLochlainn.D.2011-03-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Pádraig-MacLochlainn.D.2011-03-09/"
+  },
+  "C-31": {
+    "seat_label": "C-31",
+    "memberCode": "Donna-McGettigan.D.2024-11-29",
+    "name": "Donna McGettigan",
+    "party": "Sinn Féin",
+    "constituency": "Clare",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Donna-McGettigan.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Donna-McGettigan.D.2024-11-29/"
+  },
+  "C-30": {
+    "seat_label": "C-30",
+    "memberCode": "Aengus-Ó-Snodaigh.D.2002-06-06",
+    "name": "Aengus Ó Snodaigh",
+    "party": "Sinn Féin",
+    "constituency": "Dublin South-Central",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Aengus-Ó-Snodaigh.D.2002-06-06/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Aengus-Ó-Snodaigh.D.2002-06-06/"
+  },
+  "C-29": {
+    "seat_label": "C-29",
+    "memberCode": "John-Brady.D.2016-10-03",
+    "name": "John Brady",
+    "party": "Sinn Féin",
+    "constituency": "Wicklow",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/John-Brady.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/John-Brady.D.2016-10-03/"
+  },
+  "C-28": {
+    "seat_label": "C-28",
+    "memberCode": "Ruairí-Ó-Murchú.D.2020-02-08",
+    "name": "Ruairí Ó Murchú",
+    "party": "Sinn Féin",
+    "constituency": "Louth",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Ruairí-Ó-Murchú.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Ruairí-Ó-Murchú.D.2020-02-08/"
+  },
+  "C-27": {
+    "seat_label": "C-27",
+    "memberCode": "Sorca-Clarke.D.2020-02-08",
+    "name": "Sorca Clarke",
+    "party": "Sinn Féin",
+    "constituency": "Longford-Westmeath",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Sorca-Clarke.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Sorca-Clarke.D.2020-02-08/"
+  },
+  "C-26": {
+    "seat_label": "C-26",
+    "memberCode": "Cathy-Bennett.D.2024-11-29",
+    "name": "Cathy Bennett",
+    "party": "Sinn Féin",
+    "constituency": "Cavan-Monaghan",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Cathy-Bennett.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Cathy-Bennett.D.2024-11-29/"
+  },
+  "C-25": {
+    "seat_label": "C-25",
+    "memberCode": "Conor-D-McGuinness.D.2024-11-29",
+    "name": "Conor D McGuinness",
+    "party": "Sinn Féin",
+    "constituency": "Waterford",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Conor-D-McGuinness.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Conor-D-McGuinness.D.2024-11-29/"
+  },
+  "C-24": {
+    "seat_label": "C-24",
+    "memberCode": "Ruth-Coppinger.D.2014-05-23",
+    "name": "Ruth Coppinger",
+    "party": "People Before Profit-Solidarity",
+    "constituency": "Dublin West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Ruth-Coppinger.D.2014-05-23/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Ruth-Coppinger.D.2014-05-23/"
+  },
+  "C-23": {
+    "seat_label": "C-23",
+    "memberCode": "Duncan-Smith.D.2020-02-08",
+    "name": "Duncan Smith",
+    "party": "Labour Party",
+    "constituency": "Dublin Fingal East",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Duncan-Smith.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Duncan-Smith.D.2020-02-08/"
+  },
+  "C-22": {
+    "seat_label": "C-22",
+    "memberCode": "Marie-Sherlock.S.2020-03-30",
+    "name": "Marie Sherlock",
+    "party": "Labour Party",
+    "constituency": "Dublin Central",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Marie-Sherlock.S.2020-03-30/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Marie-Sherlock.S.2020-03-30/"
+  },
+  "C-21": {
+    "seat_label": "C-21",
+    "memberCode": "Alan-Kelly.S.2007-07-23",
+    "name": "Alan Kelly",
+    "party": "Labour Party",
+    "constituency": "Tipperary North",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Alan-Kelly.S.2007-07-23/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Alan-Kelly.S.2007-07-23/"
+  },
+  "C-20": {
+    "seat_label": "C-20",
+    "memberCode": "Mark-Wall.S.2020-03-30",
+    "name": "Mark Wall",
+    "party": "Labour Party",
+    "constituency": "Kildare South",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Mark-Wall.S.2020-03-30/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Mark-Wall.S.2020-03-30/"
+  },
+  "C-19": {
+    "seat_label": "C-19",
+    "memberCode": "Sinéad-Gibney.D.2024-11-29",
+    "name": "Sinéad Gibney",
+    "party": "Social Democrats",
+    "constituency": "Dublin Rathdown",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Sinéad-Gibney.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Sinéad-Gibney.D.2024-11-29/"
+  },
+  "C-18": {
+    "seat_label": "C-18",
+    "memberCode": "Jen-Cummins.D.2024-11-29",
+    "name": "Jen Cummins",
+    "party": "Social Democrats",
+    "constituency": "Dublin South-Central",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Jen-Cummins.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Jen-Cummins.D.2024-11-29/"
+  },
+  "C-17": {
+    "seat_label": "C-17",
+    "memberCode": "Gary-Gannon.D.2020-02-08",
+    "name": "Gary Gannon",
+    "party": "Social Democrats",
+    "constituency": "Dublin Central",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Gary-Gannon.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Gary-Gannon.D.2020-02-08/"
+  },
+  "C-16": {
+    "seat_label": "C-16",
+    "memberCode": "Kieran-O'Donnell.D.2007-06-14",
+    "name": "Kieran O'Donnell",
+    "party": "Fine Gael",
+    "constituency": "Limerick City",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Kieran-O'Donnell.D.2007-06-14/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Kieran-O'Donnell.D.2007-06-14/"
+  },
+  "C-15": {
+    "seat_label": "C-15",
+    "memberCode": "Alan-Dillon.D.2020-02-08",
+    "name": "Alan Dillon",
+    "party": "Fine Gael",
+    "constituency": "Mayo",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Alan-Dillon.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Alan-Dillon.D.2020-02-08/"
+  },
+  "C-14": {
+    "seat_label": "C-14",
+    "memberCode": "John-Cummins.S.2020-03-30",
+    "name": "John Cummins",
+    "party": "Fine Gael",
+    "constituency": "Waterford",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/John-Cummins.S.2020-03-30/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/John-Cummins.S.2020-03-30/"
+  },
+  "C-13": {
+    "seat_label": "C-13",
+    "memberCode": "Jerry-Buttimer.S.2007-07-23",
+    "name": "Jerry Buttimer",
+    "party": "Fine Gael",
+    "constituency": "Cork South-Central",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Jerry-Buttimer.S.2007-07-23/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Jerry-Buttimer.S.2007-07-23/"
+  },
+  "C-12": {
+    "seat_label": "C-12",
+    "memberCode": "Colm-Brophy.D.2016-10-03",
+    "name": "Colm Brophy",
+    "party": "Fine Gael",
+    "constituency": "Dublin South-West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Colm-Brophy.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Colm-Brophy.D.2016-10-03/"
+  },
+  "C-11": {
+    "seat_label": "C-11",
+    "memberCode": "Frank-Feighan.S.2002-09-12",
+    "name": "Frankie Feighan",
+    "party": "Fine Gael",
+    "constituency": "Sligo-Leitrim",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Frank-Feighan.S.2002-09-12/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Frank-Feighan.S.2002-09-12/"
+  },
+  "C-10": {
+    "seat_label": "C-10",
+    "memberCode": "Robert-Troy.D.2011-03-09",
+    "name": "Robert Troy",
+    "party": "Fianna Fáil",
+    "constituency": "Longford-Westmeath",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Robert-Troy.D.2011-03-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Robert-Troy.D.2011-03-09/"
+  },
+  "C-09": {
+    "seat_label": "C-09",
+    "memberCode": "Christopher-O'Sullivan.D.2020-02-08",
+    "name": "Christopher O'Sullivan",
+    "party": "Fianna Fáil",
+    "constituency": "Cork South-West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Christopher-O'Sullivan.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Christopher-O'Sullivan.D.2020-02-08/"
+  },
+  "C-08": {
+    "seat_label": "C-08",
+    "memberCode": "Michael-Moynihan.D.1997-06-26",
+    "name": "Michael Moynihan",
+    "party": "Fianna Fáil",
+    "constituency": "Cork North-West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Michael-Moynihan.D.1997-06-26/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Michael-Moynihan.D.1997-06-26/"
+  },
+  "C-07": {
+    "seat_label": "C-07",
+    "memberCode": "Charlie-McConalogue.D.2011-03-09",
+    "name": "Charlie McConalogue",
+    "party": "Fianna Fáil",
+    "constituency": "Donegal",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Charlie-McConalogue.D.2011-03-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Charlie-McConalogue.D.2011-03-09/"
+  },
+  "C-06": {
+    "seat_label": "C-06",
+    "memberCode": "Timmy-Dooley.S.2002-09-12",
+    "name": "Timmy Dooley",
+    "party": "Fianna Fáil",
+    "constituency": "Clare",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Timmy-Dooley.S.2002-09-12/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Timmy-Dooley.S.2002-09-12/"
+  },
+  "C-05": {
+    "seat_label": "C-05",
+    "memberCode": "Niall-Collins.D.2007-06-14",
+    "name": "Niall Collins",
+    "party": "Fianna Fáil",
+    "constituency": "Limerick County",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Niall-Collins.D.2007-06-14/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Niall-Collins.D.2007-06-14/"
+  },
+  "C-04": {
+    "seat_label": "C-04",
+    "memberCode": "Thomas-Byrne.D.2007-06-14",
+    "name": "Thomas Byrne",
+    "party": "Fianna Fáil",
+    "constituency": "Meath East",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Thomas-Byrne.D.2007-06-14/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Thomas-Byrne.D.2007-06-14/"
+  },
+  "C-03": {
+    "seat_label": "C-03",
+    "memberCode": "Jennifer-Murnane-O'Connor.S.2016-04-25",
+    "name": "Jennifer Murnane O'Connor",
+    "party": "Fianna Fáil",
+    "constituency": "Carlow-Kilkenny",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Jennifer-Murnane-O'Connor.S.2016-04-25/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Jennifer-Murnane-O'Connor.S.2016-04-25/"
+  },
+  "C-02": {
+    "seat_label": "C-02",
+    "memberCode": "Niamh-Smyth.D.2016-10-03",
+    "name": "Niamh Smyth",
+    "party": "Fianna Fáil",
+    "constituency": "Cavan-Monaghan",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Niamh-Smyth.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Niamh-Smyth.D.2016-10-03/"
+  },
+  "C-01": {
+    "seat_label": "C-01",
+    "memberCode": "Mary-Butler.D.2016-10-03",
+    "name": "Mary Butler",
+    "party": "Fianna Fáil",
+    "constituency": "Waterford",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Mary-Butler.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Mary-Butler.D.2016-10-03/"
+  },
+  "C-38": {
+    "seat_label": "C-38",
+    "memberCode": "Marian-Harkin.D.2002-06-06",
+    "name": "Marian Harkin",
+    "party": "Independent",
+    "constituency": "Sligo-Leitrim",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Marian-Harkin.D.2002-06-06/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Marian-Harkin.D.2002-06-06/"
+  },
+  "C-37": {
+    "seat_label": "C-37",
+    "memberCode": "Michael-Healy-Rae.D.2011-03-09",
+    "name": "Michael Healy-Rae",
+    "party": "Independent",
+    "constituency": "Kerry",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Michael-Healy-Rae.D.2011-03-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Michael-Healy-Rae.D.2011-03-09/"
+  },
+  "C-36": {
+    "seat_label": "C-36",
+    "memberCode": "Kevin-Boxer-Moran.D.2016-10-03",
+    "name": "Kevin Boxer Moran",
+    "party": "Independent",
+    "constituency": "Longford-Westmeath",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Kevin-Boxer-Moran.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Kevin-Boxer-Moran.D.2016-10-03/"
+  },
+  "D-39": {
+    "seat_label": "D-39",
+    "memberCode": "",
+    "name": "",
+    "party": "",
+    "constituency": "",
+    "image": "",
+    "url": ""
+  },
+  "D-38": {
+    "seat_label": "D-38",
+    "memberCode": "",
+    "name": "",
+    "party": "",
+    "constituency": "",
+    "image": "",
+    "url": ""
+  },
+  "D-37": {
+    "seat_label": "D-37",
+    "memberCode": "Paul-Nicholas-Gogarty.D.2002-06-06",
+    "name": "Paul Nicholas Gogarty",
+    "party": "Independent",
+    "constituency": "Dublin Mid-West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Paul-Nicholas-Gogarty.D.2002-06-06/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Paul-Nicholas-Gogarty.D.2002-06-06/"
+  },
+  "D-36": {
+    "seat_label": "D-36",
+    "memberCode": "Denise-Mitchell.D.2016-10-03",
+    "name": "Denise Mitchell",
+    "party": "Sinn Féin",
+    "constituency": "Dublin Bay North",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Denise-Mitchell.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Denise-Mitchell.D.2016-10-03/"
+  },
+  "D-35": {
+    "seat_label": "D-35",
+    "memberCode": "Shónagh-Ní-Raghallaigh.D.2024-11-29",
+    "name": "Shónagh Ní Raghallaigh",
+    "party": "Sinn Féin",
+    "constituency": "Kildare South",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Shónagh-Ní-Raghallaigh.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Shónagh-Ní-Raghallaigh.D.2024-11-29/"
+  },
+  "D-34": {
+    "seat_label": "D-34",
+    "memberCode": "Mark-Ward.D.2019-11-29",
+    "name": "Mark Ward",
+    "party": "Sinn Féin",
+    "constituency": "Dublin Mid-West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Mark-Ward.D.2019-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Mark-Ward.D.2019-11-29/"
+  },
+  "D-33": {
+    "seat_label": "D-33",
+    "memberCode": "Maurice-Quinlivan.D.2016-10-03",
+    "name": "Maurice Quinlivan",
+    "party": "Sinn Féin",
+    "constituency": "Limerick City",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Maurice-Quinlivan.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Maurice-Quinlivan.D.2016-10-03/"
+  },
+  "D-32": {
+    "seat_label": "D-32",
+    "memberCode": "Thomas-Gould.D.2020-02-08",
+    "name": "Thomas Gould",
+    "party": "Sinn Féin",
+    "constituency": "Cork North-Central",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Thomas-Gould.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Thomas-Gould.D.2020-02-08/"
+  },
+  "D-31": {
+    "seat_label": "D-31",
+    "memberCode": "Réada-Cronin.D.2020-02-08",
+    "name": "Réada Cronin",
+    "party": "Sinn Féin",
+    "constituency": "Kildare North",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Réada-Cronin.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Réada-Cronin.D.2020-02-08/"
+  },
+  "D-30": {
+    "seat_label": "D-30",
+    "memberCode": "Paul-Donnelly.D.2020-02-08",
+    "name": "Paul Donnelly",
+    "party": "Sinn Féin",
+    "constituency": "Dublin West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Paul-Donnelly.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Paul-Donnelly.D.2020-02-08/"
+  },
+  "D-29": {
+    "seat_label": "D-29",
+    "memberCode": "Seán-Crowe.D.2002-06-06",
+    "name": "Seán Crowe",
+    "party": "Sinn Féin",
+    "constituency": "Dublin South-West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Seán-Crowe.D.2002-06-06/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Seán-Crowe.D.2002-06-06/"
+  },
+  "D-28": {
+    "seat_label": "D-28",
+    "memberCode": "Paul-Murphy.D.2014-10-10",
+    "name": "Paul Murphy",
+    "party": "People Before Profit-Solidarity",
+    "constituency": "Dublin South-West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Paul-Murphy.D.2014-10-10/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Paul-Murphy.D.2014-10-10/"
+  },
+  "D-27": {
+    "seat_label": "D-27",
+    "memberCode": "Richard-Boyd-Barrett.D.2011-03-09",
+    "name": "Richard Boyd Barrett",
+    "party": "People Before Profit-Solidarity",
+    "constituency": "Dún Laoghaire",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Richard-Boyd-Barrett.D.2011-03-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Richard-Boyd-Barrett.D.2011-03-09/"
+  },
+  "D-26": {
+    "seat_label": "D-26",
+    "memberCode": "Ciarán-Ahern.D.2024-11-29",
+    "name": "Ciarán Ahern",
+    "party": "Labour Party",
+    "constituency": "Dublin South-West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Ciarán-Ahern.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Ciarán-Ahern.D.2024-11-29/"
+  },
+  "D-25": {
+    "seat_label": "D-25",
+    "memberCode": "George-Lawlor.D.2024-11-29",
+    "name": "George Lawlor",
+    "party": "Labour Party",
+    "constituency": "Wexford",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/George-Lawlor.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/George-Lawlor.D.2024-11-29/"
+  },
+  "D-24": {
+    "seat_label": "D-24",
+    "memberCode": "Robert-O'Donoghue.D.2024-11-29",
+    "name": "Robert O'Donoghue",
+    "party": "Labour Party",
+    "constituency": "Dublin Fingal West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Robert-O'Donoghue.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Robert-O'Donoghue.D.2024-11-29/"
+  },
+  "D-23": {
+    "seat_label": "D-23",
+    "memberCode": "Eoghan-Kenny.D.2024-11-29",
+    "name": "Eoghan Kenny",
+    "party": "Labour Party",
+    "constituency": "Cork North-Central",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Eoghan-Kenny.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Eoghan-Kenny.D.2024-11-29/"
+  },
+  "D-22": {
+    "seat_label": "D-22",
+    "memberCode": "Liam-Quaide.D.2024-11-29",
+    "name": "Liam Quaide",
+    "party": "Social Democrats",
+    "constituency": "Cork East",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Liam-Quaide.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Liam-Quaide.D.2024-11-29/"
+  },
+  "D-21": {
+    "seat_label": "D-21",
+    "memberCode": "Aidan-Farrelly.D.2024-11-29",
+    "name": "Aidan Farrelly",
+    "party": "Social Democrats",
+    "constituency": "Kildare North",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Aidan-Farrelly.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Aidan-Farrelly.D.2024-11-29/"
+  },
+  "D-20": {
+    "seat_label": "D-20",
+    "memberCode": "Edward-Timmins.D.2024-11-29",
+    "name": "Edward Timmins",
+    "party": "Fine Gael",
+    "constituency": "Wicklow",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Edward-Timmins.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Edward-Timmins.D.2024-11-29/"
+  },
+  "D-19": {
+    "seat_label": "D-19",
+    "memberCode": "Peter-Roche.D.2024-11-29",
+    "name": "Peter Roche",
+    "party": "Fine Gael",
+    "constituency": "Galway East",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Peter-Roche.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Peter-Roche.D.2024-11-29/"
+  },
+  "D-18": {
+    "seat_label": "D-18",
+    "memberCode": "Micheál-Carrigy.S.2020-03-30",
+    "name": "Micheál Carrigy",
+    "party": "Fine Gael",
+    "constituency": "Longford-Westmeath",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Micheál-Carrigy.S.2020-03-30/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Micheál-Carrigy.S.2020-03-30/"
+  },
+  "D-17": {
+    "seat_label": "D-17",
+    "memberCode": "Catherine-Callaghan.D.2024-11-29",
+    "name": "Catherine Callaghan",
+    "party": "Fine Gael",
+    "constituency": "Carlow-Kilkenny",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Catherine-Callaghan.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Catherine-Callaghan.D.2024-11-29/"
+  },
+  "D-16": {
+    "seat_label": "D-16",
+    "memberCode": "Paula-Butterly.D.2024-11-29",
+    "name": "Paula Butterly",
+    "party": "Fine Gael",
+    "constituency": "Louth",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Paula-Butterly.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Paula-Butterly.D.2024-11-29/"
+  },
+  "D-15": {
+    "seat_label": "D-15",
+    "memberCode": "John-Clendennen.D.2024-11-29",
+    "name": "John Clendennen",
+    "party": "Fine Gael",
+    "constituency": "Offaly",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/John-Clendennen.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/John-Clendennen.D.2024-11-29/"
+  },
+  "D-14": {
+    "seat_label": "D-14",
+    "memberCode": "Noel-Grealish.D.2002-06-06",
+    "name": "Noel Grealish",
+    "party": "Independent",
+    "constituency": "Galway West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Noel-Grealish.D.2002-06-06/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Noel-Grealish.D.2002-06-06/"
+  },
+  "D-13": {
+    "seat_label": "D-13",
+    "memberCode": "Seán-Canney.D.2016-10-03",
+    "name": "Seán Canney",
+    "party": "Independent",
+    "constituency": "Galway East",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Seán-Canney.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Seán-Canney.D.2016-10-03/"
+  },
+  "D-12": {
+    "seat_label": "D-12",
+    "memberCode": "Neale-Richmond.S.2016-04-25",
+    "name": "Neale Richmond",
+    "party": "Fine Gael",
+    "constituency": "Dublin Rathdown",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Neale-Richmond.S.2016-04-25/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Neale-Richmond.S.2016-04-25/"
+  },
+  "D-11": {
+    "seat_label": "D-11",
+    "memberCode": "Emer-Currie.S.2020-06-29",
+    "name": "Emer Currie",
+    "party": "Fine Gael",
+    "constituency": "Dublin West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Emer-Currie.S.2020-06-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Emer-Currie.S.2020-06-29/"
+  },
+  "D-10": {
+    "seat_label": "D-10",
+    "memberCode": "Cormac-Devlin.D.2020-02-08",
+    "name": "Cormac Devlin",
+    "party": "Fianna Fáil",
+    "constituency": "Dún Laoghaire",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Cormac-Devlin.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Cormac-Devlin.D.2020-02-08/"
+  },
+  "D-09": {
+    "seat_label": "D-09",
+    "memberCode": "Paul-McAuliffe.D.2020-02-08",
+    "name": "Paul McAuliffe",
+    "party": "Fianna Fáil",
+    "constituency": "Dublin North-West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Paul-McAuliffe.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Paul-McAuliffe.D.2020-02-08/"
+  },
+  "D-08": {
+    "seat_label": "D-08",
+    "memberCode": "John-Lahart.D.2016-10-03",
+    "name": "John Lahart",
+    "party": "Fianna Fáil",
+    "constituency": "Dublin South-West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/John-Lahart.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/John-Lahart.D.2016-10-03/"
+  },
+  "D-07": {
+    "seat_label": "D-07",
+    "memberCode": "Tony-McCormack.D.2024-11-29",
+    "name": "Tony McCormack",
+    "party": "Fianna Fáil",
+    "constituency": "Offaly",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Tony-McCormack.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Tony-McCormack.D.2024-11-29/"
+  },
+  "D-06": {
+    "seat_label": "D-06",
+    "memberCode": "Cathal-Crowe.D.2020-02-08",
+    "name": "Cathal Crowe",
+    "party": "Fianna Fáil",
+    "constituency": "Clare",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Cathal-Crowe.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Cathal-Crowe.D.2020-02-08/"
+  },
+  "D-05": {
+    "seat_label": "D-05",
+    "memberCode": "John-Connolly.D.2024-11-29",
+    "name": "John Connolly",
+    "party": "Fianna Fáil",
+    "constituency": "Galway West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/John-Connolly.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/John-Connolly.D.2024-11-29/"
+  },
+  "D-04": {
+    "seat_label": "D-04",
+    "memberCode": "Peter-'Chap'-Cleere.D.2024-11-29",
+    "name": "Peter 'Chap' Cleere",
+    "party": "Fianna Fáil",
+    "constituency": "Carlow-Kilkenny",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Peter-'Chap'-Cleere.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Peter-'Chap'-Cleere.D.2024-11-29/"
+  },
+  "D-03": {
+    "seat_label": "D-03",
+    "memberCode": "Michael-Cahill.D.2024-11-29",
+    "name": "Michael Cahill",
+    "party": "Fianna Fáil",
+    "constituency": "Kerry",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Michael-Cahill.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Michael-Cahill.D.2024-11-29/"
+  },
+  "D-02": {
+    "seat_label": "D-02",
+    "memberCode": "Malcolm-Byrne.D.2019-11-29",
+    "name": "Malcolm Byrne",
+    "party": "Fianna Fáil",
+    "constituency": "Wicklow-Wexford",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Malcolm-Byrne.D.2019-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Malcolm-Byrne.D.2019-11-29/"
+  },
+  "D-01": {
+    "seat_label": "D-01",
+    "memberCode": "Shay-Brennan.D.2024-11-29",
+    "name": "Shay Brennan",
+    "party": "Fianna Fáil",
+    "constituency": "Dublin Rathdown",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Shay-Brennan.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Shay-Brennan.D.2024-11-29/"
+  },
+  "D-42": {
+    "seat_label": "D-42",
+    "memberCode": "Brendan-Smith.D.1992-12-14",
+    "name": "Brendan Smith",
+    "party": "Fianna Fáil",
+    "constituency": "Cavan-Monaghan",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Brendan-Smith.D.1992-12-14/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Brendan-Smith.D.1992-12-14/"
+  },
+  "D-41": {
+    "seat_label": "D-41",
+    "memberCode": "Tom-Brabazon.D.2024-11-29",
+    "name": "Tom Brabazon",
+    "party": "Fianna Fáil",
+    "constituency": "Dublin Bay North",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Tom-Brabazon.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Tom-Brabazon.D.2024-11-29/"
+  },
+  "D-40": {
+    "seat_label": "D-40",
+    "memberCode": "Seán-Fleming.D.1997-06-26",
+    "name": "Sean Fleming",
+    "party": "Fianna Fáil",
+    "constituency": "Laois",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Seán-Fleming.D.1997-06-26/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Seán-Fleming.D.1997-06-26/"
+  },
+  "E-45": {
+    "seat_label": "E-45",
+    "memberCode": "Barry-Heneghan.D.2024-11-29",
+    "name": "Barry Heneghan",
+    "party": "Independent",
+    "constituency": "Dublin Bay North",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Barry-Heneghan.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Barry-Heneghan.D.2024-11-29/"
+  },
+  "E-44": {
+    "seat_label": "E-44",
+    "memberCode": "Danny-Healy-Rae.D.2016-10-03",
+    "name": "Danny Healy-Rae",
+    "party": "Independent",
+    "constituency": "Kerry",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Danny-Healy-Rae.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Danny-Healy-Rae.D.2016-10-03/"
+  },
+  "E-43": {
+    "seat_label": "E-43",
+    "memberCode": "Mattie-McGrath.D.2007-06-14",
+    "name": "Mattie McGrath",
+    "party": "Independent",
+    "constituency": "Tipperary South",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Mattie-McGrath.D.2007-06-14/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Mattie-McGrath.D.2007-06-14/"
+  },
+  "E-42": {
+    "seat_label": "E-42",
+    "memberCode": "Johnny-Mythen.D.2020-02-08",
+    "name": "Johnny Mythen",
+    "party": "Sinn Féin",
+    "constituency": "Wexford",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Johnny-Mythen.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Johnny-Mythen.D.2020-02-08/"
+  },
+  "E-41": {
+    "seat_label": "E-41",
+    "memberCode": "Johnny-Guirke.D.2020-02-08",
+    "name": "Johnny Guirke",
+    "party": "Sinn Féin",
+    "constituency": "Meath West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Johnny-Guirke.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Johnny-Guirke.D.2020-02-08/"
+  },
+  "E-40": {
+    "seat_label": "E-40",
+    "memberCode": "Louis-O'Hara.D.2024-11-29",
+    "name": "Louis O'Hara",
+    "party": "Sinn Féin",
+    "constituency": "Galway East",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Louis-O'Hara.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Louis-O'Hara.D.2024-11-29/"
+  },
+  "E-39": {
+    "seat_label": "E-39",
+    "memberCode": "Ann-Graves.D.2024-11-29",
+    "name": "Ann Graves",
+    "party": "Sinn Féin",
+    "constituency": "Dublin Fingal East",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Ann-Graves.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Ann-Graves.D.2024-11-29/"
+  },
+  "E-38": {
+    "seat_label": "E-38",
+    "memberCode": "Dessie-Ellis.D.2011-03-09",
+    "name": "Dessie Ellis",
+    "party": "Sinn Féin",
+    "constituency": "Dublin North-West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Dessie-Ellis.D.2011-03-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Dessie-Ellis.D.2011-03-09/"
+  },
+  "E-37": {
+    "seat_label": "E-37",
+    "memberCode": "Fionntán-Ó-Súilleabháin.D.2024-11-29",
+    "name": "Fionntán Ó Súilleabháin",
+    "party": "Sinn Féin",
+    "constituency": "Wicklow-Wexford",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Fionntán-Ó-Súilleabháin.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Fionntán-Ó-Súilleabháin.D.2024-11-29/"
+  },
+  "E-36": {
+    "seat_label": "E-36",
+    "memberCode": "Natasha-Newsome-Drennan.D.2024-11-29",
+    "name": "Natasha Newsome Drennan",
+    "party": "Sinn Féin",
+    "constituency": "Carlow-Kilkenny",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Natasha-Newsome-Drennan.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Natasha-Newsome-Drennan.D.2024-11-29/"
+  },
+  "E-35": {
+    "seat_label": "E-35",
+    "memberCode": "Pat-Buckley.D.2016-10-03",
+    "name": "Pat Buckley",
+    "party": "Sinn Féin",
+    "constituency": "Cork East",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Pat-Buckley.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Pat-Buckley.D.2016-10-03/"
+  },
+  "E-34": {
+    "seat_label": "E-34",
+    "memberCode": "Charles-Ward.D.2024-11-29",
+    "name": "Charles Ward",
+    "party": "100% RDR",
+    "constituency": "Donegal",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Charles-Ward.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Charles-Ward.D.2024-11-29/"
+  },
+  "E-33": {
+    "seat_label": "E-33",
+    "memberCode": "",
+    "name": "",
+    "party": "",
+    "constituency": "",
+    "image": "",
+    "url": ""
+  },
+  "E-32": {
+    "seat_label": "E-32",
+    "memberCode": "Seamus-Healy.D.2000-06-22",
+    "name": "Seamus Healy",
+    "party": "Independent",
+    "constituency": "Tipperary South",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Seamus-Healy.D.2000-06-22/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Seamus-Healy.D.2000-06-22/"
+  },
+  "E-31": {
+    "seat_label": "E-31",
+    "memberCode": "Brian-Stanley.D.2011-03-09",
+    "name": "Brian Stanley",
+    "party": "Independent",
+    "constituency": "Laois",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Brian-Stanley.D.2011-03-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Brian-Stanley.D.2011-03-09/"
+  },
+  "E-30": {
+    "seat_label": "E-30",
+    "memberCode": "Roderic-O'Gorman.D.2020-02-08",
+    "name": "Roderic O'Gorman",
+    "party": "Green Party",
+    "constituency": "Dublin West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Roderic-O'Gorman.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Roderic-O'Gorman.D.2020-02-08/"
+  },
+  "E-29": {
+    "seat_label": "E-29",
+    "memberCode": "Michael-Lowry.D.1987-03-10",
+    "name": "Michael Lowry",
+    "party": "Independent",
+    "constituency": "Tipperary North",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Michael-Lowry.D.1987-03-10/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Michael-Lowry.D.1987-03-10/"
+  },
+  "E-28": {
+    "seat_label": "E-28",
+    "memberCode": "Gillian-Toole.D.2024-11-29",
+    "name": "Gillian Toole",
+    "party": "Independent",
+    "constituency": "Meath East",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Gillian-Toole.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Gillian-Toole.D.2024-11-29/"
+  },
+  "E-27": {
+    "seat_label": "E-27",
+    "memberCode": "",
+    "name": "",
+    "party": "",
+    "constituency": "",
+    "image": "",
+    "url": ""
+  },
+  "E-26": {
+    "seat_label": "E-26",
+    "memberCode": "",
+    "name": "",
+    "party": "",
+    "constituency": "",
+    "image": "",
+    "url": ""
+  },
+  "E-25": {
+    "seat_label": "E-25",
+    "memberCode": "Carol-Nolan.D.2016-10-03",
+    "name": "Carol Nolan",
+    "party": "Independent",
+    "constituency": "Offaly",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Carol-Nolan.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Carol-Nolan.D.2016-10-03/"
+  },
+  "E-24": {
+    "seat_label": "E-24",
+    "memberCode": "Eoin-Hayes.D.2024-11-29",
+    "name": "Eoin Hayes",
+    "party": "Social Democrats",
+    "constituency": "Dublin Bay South",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Eoin-Hayes.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Eoin-Hayes.D.2024-11-29/"
+  },
+  "E-23": {
+    "seat_label": "E-23",
+    "memberCode": "John-Paul-O'Shea.D.2024-11-29",
+    "name": "John Paul O'Shea",
+    "party": "Fine Gael",
+    "constituency": "Cork North-West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/John-Paul-O'Shea.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/John-Paul-O'Shea.D.2024-11-29/"
+  },
+  "E-22": {
+    "seat_label": "E-22",
+    "memberCode": "Michael-Murphy.D.2024-11-29",
+    "name": "Michael Murphy",
+    "party": "Fine Gael",
+    "constituency": "Tipperary South",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Michael-Murphy.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Michael-Murphy.D.2024-11-29/"
+  },
+  "E-21": {
+    "seat_label": "E-21",
+    "memberCode": "David-Maxwell.D.2024-11-29",
+    "name": "David Maxwell",
+    "party": "Fine Gael",
+    "constituency": "Cavan-Monaghan",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/David-Maxwell.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/David-Maxwell.D.2024-11-29/"
+  },
+  "E-20": {
+    "seat_label": "E-20",
+    "memberCode": "Noel-McCarthy.D.2024-11-29",
+    "name": "Noel McCarthy",
+    "party": "Fine Gael",
+    "constituency": "Cork East",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Noel-McCarthy.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Noel-McCarthy.D.2024-11-29/"
+  },
+  "E-19": {
+    "seat_label": "E-19",
+    "memberCode": "Naoise-Ó-Muirí.D.2024-11-29",
+    "name": "Naoise Ó Muirí",
+    "party": "Fine Gael",
+    "constituency": "Dublin Bay North",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Naoise-Ó-Muirí.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Naoise-Ó-Muirí.D.2024-11-29/"
+  },
+  "E-18": {
+    "seat_label": "E-18",
+    "memberCode": "Maeve-O'Connell.D.2024-11-29",
+    "name": "Maeve O'Connell",
+    "party": "Fine Gael",
+    "constituency": "Dublin Rathdown",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Maeve-O'Connell.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Maeve-O'Connell.D.2024-11-29/"
+  },
+  "E-17": {
+    "seat_label": "E-17",
+    "memberCode": "Joe-Cooney.D.2024-11-29",
+    "name": "Joe Cooney",
+    "party": "Fine Gael",
+    "constituency": "Clare",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Joe-Cooney.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Joe-Cooney.D.2024-11-29/"
+  },
+  "E-16": {
+    "seat_label": "E-16",
+    "memberCode": "Joe-Neville.D.2024-11-29",
+    "name": "Joe Neville",
+    "party": "Fine Gael",
+    "constituency": "Kildare North",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Joe-Neville.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Joe-Neville.D.2024-11-29/"
+  },
+  "E-15": {
+    "seat_label": "E-15",
+    "memberCode": "",
+    "name": "",
+    "party": "",
+    "constituency": "",
+    "image": "",
+    "url": ""
+  },
+  "E-14": {
+    "seat_label": "E-14",
+    "memberCode": "Colm-Burke.S.2011-05-25",
+    "name": "Colm Burke",
+    "party": "Fine Gael",
+    "constituency": "Cork North-Central",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Colm-Burke.S.2011-05-25/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Colm-Burke.S.2011-05-25/"
+  },
+  "E-13": {
+    "seat_label": "E-13",
+    "memberCode": "Brian-Brennan.D.2024-11-29",
+    "name": "Brian Brennan",
+    "party": "Fine Gael",
+    "constituency": "Wicklow-Wexford",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Brian-Brennan.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Brian-Brennan.D.2024-11-29/"
+  },
+  "E-12": {
+    "seat_label": "E-12",
+    "memberCode": "Barry-Ward.S.2020-03-30",
+    "name": "Barry Ward",
+    "party": "Fine Gael",
+    "constituency": "Dún Laoghaire",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Barry-Ward.S.2020-03-30/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Barry-Ward.S.2020-03-30/"
+  },
+  "E-11": {
+    "seat_label": "E-11",
+    "memberCode": "Grace-Boland.D.2024-11-29",
+    "name": "Grace Boland",
+    "party": "Fine Gael",
+    "constituency": "Dublin Fingal West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Grace-Boland.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Grace-Boland.D.2024-11-29/"
+  },
+  "E-10": {
+    "seat_label": "E-10",
+    "memberCode": "William-Aird.D.2024-11-29",
+    "name": "William Aird",
+    "party": "Fine Gael",
+    "constituency": "Laois",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/William-Aird.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/William-Aird.D.2024-11-29/"
+  },
+  "E-09": {
+    "seat_label": "E-09",
+    "memberCode": "Keira-Keogh.D.2024-11-29",
+    "name": "Keira Keogh",
+    "party": "Fine Gael",
+    "constituency": "Mayo",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Keira-Keogh.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Keira-Keogh.D.2024-11-29/"
+  },
+  "E-08": {
+    "seat_label": "E-08",
+    "memberCode": "James-Geoghegan.D.2024-11-29",
+    "name": "James Geoghegan",
+    "party": "Fine Gael",
+    "constituency": "Dublin Bay South",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/James-Geoghegan.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/James-Geoghegan.D.2024-11-29/"
+  },
+  "E-07": {
+    "seat_label": "E-07",
+    "memberCode": "Séamus-McGrath.D.2024-11-29",
+    "name": "Séamus McGrath",
+    "party": "Fianna Fáil",
+    "constituency": "Cork South-Central",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Séamus-McGrath.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Séamus-McGrath.D.2024-11-29/"
+  },
+  "E-06": {
+    "seat_label": "E-06",
+    "memberCode": "Willie-O'Dea.D.1982-03-09",
+    "name": "Willie O'Dea",
+    "party": "Fianna Fáil",
+    "constituency": "Limerick City",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Willie-O'Dea.D.1982-03-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Willie-O'Dea.D.1982-03-09/"
+  },
+  "E-05": {
+    "seat_label": "E-05",
+    "memberCode": "James-O'Connor.D.2020-02-08",
+    "name": "James O'Connor",
+    "party": "Fianna Fáil",
+    "constituency": "Cork East",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/James-O'Connor.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/James-O'Connor.D.2020-02-08/"
+  },
+  "E-04": {
+    "seat_label": "E-04",
+    "memberCode": "John-McGuinness.D.1997-06-26",
+    "name": "John McGuinness",
+    "party": "Fianna Fáil",
+    "constituency": "Carlow-Kilkenny",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/John-McGuinness.D.1997-06-26/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/John-McGuinness.D.1997-06-26/"
+  },
+  "E-03": {
+    "seat_label": "E-03",
+    "memberCode": "Pádraig-O'Sullivan.D.2019-11-29",
+    "name": "Pádraig O'Sullivan",
+    "party": "Fianna Fáil",
+    "constituency": "Cork North-Central",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Pádraig-O'Sullivan.D.2019-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Pádraig-O'Sullivan.D.2019-11-29/"
+  },
+  "E-02": {
+    "seat_label": "E-02",
+    "memberCode": "Aindrias-Moynihan.D.2016-10-03",
+    "name": "Aindrias Moynihan",
+    "party": "Fianna Fáil",
+    "constituency": "Cork North-West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Aindrias-Moynihan.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Aindrias-Moynihan.D.2016-10-03/"
+  },
+  "E-01": {
+    "seat_label": "E-01",
+    "memberCode": "Seán-Ó-Fearghaíl.S.2000-06-09",
+    "name": "Seán Ó Fearghaíl",
+    "party": "Fianna Fáil",
+    "constituency": "Kildare South",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Seán-Ó-Fearghaíl.S.2000-06-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Seán-Ó-Fearghaíl.S.2000-06-09/"
+  },
+  "E-48": {
+    "seat_label": "E-48",
+    "memberCode": "Pat-the-Cope-Gallagher.D.1981-06-30",
+    "name": "Pat the Cope Gallagher",
+    "party": "Fianna Fáil",
+    "constituency": "Donegal",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Pat-the-Cope-Gallagher.D.1981-06-30/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Pat-the-Cope-Gallagher.D.1981-06-30/"
+  },
+  "E-47": {
+    "seat_label": "E-47",
+    "memberCode": "Eamon-Scanlon.S.2002-09-12",
+    "name": "Eamon Scanlon",
+    "party": "Fianna Fáil",
+    "constituency": "Sligo-Leitrim",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Eamon-Scanlon.S.2002-09-12/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Eamon-Scanlon.S.2002-09-12/"
+  },
+  "E-46": {
+    "seat_label": "E-46",
+    "memberCode": "Martin-Daly.D.2024-11-29",
+    "name": "Martin Daly",
+    "party": "Fianna Fáil",
+    "constituency": "Roscommon-Galway",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Martin-Daly.D.2024-11-29/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Martin-Daly.D.2024-11-29/"
+  },
+  "F-01": {
+    "seat_label": "F-01",
+    "memberCode": "Verona-Murphy.D.2020-02-08",
+    "name": "Verona Murphy",
+    "party": "Independent",
+    "constituency": "Wexford",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Verona-Murphy.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Verona-Murphy.D.2020-02-08/"
+  }
+}
