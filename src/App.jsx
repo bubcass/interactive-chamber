@@ -11,7 +11,48 @@ function buildMemberUrl(memberCode) {
   return `https://www.oireachtas.ie/en/members/member/${memberCode}/`;
 }
 
+function useIframeResize() {
+  useEffect(() => {
+    function sendHeight() {
+      const height = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight,
+      );
+
+      window.parent.postMessage(
+        {
+          type: "chamber-party-map:resize",
+          height,
+        },
+        "*",
+      );
+    }
+
+    const timeoutId = setTimeout(sendHeight, 100);
+
+    const resizeObserver = new ResizeObserver(() => {
+      sendHeight();
+    });
+
+    if (document.body) {
+      resizeObserver.observe(document.body);
+    }
+
+    window.addEventListener("load", sendHeight);
+    window.addEventListener("resize", sendHeight);
+
+    return () => {
+      clearTimeout(timeoutId);
+      resizeObserver.disconnect();
+      window.removeEventListener("load", sendHeight);
+      window.removeEventListener("resize", sendHeight);
+    };
+  }, []);
+}
+
 export default function App() {
+  useIframeResize();
+
   const [assignments, setAssignments] = useState([]);
   const [members, setMembers] = useState([]);
   const [selectedSeat, setSelectedSeat] = useState(null);
@@ -128,13 +169,15 @@ export default function App() {
 
   return (
     <div className="app">
-      <header className="hero">
+      {/*<header className="hero">
         <div>
+
           <div className="eyebrow">Explore</div>
           <h1>Interactive Dáil Chamber</h1>
           <p>Find your local representative in our interactive Chamber map.</p>
+
         </div>
-      </header>
+      </header>*/}
 
       <main className="layout layout--stacked">
         <section className="main-panel main-panel--full">
