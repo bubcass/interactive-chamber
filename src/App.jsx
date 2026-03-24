@@ -147,14 +147,14 @@ export default function App() {
       .sort((a, b) => b.count - a.count);
 
     return [
+      ...partyItems,
       {
-        name: "All",
+        name: "All parties",
         count: seats.filter((seat) => seat.member?.Party).length,
         color: "#7f6c2e",
         active: partyFilter === null,
         isAll: true,
       },
-      ...partyItems,
     ];
   }, [seats, partyFilter]);
 
