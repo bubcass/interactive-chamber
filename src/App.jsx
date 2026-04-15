@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { loadCsv } from "./lib/csv.js";
-import { byKey, normaliseMemberApiRows, clean } from "./lib/joins.js";
+import { normaliseMemberApiRows, clean } from "./lib/joins.js";
 import { partiesPalette } from "./data/partiesPalette.js";
 import ChamberMap from "./components/ChamberMap.jsx";
 import membersJson from "./data/members.json";
@@ -9,6 +9,23 @@ import "./styles.css";
 function buildMemberUrl(memberCode) {
   if (!memberCode) return "";
   return `https://www.oireachtas.ie/en/members/member/${memberCode}/`;
+}
+
+function resolveSeatForDate(rows, memberCode, targetDate) {
+  if (!memberCode || !targetDate) return null;
+
+  const targetTime = new Date(targetDate).getTime();
+
+  return rows.find((row) => {
+    const rowMemberCode = clean(row.member_code ?? row.memberCode);
+
+    if (rowMemberCode !== clean(memberCode)) return false;
+
+    const start = new Date(row.start_date).getTime();
+    const end = row.end_date ? new Date(row.end_date).getTime() : Infinity;
+
+    return targetTime >= start && targetTime <= end;
+  });
 }
 
 function useIframeResize() {
@@ -62,7 +79,7 @@ export default function App() {
   useEffect(() => {
     async function init() {
       const seatingRowsRaw = await loadCsv(
-        `${import.meta.env.BASE_URL}seatAssignments.csv`,
+        `${import.meta.env.BASE_URL}seatAssignmentsHistory.csv`,
       );
 
       const seatingRows = seatingRowsRaw.map((row) => ({
@@ -81,35 +98,27 @@ export default function App() {
     init();
   }, []);
 
-  const assignmentsBySeat = useMemo(
-    () => byKey(assignments, "seat_label"),
-    [assignments],
-  );
-
-  const membersByCode = useMemo(() => byKey(members, "Code"), [members]);
-
   const seats = useMemo(() => {
-    const labels = Object.keys(assignmentsBySeat);
+    const today = new Date().toISOString().slice(0, 10);
 
-    return labels.map((seat_label) => {
-      const assignment = assignmentsBySeat[seat_label] || null;
+    return members
+      .map((member) => {
+        const assignment = resolveSeatForDate(assignments, member.Code, today);
 
-      let member = null;
-      if (assignment?.member_code) {
-        member = membersByCode[clean(assignment.member_code)] || null;
-      }
+        if (!assignment?.seat_label) return null;
 
-      return {
-        seat_label,
-        assignment,
-        member,
-      };
-    });
-  }, [assignmentsBySeat, membersByCode]);
+        return {
+          seat_label: clean(assignment.seat_label),
+          assignment,
+          member,
+        };
+      })
+      .filter(Boolean);
+  }, [assignments, members]);
 
   const visibleSeats = useMemo(() => {
     return seats.filter((seat) => {
-      const haystack = [
+      const matchesQuery = [
         seat.seat_label,
         seat.member?.Deputy,
         seat.member?.Party,
@@ -117,11 +126,15 @@ export default function App() {
       ]
         .filter(Boolean)
         .join(" ")
-        .toLowerCase();
+        .toLowerCase()
+        .includes(query.toLowerCase());
 
-      return haystack.includes(query.toLowerCase());
+      const matchesParty =
+        partyFilter === null || seat.member?.Party === partyFilter;
+
+      return matchesQuery && matchesParty;
     });
-  }, [seats, query]);
+  }, [seats, query, partyFilter]);
 
   const partySummary = useMemo(() => {
     const counts = new Map();
@@ -169,16 +182,6 @@ export default function App() {
 
   return (
     <div className="app">
-      {/*<header className="hero">
-        <div>
-
-          <div className="eyebrow">Explore</div>
-          <h1>Interactive Dáil Chamber</h1>
-          <p>Find your local representative in our interactive Chamber map.</p>
-
-        </div>
-      </header>*/}
-
       <main className="layout layout--stacked">
         <section className="main-panel main-panel--full">
           <div
@@ -293,47 +296,7 @@ export default function App() {
                       <div className="selected-mini-card__link">Profile ↗</div>
                     </div>
                   </a>
-                ) : (
-                  <div className="selected-mini-card">
-                    <div className="selected-mini-card__media">
-                      {selectedMember.imageUrl ? (
-                        <div
-                          className="selected-mini-card__photo-ring"
-                          style={{
-                            borderColor:
-                              partiesPalette.find(
-                                (p) => p.name === selectedMember.Party,
-                              )?.value || "#d6d3d1",
-                          }}
-                        >
-                          <img
-                            src={selectedMember.imageUrl}
-                            alt={selectedMember.Deputy}
-                            className="selected-mini-card__photo"
-                          />
-                        </div>
-                      ) : (
-                        <div className="selected-mini-card__photo-ring selected-mini-card__photo-ring--empty">
-                          <div className="selected-mini-card__placeholder">
-                            TD
-                          </div>
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="selected-mini-card__body">
-                      <div className="selected-mini-card__name">
-                        {selectedMember.Deputy}
-                      </div>
-                      <div className="selected-mini-card__meta">
-                        {selectedMember.Party || "—"}
-                      </div>
-                      <div className="selected-mini-card__meta">
-                        {selectedMember.Constituency || "—"}
-                      </div>
-                    </div>
-                  </div>
-                )}
+                ) : null}
               </aside>
             ) : null}
           </div>
