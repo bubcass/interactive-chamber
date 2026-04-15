@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { loadCsv } from "./lib/csv.js";
 import { normaliseMemberApiRows, clean } from "./lib/joins.js";
 import { partiesPalette } from "./data/partiesPalette.js";
@@ -70,11 +70,14 @@ function useIframeResize() {
 export default function App() {
   useIframeResize();
 
+  const mapRef = useRef(null);
+
   const [assignments, setAssignments] = useState([]);
   const [members, setMembers] = useState([]);
   const [selectedSeat, setSelectedSeat] = useState(null);
   const [query, setQuery] = useState("");
   const [partyFilter, setPartyFilter] = useState(null);
+  const [showMapMenu, setShowMapMenu] = useState(false);
 
   useEffect(() => {
     async function init() {
@@ -171,6 +174,63 @@ export default function App() {
     ];
   }, [seats, partyFilter]);
 
+  function exportCurrentMapSvg() {
+    const svgEl = mapRef.current?.querySelector(".map-svg-frame svg");
+    if (!svgEl) return;
+
+    const blob = new Blob([svgEl.outerHTML], {
+      type: "image/svg+xml;charset=utf-8",
+    });
+
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "dail_party_strength_map.svg";
+    a.click();
+    URL.revokeObjectURL(url);
+    setShowMapMenu(false);
+  }
+
+  function exportCurrentMapPng() {
+    const svgEl = mapRef.current?.querySelector(".map-svg-frame svg");
+    if (!svgEl) return;
+
+    const serializer = new XMLSerializer();
+    const svgString = serializer.serializeToString(svgEl);
+
+    const blob = new Blob([svgString], {
+      type: "image/svg+xml;charset=utf-8",
+    });
+
+    const url = URL.createObjectURL(blob);
+    const img = new Image();
+
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = svgEl.viewBox.baseVal.width || svgEl.clientWidth;
+      canvas.height = svgEl.viewBox.baseVal.height || svgEl.clientHeight;
+
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0);
+
+      canvas.toBlob((pngBlob) => {
+        const pngUrl = URL.createObjectURL(pngBlob);
+        const a = document.createElement("a");
+        a.href = pngUrl;
+        a.download = "dail_party_strength_map.png";
+        a.click();
+        URL.revokeObjectURL(pngUrl);
+      });
+
+      URL.revokeObjectURL(url);
+    };
+
+    img.src = url;
+    setShowMapMenu(false);
+  }
+
   const selected =
     seats.find((seat) => seat.seat_label === selectedSeat) || null;
   const hasSelection = Boolean(selected);
@@ -184,6 +244,29 @@ export default function App() {
     <div className="app">
       <main className="layout layout--stacked">
         <section className="main-panel main-panel--full">
+          <div className="map-actions">
+            <button
+              type="button"
+              className="map-actions__toggle"
+              onClick={() => setShowMapMenu((v) => !v)}
+              aria-label="Download map"
+              title="Download map"
+            >
+              ⋮
+            </button>
+
+            {showMapMenu ? (
+              <div className="map-actions__menu">
+                <button type="button" onClick={exportCurrentMapPng}>
+                  Download PNG
+                </button>
+                <button type="button" onClick={exportCurrentMapSvg}>
+                  Download SVG
+                </button>
+              </div>
+            ) : null}
+          </div>
+
           <div
             className={`party-summary${
               partyFilter ? " party-summary--has-active" : ""
@@ -201,13 +284,6 @@ export default function App() {
                   setSelectedSeat(null);
                 }}
                 aria-pressed={party.active}
-                title={
-                  party.isAll
-                    ? "Show all parties"
-                    : party.active
-                      ? `Showing ${party.name}`
-                      : `Focus ${party.name}`
-                }
               >
                 <span
                   className="party-summary__dot"
@@ -239,8 +315,6 @@ export default function App() {
                     type="button"
                     className="search-clear"
                     onClick={() => setQuery("")}
-                    aria-label="Clear search"
-                    title="Clear search"
                   >
                     ×
                   </button>
@@ -250,64 +324,64 @@ export default function App() {
 
             {hasSelection && selectedMember ? (
               <aside className="panel panel--selected-mini">
-                {selectedMemberUrl ? (
-                  <a
-                    href={selectedMemberUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="selected-mini-card"
-                  >
-                    <div className="selected-mini-card__media">
-                      {selectedMember.imageUrl ? (
-                        <div
-                          className="selected-mini-card__photo-ring"
-                          style={{
-                            borderColor:
-                              partiesPalette.find(
-                                (p) => p.name === selectedMember.Party,
-                              )?.value || "#d6d3d1",
-                          }}
-                        >
-                          <img
-                            src={selectedMember.imageUrl}
-                            alt={selectedMember.Deputy}
-                            className="selected-mini-card__photo"
-                          />
+                <a
+                  href={selectedMemberUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="selected-mini-card"
+                >
+                  <div className="selected-mini-card__media">
+                    {selectedMember.imageUrl ? (
+                      <div
+                        className="selected-mini-card__photo-ring"
+                        style={{
+                          borderColor:
+                            partiesPalette.find(
+                              (p) => p.name === selectedMember.Party,
+                            )?.value || "#d6d3d1",
+                        }}
+                      >
+                        <img
+                          src={selectedMember.imageUrl}
+                          alt={selectedMember.Deputy}
+                          className="selected-mini-card__photo"
+                        />
+                      </div>
+                    ) : (
+                      <div className="selected-mini-card__photo-ring selected-mini-card__photo-ring--empty">
+                        <div className="selected-mini-card__placeholder">
+                          TD
                         </div>
-                      ) : (
-                        <div className="selected-mini-card__photo-ring selected-mini-card__photo-ring--empty">
-                          <div className="selected-mini-card__placeholder">
-                            TD
-                          </div>
-                        </div>
-                      )}
-                    </div>
+                      </div>
+                    )}
+                  </div>
 
-                    <div className="selected-mini-card__body">
-                      <div className="selected-mini-card__name">
-                        {selectedMember.Deputy}
-                      </div>
-                      <div className="selected-mini-card__meta">
-                        {selectedMember.Party || "—"}
-                      </div>
-                      <div className="selected-mini-card__meta">
-                        {selectedMember.Constituency || "—"}
-                      </div>
-                      <div className="selected-mini-card__link">Profile ↗</div>
+                  <div className="selected-mini-card__body">
+                    <div className="selected-mini-card__name">
+                      {selectedMember.Deputy}
                     </div>
-                  </a>
-                ) : null}
+                    <div className="selected-mini-card__meta">
+                      {selectedMember.Party || "—"}
+                    </div>
+                    <div className="selected-mini-card__meta">
+                      {selectedMember.Constituency || "—"}
+                    </div>
+                    <div className="selected-mini-card__link">Profile ↗</div>
+                  </div>
+                </a>
               </aside>
             ) : null}
           </div>
 
-          <ChamberMap
-            seats={visibleSeats}
-            allSeats={seats}
-            selectedSeat={selectedSeat}
-            onSelect={setSelectedSeat}
-            partyFilter={partyFilter}
-          />
+          <div ref={mapRef}>
+            <ChamberMap
+              seats={visibleSeats}
+              allSeats={seats}
+              selectedSeat={selectedSeat}
+              onSelect={setSelectedSeat}
+              partyFilter={partyFilter}
+            />
+          </div>
         </section>
       </main>
     </div>

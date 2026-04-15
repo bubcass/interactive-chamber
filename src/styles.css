@@ -49,6 +49,7 @@ a {
 }
 
 .main-panel {
+    position: relative;
     padding: 12px;
 }
 
@@ -427,6 +428,79 @@ p {
     opacity: 0.95;
 }
 
+/* Map actions */
+
+.map-actions {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 30;
+}
+
+.map-actions__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 1px solid #d6d3d1;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.94);
+    color: #57534e;
+    font: inherit;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.map-actions__toggle:hover {
+    background: #fff;
+    border-color: #bdb8b2;
+    color: #1c1917;
+}
+
+.map-actions__toggle:focus-visible {
+    outline: 2px solid rgba(127, 108, 46, 0.35);
+    outline-offset: 2px;
+}
+
+.map-actions__menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 170px;
+    padding: 6px;
+    border: 1px solid #e7e5e4;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.map-actions__menu button {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: #333;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.map-actions__menu button:hover,
+.map-actions__menu button:focus-visible {
+    background: #f6f3ea;
+    outline: none;
+}
+
 /* Tooltip with fade / scale / lift */
 .map-tooltip {
     position: absolute;
@@ -724,6 +798,15 @@ p {
 
     .map-svg-frame {
         border-radius: 4px;
+    }
+
+    .map-actions {
+        top: 10px;
+        right: 10px;
+    }
+
+    .map-actions__menu {
+        min-width: 150px;
     }
 
     .map-tooltip {
