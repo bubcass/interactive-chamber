@@ -10,7 +10,7 @@ const ROOT = process.cwd();
 
 const PATHS = {
   svg: path.join(ROOT, "src/data/chamber.svg"),
-  seatingCsv: path.join(ROOT, "public/seatAssignments.csv"),
+  seatingCsv: path.join(ROOT, "public/seatAssignmentsHistory.csv"),
   membersJson: path.join(ROOT, "src/data/members.json"),
   partiesPaletteJs: path.join(ROOT, "src/data/partiesPalette.js"),
   outputDir: path.join(ROOT, "output"),
@@ -52,6 +52,37 @@ function loadCsvRows(csvText) {
   }
 
   return parsed.data;
+}
+
+function parseDate(value) {
+  const cleaned = clean(value);
+  if (!cleaned) return null;
+
+  const date = new Date(cleaned);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function isActiveSeatRow(row, today = new Date()) {
+  const startDate = parseDate(
+    row.start_date ??
+      row.startDate ??
+      row.date_from ??
+      row.dateFrom ??
+      row.effective_from,
+  );
+
+  const endDate = parseDate(
+    row.end_date ??
+      row.endDate ??
+      row.date_to ??
+      row.dateTo ??
+      row.effective_to,
+  );
+
+  if (startDate && startDate > today) return false;
+  if (endDate && endDate < today) return false;
+
+  return true;
 }
 
 async function loadPartyPalette() {
@@ -554,13 +585,17 @@ async function main() {
 
   const members = normaliseMemberApiRows(rawMembers);
 
-  const seatingRows = loadCsvRows(seatingCsvText).map((row) => ({
-    ...row,
-    seat_label: clean(row.seat_label),
-    deputy_name: clean(row.deputy_name ?? row.Deputy),
-    member_code: clean(row.member_code ?? row.memberCode),
-    path_id: clean(row.path_id),
-  }));
+  const today = new Date();
+
+  const seatingRows = loadCsvRows(seatingCsvText)
+    .filter((row) => isActiveSeatRow(row, today))
+    .map((row) => ({
+      ...row,
+      seat_label: clean(row.seat_label),
+      deputy_name: clean(row.deputy_name ?? row.Deputy),
+      member_code: clean(row.member_code ?? row.memberCode),
+      path_id: clean(row.path_id),
+    }));
 
   const partyColorMap = await loadPartyPalette();
   const seatData = buildSeatData(seatingRows, members);
@@ -578,6 +613,7 @@ async function main() {
 
   fs.writeFileSync(PATHS.outputHtml, html, "utf8");
 
+  console.log(`✅ Active seat assignments: ${seatingRows.length}`);
   console.log(`✅ Wrote ${PATHS.outputHtml}`);
   console.log(`✅ Wrote ${debugPath}`);
 }
