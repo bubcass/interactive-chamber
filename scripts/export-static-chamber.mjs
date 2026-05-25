@@ -32,15 +32,6 @@ function buildImageUrl(memberCode) {
   return `https://data.oireachtas.ie/ie/oireachtas/member/id/${memberCode}/image/large`;
 }
 
-function escapeHtml(str) {
-  return String(str ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#39;");
-}
-
 function loadCsvRows(csvText) {
   const parsed = Papa.parse(csvText, {
     header: true,
@@ -88,6 +79,7 @@ function isActiveSeatRow(row, today = new Date()) {
 async function loadPartyPalette() {
   const mod = await import(`file://${PATHS.partiesPaletteJs}`);
   const palette = mod.partiesPalette ?? [];
+
   return Object.fromEntries(
     palette.map((d) => [d.name, d.value || d.color || "#d6d3d1"]),
   );
@@ -112,10 +104,38 @@ function buildSeatData(seatingRows, members) {
       seat_label: seatLabel,
       memberCode,
       name: clean(member?.Deputy ?? row.deputy_name ?? row.Deputy),
-      party: clean(member?.Party),
-      constituency: clean(member?.Constituency),
+      party: clean(member?.Party ?? row.party ?? row.Party),
+      constituency: clean(
+        member?.Constituency ?? row.constituency ?? row.Constituency,
+      ),
       image: buildImageUrl(memberCode),
       url: buildMemberUrl(memberCode),
+    };
+  }
+
+  return seatData;
+}
+
+function addEmptySeatsFromSvg(seatData, svgMarkup) {
+  const seatRegex = /data-seat="([^"]+)"/g;
+  const allSeatLabels = new Set();
+
+  let match;
+  while ((match = seatRegex.exec(svgMarkup)) !== null) {
+    allSeatLabels.add(clean(match[1]));
+  }
+
+  for (const seatLabel of allSeatLabels) {
+    if (!seatLabel || seatData[seatLabel]) continue;
+
+    seatData[seatLabel] = {
+      seat_label: seatLabel,
+      memberCode: "",
+      name: "",
+      party: "",
+      constituency: "",
+      image: "",
+      url: "",
     };
   }
 
@@ -441,6 +461,7 @@ ${svgMarkup}
 
       const color = getSeatFill(seat);
       const hasImage = Boolean(seat.image);
+      const isEmptySeat = !seat.name && !seat.party && !seat.constituency;
 
       tooltipEl = document.createElement("div");
       tooltipEl.className = "tooltip";
@@ -452,14 +473,18 @@ ${svgMarkup}
           \${
             hasImage
               ? \`<img src="\${escapeHtml(seat.image)}" alt="" class="tooltip__avatar" style="border-color:\${color}">\`
-              : \`<div class="tooltip__avatar tooltip__avatar--empty" style="border-color:\${color}">TD</div>\`
+              : \`<div class="tooltip__avatar tooltip__avatar--empty" style="border-color:\${color}">\${isEmptySeat ? "—" : "TD"}</div>\`
           }
           <div class="tooltip__body">
-            <div class="tooltip__name">\${escapeHtml(seat.name || "")}</div>
-            <div class="tooltip__party">
-              <span class="tooltip__chip" style="background:\${color}"></span>
-              \${escapeHtml(seat.party || "")}
-            </div>
+            <div class="tooltip__name">\${escapeHtml(isEmptySeat ? "Empty seat" : seat.name || "")}</div>
+            \${
+              seat.party
+                ? \`<div class="tooltip__party">
+                    <span class="tooltip__chip" style="background:\${color}"></span>
+                    \${escapeHtml(seat.party || "")}
+                  </div>\`
+                : ""
+            }
             \${
               seat.constituency
                 ? \`<div class="tooltip__constituency">\${escapeHtml(seat.constituency)}</div>\`
@@ -512,9 +537,13 @@ ${svgMarkup}
             .filter(Boolean)
             .join(" — ");
           el.appendChild(title);
+        } else if (seat) {
+          const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
+          title.textContent = "Empty seat";
+          el.appendChild(title);
         }
 
-        el.style.cursor = seat?.url ? "pointer" : "default";
+        el.style.cursor = seat ? "pointer" : "default";
       });
 
       const findSeatEl = (target) => {
@@ -584,7 +613,6 @@ async function main() {
   const rawMembers = JSON.parse(fs.readFileSync(PATHS.membersJson, "utf8"));
 
   const members = normaliseMemberApiRows(rawMembers);
-
   const today = new Date();
 
   const seatingRows = loadCsvRows(seatingCsvText)
@@ -598,7 +626,11 @@ async function main() {
     }));
 
   const partyColorMap = await loadPartyPalette();
-  const seatData = buildSeatData(seatingRows, members);
+
+  const seatData = addEmptySeatsFromSvg(
+    buildSeatData(seatingRows, members),
+    svgMarkup,
+  );
 
   fs.mkdirSync(PATHS.outputDir, { recursive: true });
 
@@ -614,6 +646,9 @@ async function main() {
   fs.writeFileSync(PATHS.outputHtml, html, "utf8");
 
   console.log(`✅ Active seat assignments: ${seatingRows.length}`);
+  console.log(
+    `✅ Exported seats including empty seats: ${Object.keys(seatData).length}`,
+  );
   console.log(`✅ Wrote ${PATHS.outputHtml}`);
   console.log(`✅ Wrote ${debugPath}`);
 }

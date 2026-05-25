@@ -296,15 +296,6 @@
     "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Holly-Cairns.D.2020-02-08/image/large",
     "url": "https://www.oireachtas.ie/en/members/member/Holly-Cairns.D.2020-02-08/"
   },
-  "B-03": {
-    "seat_label": "B-03",
-    "memberCode": "Jack-Chambers.D.2016-10-03",
-    "name": "Jack Chambers",
-    "party": "Fianna Fáil",
-    "constituency": "Dublin West",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Jack-Chambers.D.2016-10-03/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/Jack-Chambers.D.2016-10-03/"
-  },
   "B-02": {
     "seat_label": "B-02",
     "memberCode": "Simon-Harris.D.2011-03-09",
@@ -1205,24 +1196,6 @@
     "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Gillian-Toole.D.2024-11-29/image/large",
     "url": "https://www.oireachtas.ie/en/members/member/Gillian-Toole.D.2024-11-29/"
   },
-  "E-27": {
-    "seat_label": "E-27",
-    "memberCode": "Michael-Healy-Rae.D.2011-03-09",
-    "name": "Michael Healy-Rae",
-    "party": "Independent",
-    "constituency": "Kerry",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Michael-Healy-Rae.D.2011-03-09/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/Michael-Healy-Rae.D.2011-03-09/"
-  },
-  "E-26": {
-    "seat_label": "E-26",
-    "memberCode": "",
-    "name": "",
-    "party": "",
-    "constituency": "",
-    "image": "",
-    "url": ""
-  },
   "E-25": {
     "seat_label": "E-25",
     "memberCode": "Carol-Nolan.D.2016-10-03",
@@ -1574,6 +1547,15 @@
     "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Helen-McEntee.D.2013-03-27/image/large",
     "url": "https://www.oireachtas.ie/en/members/member/Helen-McEntee.D.2013-03-27/"
   },
+  "B-03": {
+    "seat_label": "B-03",
+    "memberCode": "Jack-Chambers.D.2016-10-03",
+    "name": "Jack Chambers",
+    "party": "Fianna Fáil",
+    "constituency": "Dublin West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Jack-Chambers.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Jack-Chambers.D.2016-10-03/"
+  },
   "B-13": {
     "seat_label": "B-13",
     "memberCode": "Martin-Heydon.D.2011-03-09",
@@ -1609,5 +1591,41 @@
     "constituency": "Longford-Westmeath",
     "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Kevin-Boxer-Moran.D.2016-10-03/image/large",
     "url": "https://www.oireachtas.ie/en/members/member/Kevin-Boxer-Moran.D.2016-10-03/"
+  },
+  "E-27": {
+    "seat_label": "E-27",
+    "memberCode": "Michael-Healy-Rae.D.2011-03-09",
+    "name": "Michael Healy-Rae",
+    "party": "Independent",
+    "constituency": "Kerry",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Michael-Healy-Rae.D.2011-03-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Michael-Healy-Rae.D.2011-03-09/"
+  },
+  "E-15": {
+    "seat_label": "E-15",
+    "memberCode": "Seán-Kyne.D.2011-03-09",
+    "name": "Seán Kyne",
+    "party": "",
+    "constituency": "",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Seán-Kyne.D.2011-03-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Seán-Kyne.D.2011-03-09/"
+  },
+  "E-26": {
+    "seat_label": "E-26",
+    "memberCode": "Daniel-Ennis.D.2026-05-25",
+    "name": "Daniel",
+    "party": "",
+    "constituency": "",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Daniel-Ennis.D.2026-05-25/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Daniel-Ennis.D.2026-05-25/"
+  },
+  "C-36": {
+    "seat_label": "C-36",
+    "memberCode": "",
+    "name": "",
+    "party": "",
+    "constituency": "",
+    "image": "",
+    "url": ""
   }
 }
