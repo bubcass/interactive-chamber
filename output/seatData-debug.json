@@ -1605,17 +1605,17 @@
     "seat_label": "E-15",
     "memberCode": "Seán-Kyne.D.2011-03-09",
     "name": "Seán Kyne",
-    "party": "",
-    "constituency": "",
+    "party": "Fine Gael",
+    "constituency": "Galway West",
     "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Seán-Kyne.D.2011-03-09/image/large",
     "url": "https://www.oireachtas.ie/en/members/member/Seán-Kyne.D.2011-03-09/"
   },
   "E-26": {
     "seat_label": "E-26",
     "memberCode": "Daniel-Ennis.D.2026-05-25",
-    "name": "Daniel",
-    "party": "",
-    "constituency": "",
+    "name": "Daniel Ennis",
+    "party": "Social Democrats",
+    "constituency": "Dublin Central",
     "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Daniel-Ennis.D.2026-05-25/image/large",
     "url": "https://www.oireachtas.ie/en/members/member/Daniel-Ennis.D.2026-05-25/"
   },

@@ -1,262 +1,486 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Interactive Dáil chamber</title>
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap");
+<style>
 
-    :root {
-      --bg: #f4f2ea;
-      --panel: #ffffff;
-      --border: #e7e5e4;
-      --text: #1c1917;
-      --muted: #57534e;
-      --muted-2: #78716c;
-      --seat-default: #d6d3d1;
+  #dail-chamber-map *, #dail-chamber-map *::before, #dail-chamber-map *::after { box-sizing: border-box; }
+
+  
+  
+  #dail-chamber-map {
+    --bg: #f4f2ea;
+    --panel: #ffffff;
+    --border: #e7e5e4;
+    --text: #1c1917;
+    --muted: #57534e;
+    --muted-2: #78716c;
+    --gold: #7f6c2e;
+    --gold-light: #f8f3df;
+    --gold-border: #cdbd86;
+    --seat-default: #d6d3d1;
+  }
+
+  
+
+  
+  
+  #dail-chamber-map #map-frame:focus-visible {
+    outline: 2px solid #fd0;
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  
+  
+  #dail-chamber-map .mobile-notice {
+    display: none;
+    padding: 40px 24px;
+    text-align: center;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 24px;
+  }
+  
+  #dail-chamber-map .mobile-notice__heading { font-size: 1.1rem; font-weight: 600; margin: 0 0 8px; }
+  
+  #dail-chamber-map .mobile-notice__text { color: var(--muted); font-size: 0.9rem; margin: 0; line-height: 1.5; }
+
+  @media (max-width: 899px){
+    
+  #dail-chamber-map .mobile-notice { display: block; }
+    
+  #dail-chamber-map-app { display: none; }
+  }
+
+  
+  
+  
+  #dail-chamber-map .main-panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px;
+  }
+
+  
+  
+  #dail-chamber-map .party-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  
+  #dail-chamber-map .party-summary__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: 1px solid #ece7dc;
+    border-radius: 999px;
+    background: #fafaf9;
+    font: inherit;
+    font-size: 0.92rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, opacity 0.18s;
+  }
+
+  
+  #dail-chamber-map .party-summary__item:hover {
+    border-color: #d8cfb5;
+    background: #f8f6ef;
+  }
+
+  
+  #dail-chamber-map .party-summary--has-active .party-summary__item:not(.party-summary__item--active) {
+    opacity: 0.5;
+  }
+  
+  #dail-chamber-map .party-summary--has-active .party-summary__item:not(.party-summary__item--active):hover {
+    opacity: 0.8;
+  }
+
+  
+  #dail-chamber-map .party-summary__item--active {
+    background: var(--gold-light);
+    border-color: var(--gold-border);
+    box-shadow: inset 0 0 0 1px rgba(127,108,46,0.08);
+  }
+  
+  #dail-chamber-map .party-summary__item--active .party-summary__name, #dail-chamber-map .party-summary__item--active .party-summary__count {
+    color: #5f5122;
+    font-weight: 600;
+  }
+
+  
+  #dail-chamber-map .party-summary__dot { width: 10px; height: 10px; border-radius: 999px; flex: 0 0 auto; }
+  
+  #dail-chamber-map .party-summary__name { }
+  
+  #dail-chamber-map .party-summary__count { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  
+  
+  #dail-chamber-map .chamber-toolbar {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 14px;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 980px){
+    
+  #dail-chamber-map .chamber-toolbar--split {
+      grid-template-columns: minmax(0,1fr) 360px;
+      align-items: stretch;
     }
+  }
 
-    * { box-sizing: border-box; }
+  
+  #dail-chamber-map .search-input-wrap { display: flex; flex-direction: column; gap: 4px; }
+  
+  #dail-chamber-map .search-input-field { position: relative; }
 
-    body {
-      margin: 0;
-      font-family: "IBM Plex Sans", system-ui, sans-serif;
-      color: var(--text);
-      background: transparent;
-    }
+  
+  
+  #dail-chamber-map .search-input-wrap input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+  
+  #dail-chamber-map .search-input-wrap input[type="search"]::-ms-clear { display: none; }
 
-    .page {
-      width: 100%;
-      margin: 0;
-      padding: 0;
-    }
+  
+  #dail-chamber-map .search-input-wrap input {
+    width: 100%;
+    padding: 12px 44px 12px 14px;
+    border: 1px solid var(--seat-default);
+    border-radius: 4px;
+    background: #fafaf9;
+    font: inherit;
+    font-size: 0.95rem;
+    color: var(--text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  
+  #dail-chamber-map .search-input-wrap input:focus {
+    outline: none;
+    border-color: var(--gold-border);
+    box-shadow: 0 0 0 3px rgba(127,108,46,0.15);
+  }
+  
+  
+  #dail-chamber-map .search-input-wrap input:focus-visible {
+    outline: 2px solid #fd0;
+    outline-offset: 0;
+    box-shadow: none;
+    border-color: var(--seat-default);
+  }
 
-    .panel {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 12px;
-    }
+  
+  #dail-chamber-map .search-clear {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border: 0;
+    border-radius: 999px;
+    background: #e7e5e4;
+    color: var(--muted);
+    font: inherit;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  
+  #dail-chamber-map .search-clear--visible { display: inline-flex; }
+  
+  #dail-chamber-map .search-clear:hover { background: var(--seat-default); }
 
-    .summary {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
+  
+  
+  #dail-chamber-map .panel--selected-mini {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 10px 12px;
+  }
 
-    .summary__item {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border: 1px solid #ece7dc;
-      border-radius: 999px;
-      background: #fafaf9;
-      font-size: 0.92rem;
-      line-height: 1;
-    }
+  
+  #dail-chamber-map .selected-mini-card {
+    display: grid;
+    grid-template-columns: 56px minmax(0,1fr);
+    gap: 12px;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+  }
 
-    .summary__dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      flex: 0 0 auto;
-    }
+  
+  #dail-chamber-map .selected-mini-card__photo-ring {
+    width: 56px; height: 56px;
+    border: 3px solid var(--seat-default);
+    border-radius: 999px;
+    overflow: hidden;
+    background: #fafaf9;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+  
+  #dail-chamber-map .selected-mini-card__photo-ring--empty { background: #f5f5f4; }
+  
+  #dail-chamber-map .selected-mini-card__photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+  
+  #dail-chamber-map .selected-mini-card__placeholder { color: var(--muted-2); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; }
+  
+  #dail-chamber-map .selected-mini-card__body { display: grid; gap: 3px; min-width: 0; }
+  
+  #dail-chamber-map .selected-mini-card__name { color: var(--text); font-size: 0.98rem; font-weight: 600; line-height: 1.2; }
+  
+  #dail-chamber-map .selected-mini-card__meta { color: var(--muted); font-size: 0.84rem; line-height: 1.25; }
+  
+  #dail-chamber-map .selected-mini-card__link { color: var(--gold); font-size: 0.8rem; font-weight: 500; margin-top: 2px; }
 
-    .summary__name {
-      font-weight: 500;
-    }
+  
+  
+  #dail-chamber-map .map-wrap {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    background: #fafaf9;
+    position: relative;
+    overflow: visible;
+  }
 
-    .summary__count {
-      color: var(--muted);
-      font-variant-numeric: tabular-nums;
-    }
+  
+  #dail-chamber-map #map-frame {
+    border-radius: 4px;
+    overflow: hidden;
+    
+    cursor: default;
+  }
 
-    .map-wrap {
-      width: 100%;
-      padding: 12px;
-      border-radius: 4px;
-      background: #fafaf9;
-      position: relative;
-      overflow: visible;
-    }
+  
+  #dail-chamber-map #map-frame svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 
-    .map-frame {
-      border-radius: 4px;
-      overflow: hidden;
-    }
+  
+  
+  #dail-chamber-map .seat path, #dail-chamber-map .seat circle, #dail-chamber-map .seat rect, #dail-chamber-map .seat polygon, #dail-chamber-map .seat ellipse {
+    transition: fill 0.25s ease, opacity 0.2s ease, stroke 0.2s ease, filter 0.2s ease;
+  }
 
-    .map-frame svg {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
+  
 
-    .seat path,
-    .seat circle,
-    .seat rect,
-    .seat polygon,
-    .seat ellipse {
-      transition:
-        fill 0.25s ease,
-        opacity 0.2s ease,
-        stroke 0.2s ease,
-        filter 0.2s ease;
-    }
+  #dail-chamber-map .seat--active-focus,
+  #dail-chamber-map .seat--active-focus path, #dail-chamber-map .seat--active-focus circle, #dail-chamber-map .seat--active-focus rect, #dail-chamber-map .seat--active-focus polygon, #dail-chamber-map .seat--active-focus ellipse {
+    filter: brightness(1.4);
+  }
 
-    .seat:hover path,
-    .seat:hover circle,
-    .seat:hover rect,
-    .seat:hover polygon,
-    .seat:hover ellipse {
-      filter: brightness(1.03) drop-shadow(0 0 6px rgba(17, 24, 39, 0.12));
-      opacity: 0.95;
-    }
+  
+  
+  
+  #dail-chamber-map .seat--focused path, #dail-chamber-map .seat--focused circle, #dail-chamber-map .seat--focused rect, #dail-chamber-map .seat--focused polygon, #dail-chamber-map .seat--focused ellipse {
+    stroke: #111 !important;
+    stroke-width: 4 !important;
+    paint-order: stroke fill !important;
+    opacity: 1 !important;
+  }
 
-    .tooltip {
-      position: absolute;
-      z-index: 50;
-      min-width: 180px;
-      max-width: 280px;
-      padding: 0;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(6px);
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.10);
-      pointer-events: none;
-      opacity: 0;
-      transform: translate(-50%, calc(-100% - 6px)) scale(0.96);
-      animation: tooltipIn 120ms ease-out 40ms forwards;
-      overflow: hidden;
-    }
+  
+  
+  #dail-chamber-map .seat--selected path, #dail-chamber-map .seat--selected circle, #dail-chamber-map .seat--selected rect, #dail-chamber-map .seat--selected polygon, #dail-chamber-map .seat--selected ellipse {
+    stroke: #111827 !important;
+    stroke-width: 2 !important;
+    paint-order: stroke fill !important;
+    filter: brightness(0.97) drop-shadow(0 0 6px rgba(17,24,39,0.15)) !important;
+    opacity: 1 !important;
+  }
 
-    @keyframes tooltipIn {
-      from {
-        opacity: 0;
-        transform: translate(-50%, calc(-100% - 2px)) scale(0.96);
-      }
-      to {
-        opacity: 1;
-        transform: translate(-50%, calc(-100% - 10px)) scale(1);
-      }
-    }
+  
+  
+  #dail-chamber-map .map-tooltip {
+    position: absolute;
+    z-index: 50;
+    min-width: 180px;
+    max-width: 280px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 14px 32px rgba(0,0,0,0.1);
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, calc(-100% - 6px)) scale(0.96);
+    animation: tooltipIn 120ms ease-out 40ms forwards;
+    overflow: hidden;
+  }
 
-    .tooltip__card {
-      display: grid;
-      grid-template-columns: 52px minmax(0, 1fr);
-      gap: 12px;
-      align-items: center;
-      padding: 12px;
-    }
+  @keyframes tooltipIn{
+    from { opacity:0; transform: translate(-50%, calc(-100% - 2px)) scale(0.96); }
+    to   { opacity:1; transform: translate(-50%, calc(-100% - 10px)) scale(1); }
+  }
 
-    .tooltip__avatar {
-      width: 52px;
-      height: 52px;
-      border: 3px solid var(--seat-default);
-      border-radius: 999px;
-      background: #f5f5f4;
-      object-fit: cover;
-      display: block;
-    }
+  
+  #dail-chamber-map .map-tooltip__card {
+    display: grid;
+    grid-template-columns: 60px minmax(0,1fr);
+    gap: 12px;
+    align-items: center;
+    padding: 12px;
+    min-width: 220px;
+  }
+  
+  #dail-chamber-map .map-tooltip__avatar {
+    width: 60px; height: 60px;
+    border: 3px solid;
+    border-radius: 999px;
+    background: #f5f5f4;
+    object-fit: cover; display: block;
+  }
+  
+  #dail-chamber-map .map-tooltip__avatar--empty {
+    display: grid; place-items: center;
+    color: var(--muted-2); font-size: 1rem; font-weight: 600; letter-spacing: 0.06em;
+  }
+  
+  #dail-chamber-map .map-tooltip__avatar--empty-seat {
+    background: #ede9e4;
+    color: #b0a89e;
+  }
+  
+  #dail-chamber-map .map-tooltip__card-body { display: grid; gap: 4px; min-width: 0; }
+  
+  #dail-chamber-map .map-tooltip__name { color: var(--text); font-size: 1rem; font-weight: 600; line-height: 1.25; }
+  
+  #dail-chamber-map .map-tooltip__party { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 1rem; }
+  
+  #dail-chamber-map .map-tooltip__constituency { color: var(--muted-2); font-size: 1rem; }
+  
+  #dail-chamber-map .map-tooltip__empty-label { color: var(--muted); font-size: 1rem; font-style: italic; }
 
-    .tooltip__avatar--empty {
-      display: grid;
-      place-items: center;
-      color: var(--muted-2);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-    }
+  
+  
+  #dail-chamber-map .map-tooltip--selected {
+    pointer-events: auto;
+    position: absolute;
+    z-index: 60;
+  }
+  
+  #dail-chamber-map .map-tooltip--selected .map-tooltip__card {
+    align-items: start;
+  }
+  
+  #dail-chamber-map .map-tooltip__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  
+  #dail-chamber-map .map-tooltip__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  
+  #dail-chamber-map .map-tooltip__profile-link {
+    color: var(--gold);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    flex: 1;
+  }
+  
+  #dail-chamber-map .map-tooltip__profile-link:hover { text-decoration: underline; }
+  
+  #dail-chamber-map .map-tooltip__profile-link:focus-visible { outline: 2px solid #fd0; outline-offset: 2px; border-radius: 2px; }
+  
+  #dail-chamber-map .map-tooltip__close-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border: 0;
+    border-radius: 999px;
+    background: #e7e5e4;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+  
+  #dail-chamber-map .map-tooltip__close-btn:hover { background: var(--seat-default); }
+  
+  #dail-chamber-map .map-tooltip__close-btn:focus-visible { outline: 2px solid #fd0; outline-offset: 2px; }
 
-    .tooltip__body {
-      display: grid;
-      gap: 4px;
-      min-width: 0;
-    }
+  
+  
+  
+  #dail-chamber-map .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
 
-    .tooltip__name {
-      color: var(--text);
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 1.25;
-    }
+  
+</style>
 
-    .tooltip__party {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.25;
-    }
+<div id="dail-chamber-map">
 
-    .tooltip__constituency {
-      color: var(--muted-2);
-      font-size: 12px;
-      line-height: 1.3;
-    }
+  
+  <div class="mobile-notice" role="status" aria-live="polite">
+    <h2 class="mobile-notice__heading">Content not available on mobile</h2>
+    <p class="mobile-notice__text">This interactive map requires a screen width of at least 900px. Please use a larger device or browser window.</p>
+  </div>
 
-    .tooltip__chip {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      flex: 0 0 auto;
-    }
+  
+  <div id="dail-chamber-map-app">
 
-    @media (max-width: 639px) {
-      .panel,
-      .map-wrap,
-      .map-frame {
-        border-radius: 4px;
-      }
+    
+    <div id="live-region" aria-live="assertive" aria-atomic="true" class="sr-only"></div>
 
-      .summary {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-      }
+    <div class="main-panel">
 
-      .summary__item {
-        display: grid;
-        grid-template-columns: auto minmax(0, 1fr) auto;
-        border-radius: 12px;
-        font-size: 0.86rem;
-        line-height: 1.1;
-      }
+      
+      <div id="party-summary" class="party-summary" role="group" aria-label="Filter by party"></div>
 
-      .tooltip {
-        max-width: 240px;
-      }
+      
+      <div class="chamber-toolbar" id="chamber-toolbar">
+        <div class="search-input-wrap">
+            <label for="search-input">Type to search by Deputy, party or constituency</label>
+            <div class="search-input-field">
+              <input type="search" id="search-input"
+                     aria-label="Search Deputy, party or constituency"
+                     autocomplete="off" spellcheck="false">
+              <button type="button" id="search-clear" class="search-clear"
+                      aria-label="Clear search">×</button>
+            </div>
+          </div>
+      </div>
 
-      .tooltip__card {
-        grid-template-columns: 44px minmax(0, 1fr);
-        gap: 10px;
-        padding: 10px;
-      }
-
-      .tooltip__avatar {
-        width: 44px;
-        height: 44px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="page">
-    <section class="panel">
-      <div id="party-summary" class="summary"></div>
-
+      
       <div id="map-wrap" class="map-wrap">
-        <div id="map-frame" class="map-frame">
+        <div id="map-frame" tabindex="0" role="application"
+             aria-label="Dáil Chamber seating map">
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <svg
     version="1.1"
     id="svg1"
     width="100%"
-    height="auto"
     viewBox="0 0 1673.1067 1244.248"
     sodipodi:docname="chamber_cleaned_v3.svg"
     inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
@@ -294,7 +518,7 @@
   </defs>
   <style id="seat-styles">
     .seat { fill: #d6d3d1; stroke: none; cursor: pointer; transition: fill 0.2s ease, opacity 0.2s ease; }
-    .seat:hover { opacity: 0.88; }
+    .seat:focus { outline: none; }
 </style>
   <g id="layer-MC0">
     <path
@@ -344,18 +568,27 @@
             d="M 0,0 0.023,-0.013 C 0.14,1.11 1.589,1.163 1.589,1.163 L 8.449,1.186 8.45,0.693 H 8.486 L 7.352,0.653 7.293,-0.505 7.765,-1.655 C 7.763,-1.675 7.76,-1.704 7.758,-1.728 l 1.655,-0.041 0.248,-0.415 c 0.106,-0.055 0.282,-0.057 0.396,-0.056 l 6.862,-0.005 0.026,0.045 0.756,-0.023 0.556,-0.024 c 0,0 0.153,0.083 0.177,0.555 0.002,0.051 0.006,0.097 0.009,0.146 l 0.011,0.79 -0.664,1.446 0.02,0.034 c -0.006,0 -0.016,0 -0.022,0 -0.164,0.338 -0.295,0.608 -0.299,0.621 -0.012,0.035 -0.177,0.26 -0.177,0.26 0,0 -0.119,0.106 -0.166,0.118 -0.047,0.012 -0.142,0.035 -0.142,0.035 L 16.815,1.747 h -1.099 l -0.153,0.319 c 0.053,0.069 0.197,3.243 0.462,5.984 0.264,2.74 0.529,5.145 0.817,6.924 0.289,1.779 0.433,2.765 0.601,3.077 0.169,0.313 0.268,0.417 0.483,0.437 L 18.93,18.559 22.805,11.175 21.811,0.717 C 21.186,0.721 18.74,0.732 17.852,0.724 l -0.021,-0.026 0.665,-1.454 -0.006,-0.569 3.128,0.02 -0.538,-5.656 -1.205,0.071 -2.197,4.584 -0.623,0.011 2.629,-5.468 c 0,0 -0.02,-0.344 -0.069,-0.925 L 9.573,-8.735 c 0,0 -0.072,0.215 -0.096,0.407 -0.024,0.191 -0.024,0.43 -0.024,1.1 0,0.669 -0.023,1.578 0.024,2.391 0.046,0.782 0.125,2.514 0.131,2.646 L 9.404,-1.826 7.751,-1.794 C 7.659,-2.703 7.362,-5.627 7.301,-6.272 7.23,-7.037 6.823,-8.041 6.823,-8.041 l -0.22,-2.57 -1.488,-0.006 C 4.895,-10.619 2.842,-10.625 2.259,-9.56 1.196,-7.617 0.273,-5.641 -0.215,-4.089 -0.412,-3.463 0,0 0,0"
             style="fill:#d8dcd5;fill-opacity:1;fill-rule:nonzero;stroke:none"
             transform="matrix(1.3333333,0,0,-1.3333333,993.86413,405.7356)"
+        
+            class="seat"
+            data-seat="path7"
         />
     <path
             id="path8"
             d="m 0,0 -2.819,6.86 c 0.158,1.037 1.512,1.099 1.512,1.099 L 4.016,7.976 3.984,7.383 4.358,6.483 C 4.353,6.404 4.346,6.306 4.341,6.213 4.882,6.206 6.04,6.192 6.047,6.182 6.051,6.175 6.15,5.994 6.258,5.796 6.359,5.739 6.536,5.739 6.65,5.74 c 0,0 7.686,0.03 7.8,0.023 0.193,-0.012 0.167,0.094 0.187,0.123 l 0.145,1.161 c 0,0 0.012,0.084 -0.018,0.139 -0.027,0.048 -0.864,1.801 -1.05,2.125 -0.187,0.325 -0.413,0.246 -0.413,0.246 l -1.13,-0.026 0.013,0.068 c 0,0 0.387,4.696 0.652,7.1 0.264,2.405 0.457,4.208 0.817,5.987 0.361,1.779 0.313,1.899 0.481,2.116 0.168,0.216 0.144,0.336 0.433,0.336 h 0.889 l 3.823,-7.116 -0.264,-2.645 c 0,0 -0.12,-0.096 -0.241,-0.794 -0.12,-0.697 -0.937,-6.058 -0.937,-6.058 0,0 -0.001,-0.009 -0.001,-0.01 l -3.651,-0.033 0.621,-1.29 c 0,0 0.024,-0.085 0.018,-0.145 C 14.822,7.025 14.785,6.628 14.785,6.628 L 17.707,6.609 C 17.661,6.108 17.609,5.577 17.554,5.101 17.385,3.658 17.169,0.509 17.169,0.509 L 16.32,0.546 13.994,5.701 h -0.698 l 3.11,-6.439 -0.046,-0.51 -5.991,-0.121 c -0.247,0.003 -0.318,-0.078 -0.392,-0.234 v -0.12 c -1.266,-0.01 -2.546,-0.02 -3.661,-0.03 l 0.074,0.712 c 0,0 -0.103,0.172 -0.172,0.31 C 6.149,-0.594 6.149,-0.318 6.115,0.404 6.08,1.127 6.011,2.365 6.046,3.604 6.067,4.385 6.13,5.297 6.173,5.868 L 6.028,6.154 4.339,6.182 C 4.266,5.04 4.133,3.089 4.016,2.056 3.844,0.542 3.534,0.439 3.534,0.439 L 3.346,-1.782 C 3.256,-1.784 3.175,-1.785 3.118,-1.786 1.698,-1.811 1.583,-2.825 1.583,-2.825 L 1.471,-3.489 c -0.696,0.067 -1.753,0.285 -2.141,0.986 -0.279,0.504 -0.545,1.009 -0.796,1.508 C -1.475,-1.008 -1.352,0 -1.352,0 Z"
             style="fill:#d8dcd5;fill-opacity:1;fill-rule:nonzero;stroke:none"
             transform="matrix(1.3333333,0,0,-1.3333333,991.82573,401.804)"
+        
+            class="seat"
+            data-seat="path8"
         />
     <path
             id="path9"
             d="m 0,0 0.024,-0.01 c -0.159,1.398 1.45,1.457 1.45,1.457 L 6.282,1.464 6.246,0.741 6.689,-0.346 6.685,-0.436 8.239,-0.478 8.559,-0.903 c 0,0.009 0.001,0.022 0.001,0.03 0.089,-0.013 0.184,-0.016 0.255,-0.015 L 14.872,-0.9 v 0.004 h 1.325 v -0.022 c 0.163,0.012 0.35,0.066 0.35,0.277 0,0.365 0.122,1.126 0.122,1.126 l -1.035,2.099 c 0,0 -0.152,0.305 -0.578,0.274 -0.426,-0.03 -1.035,-0.03 -1.035,-0.03 0,0 0.152,2.556 0.457,6.33 0.304,3.773 0.943,7.395 1.156,8.247 0,0 0.132,0.672 0.551,0.69 0.419,0.019 0.849,0.01 0.849,0.01 L 20.99,10.862 20.534,7.149 c 0,0 -0.639,-3.591 -0.913,-5.904 -0.274,-2.312 -0.639,-7.06 -0.639,-7.06 H 18.13 l -2.14,4.852 H 15.4 l 2.862,-6.164 -0.009,-0.128 -6.109,-0.136 c -0.238,0.002 -0.308,-0.075 -0.379,-0.224 v -0.62 l 0.035,10e-4 -1.095,-0.041 -0.027,-0.49 C 10.007,-8.767 9.357,-8.77 8.748,-8.772 l 0.032,0.755 c 0,0 -0.271,0.604 -0.312,1.895 -0.033,1.034 0.053,4.003 0.089,5.147 L 8.21,-0.517 6.682,-0.5 6.532,-3.728 c 0,0 -0.125,-1.395 -0.208,-1.812 C 6.24,-5.956 6.199,-6.143 6.157,-6.247 6.115,-6.351 5.97,-6.518 5.97,-6.518 L 5.838,-8.783 C 5.685,-8.784 5.553,-8.785 5.467,-8.785 4.04,-8.796 3.843,-9.809 3.843,-9.809 3.83,-9.807 3.815,-9.803 3.802,-9.801 l -3.85,9.369 C -0.02,-0.17 0,0 0,0"
             style="fill:#d8dcd5;fill-opacity:1;fill-rule:nonzero;stroke:none"
             transform="matrix(1.3333333,0,0,-1.3333333,982.94453,379.45853)"
+        
+            class="seat"
+            data-seat="path9"
         />
     <path
             id="path10"
@@ -1042,12 +1275,18 @@
             d="M 0,0 4.975,6.382 -1.988,6.309 -1.906,5.489 -2.679,4.562 c 0,-0.001 0,-0.002 0,-0.003 C -2.689,4.56 -2.943,4.296 -2.943,4.296 L -4.285,4.306 -4.31,4.258 -4.684,3.913 C -4.768,3.835 -4.888,3.791 -5.009,3.792 c 0,0 -6.996,0.021 -7.299,0.052 -0.303,0.032 -0.367,0.272 -0.367,0.272 l -0.093,1.132 0.679,0.9 c 0,0 0.872,0.874 1.057,1.03 0.207,0.175 0.638,0.175 0.638,0.175 l 3.687,-0.076 0.026,0.033 c 0,0 -0.561,3.541 -0.907,5.96 0,0 -0.345,2.202 -0.799,4.491 -0.453,2.289 -0.82,3.671 -1.144,4.427 -0.324,0.756 -0.454,0.777 -0.799,0.799 -0.346,0.021 -1.08,0 -1.08,0 l -5.312,-5.917 1.867,-10.85 2.722,-0.063 -0.672,-0.909 0.054,-0.797 -1.87,0.012 0.62,-4.668 1.209,-0.021 3.299,3.988 h 0.888 l -4.58,-5.434 c -0.05,-0.017 -0.013,-0.335 0.059,-0.864 l 9.531,-0.137 -0.071,0.508 c 0,0 0.033,0.066 0.066,0.186 0.033,0.121 0.055,0.275 0.066,0.944 0.011,0.669 -0.121,1.426 -0.285,2.566 -0.127,0.88 -0.362,2.167 -0.464,2.718 0.003,0.006 0.012,0.024 0.012,0.024 l 1.333,-0.014 0.241,0.269 0.024,-0.002 c 0.136,-0.747 0.522,-2.868 0.675,-3.729 0.186,-1.054 0.581,-1.646 0.581,-1.646 l 0.349,-1.861 0.803,-0.011 c 0,0 0.344,-0.043 0.599,-0.25 l -0.006,0.066 z"
             style="fill:#d8dcd5;fill-opacity:1;fill-rule:nonzero;stroke:none"
             transform="matrix(1.3333333,0,0,-1.3333333,602.69133,359.264)"
+        
+            class="seat"
+            data-seat="path108"
         />
     <path
             id="path109"
             d="m 0,0 0.025,-0.632 1.011,-0.075 0.101,-0.834 -1.033,-1.105 -1.23,0.005 -0.44,-0.365 c 0,0 -0.121,-0.085 -0.342,-0.117 0,0 -6.666,0.067 -7.018,0.053 -0.351,-0.014 -0.422,0.211 -0.422,0.211 l -0.208,1.099 c 0,0 0.841,1.176 0.982,1.306 0.674,0.623 1.434,0.787 1.434,0.787 L -3.314,0.208 -3.028,0.552 -4,5.994 c 0,0 -0.41,2.224 -0.929,4.297 -0.518,2.073 -0.82,3.325 -1.166,4.124 -0.345,0.799 -0.345,0.929 -0.885,1.015 h -1.058 l -4.988,-5.528 1.665,-10.658 2.393,-0.09 c 10e-4,-0.008 0.002,-0.029 0.002,-0.029 l -0.647,-0.885 0.097,-0.731 -1.586,0.078 0.732,-4.679 0.885,-0.043 3.36,3.963 0.813,-0.007 -3.933,-4.778 0.025,-0.858 1.693,-0.076 c 0,0 0.202,-0.025 0.202,-0.152 0,-0.126 0.025,-0.631 0.025,-0.631 h 7.046 l -0.066,0.375 c 0,0 0.042,0.141 0.098,0.352 0.056,0.211 0.042,0.548 0.014,1.096 -0.028,0.549 -0.056,1.055 -0.267,2.292 -0.16,0.937 -0.399,2.277 -0.506,2.877 l 1.09,-0.015 0.484,0.523 C 0.781,-3.19 1.409,-6.567 1.564,-7.176 1.663,-7.564 1.808,-7.804 1.931,-7.957 L 8.184,0 Z"
             style="fill:#d8dcd5;fill-opacity:1;fill-rule:nonzero;stroke:none"
             transform="matrix(1.3333333,0,0,-1.3333333,608.41667,337.8444)"
+        
+            class="seat"
+            data-seat="path109"
         />
     <path
             id="path110"
@@ -47329,26 +47568,13 @@
         />
   </g>
 </svg>
-
         </div>
       </div>
-    </section>
+
+    </div>
   </div>
 
-  <script>
-    const partyColorMap = {
-  "Fianna Fáil": "#2c8737",
-  "Sinn Féin": "#088460",
-  "Fine Gael": "#303591",
-  "Independent": "#666666",
-  "Labour Party": "#c82832",
-  "Social Democrats": "#782b81",
-  "Independent Ireland": "#087b87",
-  "People Before Profit-Solidarity": "#be417d",
-  "Aontú": "#b35400",
-  "100% RDR": "#985564",
-  "Green Party": "#6c7e26"
-};
+  <script>(function(){
     const seatData = {
   "A-20": {
     "seat_label": "A-20",
@@ -47439,6 +47665,33 @@
     "constituency": "Dublin North-West",
     "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Rory-Hearne.D.2024-11-29/image/large",
     "url": "https://www.oireachtas.ie/en/members/member/Rory-Hearne.D.2024-11-29/"
+  },
+  "A-10": {
+    "seat_label": "A-10",
+    "memberCode": "James-Lawless.D.2016-10-03",
+    "name": "James Lawless",
+    "party": "Fianna Fáil",
+    "constituency": "Kildare North",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/James-Lawless.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/James-Lawless.D.2016-10-03/"
+  },
+  "A-09": {
+    "seat_label": "A-09",
+    "memberCode": "Hildegarde-Naughton.S.2013-07-19",
+    "name": "Hildegarde Naughton",
+    "party": "Fine Gael",
+    "constituency": "Galway West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Hildegarde-Naughton.S.2013-07-19/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Hildegarde-Naughton.S.2013-07-19/"
+  },
+  "A-08": {
+    "seat_label": "A-08",
+    "memberCode": "Emer-Higgins.D.2020-02-08",
+    "name": "Emer Higgins",
+    "party": "Fine Gael",
+    "constituency": "Dublin Mid-West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Emer-Higgins.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Emer-Higgins.D.2020-02-08/"
   },
   "A-07": {
     "seat_label": "A-07",
@@ -47646,6 +47899,105 @@
     "constituency": "Cork South-West",
     "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Holly-Cairns.D.2020-02-08/image/large",
     "url": "https://www.oireachtas.ie/en/members/member/Holly-Cairns.D.2020-02-08/"
+  },
+  "B-13": {
+    "seat_label": "B-13",
+    "memberCode": "Martin-Heydon.D.2011-03-09",
+    "name": "Martin Heydon",
+    "party": "Fine Gael",
+    "constituency": "Kildare South",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Martin-Heydon.D.2011-03-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Martin-Heydon.D.2011-03-09/"
+  },
+  "B-12": {
+    "seat_label": "B-12",
+    "memberCode": "Jim-O'Callaghan.D.2016-10-03",
+    "name": "Jim O'Callaghan",
+    "party": "Fianna Fáil",
+    "constituency": "Dublin Bay South",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Jim-O'Callaghan.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Jim-O'Callaghan.D.2016-10-03/"
+  },
+  "B-11": {
+    "seat_label": "B-11",
+    "memberCode": "James-Browne.D.2016-10-03",
+    "name": "James Browne",
+    "party": "Fianna Fáil",
+    "constituency": "Wexford",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/James-Browne.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/James-Browne.D.2016-10-03/"
+  },
+  "B-10": {
+    "seat_label": "B-10",
+    "memberCode": "Jennifer-Carroll-MacNeill.D.2020-02-08",
+    "name": "Jennifer Carroll MacNeill",
+    "party": "Fine Gael",
+    "constituency": "Dún Laoghaire",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Jennifer-Carroll-MacNeill.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Jennifer-Carroll-MacNeill.D.2020-02-08/"
+  },
+  "B-09": {
+    "seat_label": "B-09",
+    "memberCode": "Patrick-O'Donovan.D.2011-03-09",
+    "name": "Patrick O'Donovan",
+    "party": "Fine Gael",
+    "constituency": "Limerick County",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Patrick-O'Donovan.D.2011-03-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Patrick-O'Donovan.D.2011-03-09/"
+  },
+  "B-08": {
+    "seat_label": "B-08",
+    "memberCode": "Dara-Calleary.D.2007-06-14",
+    "name": "Dara Calleary",
+    "party": "Fianna Fáil",
+    "constituency": "Mayo",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Dara-Calleary.D.2007-06-14/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Dara-Calleary.D.2007-06-14/"
+  },
+  "B-07": {
+    "seat_label": "B-07",
+    "memberCode": "Peter-Burke.D.2016-10-03",
+    "name": "Peter Burke",
+    "party": "Fine Gael",
+    "constituency": "Longford-Westmeath",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Peter-Burke.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Peter-Burke.D.2016-10-03/"
+  },
+  "B-06": {
+    "seat_label": "B-06",
+    "memberCode": "Norma-Foley.D.2020-02-08",
+    "name": "Norma Foley",
+    "party": "Fianna Fáil",
+    "constituency": "Kerry",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Norma-Foley.D.2020-02-08/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Norma-Foley.D.2020-02-08/"
+  },
+  "B-05": {
+    "seat_label": "B-05",
+    "memberCode": "Darragh-O'Brien.D.2007-06-14",
+    "name": "Darragh O'Brien",
+    "party": "Fianna Fáil",
+    "constituency": "Dublin Fingal East",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Darragh-O'Brien.D.2007-06-14/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Darragh-O'Brien.D.2007-06-14/"
+  },
+  "B-04": {
+    "seat_label": "B-04",
+    "memberCode": "Helen-McEntee.D.2013-03-27",
+    "name": "Helen McEntee",
+    "party": "Fine Gael",
+    "constituency": "Meath East",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Helen-McEntee.D.2013-03-27/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Helen-McEntee.D.2013-03-27/"
+  },
+  "B-03": {
+    "seat_label": "B-03",
+    "memberCode": "Jack-Chambers.D.2016-10-03",
+    "name": "Jack Chambers",
+    "party": "Fianna Fáil",
+    "constituency": "Dublin West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Jack-Chambers.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Jack-Chambers.D.2016-10-03/"
   },
   "B-02": {
     "seat_label": "B-02",
@@ -47908,6 +48260,15 @@
     "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Colm-Brophy.D.2016-10-03/image/large",
     "url": "https://www.oireachtas.ie/en/members/member/Colm-Brophy.D.2016-10-03/"
   },
+  "C-11": {
+    "seat_label": "C-11",
+    "memberCode": "Frank-Feighan.S.2002-09-12",
+    "name": "Frankie Feighan",
+    "party": "Fine Gael",
+    "constituency": "Sligo-Leitrim",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Frank-Feighan.S.2002-09-12/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Frank-Feighan.S.2002-09-12/"
+  },
   "C-10": {
     "seat_label": "C-10",
     "memberCode": "Robert-Troy.D.2011-03-09",
@@ -48006,6 +48367,24 @@
     "constituency": "Sligo-Leitrim",
     "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Marian-Harkin.D.2002-06-06/image/large",
     "url": "https://www.oireachtas.ie/en/members/member/Marian-Harkin.D.2002-06-06/"
+  },
+  "C-37": {
+    "seat_label": "C-37",
+    "memberCode": "Kevin-Boxer-Moran.D.2016-10-03",
+    "name": "Kevin Boxer Moran",
+    "party": "Independent",
+    "constituency": "Longford-Westmeath",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Kevin-Boxer-Moran.D.2016-10-03/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Kevin-Boxer-Moran.D.2016-10-03/"
+  },
+  "C-36": {
+    "seat_label": "C-36",
+    "memberCode": "",
+    "name": "",
+    "party": "",
+    "constituency": "",
+    "image": "",
+    "url": ""
   },
   "D-39": {
     "seat_label": "D-39",
@@ -48547,6 +48926,24 @@
     "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Gillian-Toole.D.2024-11-29/image/large",
     "url": "https://www.oireachtas.ie/en/members/member/Gillian-Toole.D.2024-11-29/"
   },
+  "E-27": {
+    "seat_label": "E-27",
+    "memberCode": "Michael-Healy-Rae.D.2011-03-09",
+    "name": "Michael Healy-Rae",
+    "party": "Independent",
+    "constituency": "Kerry",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Michael-Healy-Rae.D.2011-03-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Michael-Healy-Rae.D.2011-03-09/"
+  },
+  "E-26": {
+    "seat_label": "E-26",
+    "memberCode": "Daniel-Ennis.D.2026-05-25",
+    "name": "Daniel Ennis",
+    "party": "Social Democrats",
+    "constituency": "Dublin Central",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Daniel-Ennis.D.2026-05-25/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Daniel-Ennis.D.2026-05-25/"
+  },
   "E-25": {
     "seat_label": "E-25",
     "memberCode": "Carol-Nolan.D.2016-10-03",
@@ -48636,6 +49033,15 @@
     "constituency": "Kildare North",
     "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Joe-Neville.D.2024-11-29/image/large",
     "url": "https://www.oireachtas.ie/en/members/member/Joe-Neville.D.2024-11-29/"
+  },
+  "E-15": {
+    "seat_label": "E-15",
+    "memberCode": "Seán-Kyne.D.2011-03-09",
+    "name": "Seán Kyne",
+    "party": "Fine Gael",
+    "constituency": "Galway West",
+    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Seán-Kyne.D.2011-03-09/image/large",
+    "url": "https://www.oireachtas.ie/en/members/member/Seán-Kyne.D.2011-03-09/"
   },
   "E-14": {
     "seat_label": "E-14",
@@ -48790,6 +49196,51 @@
     "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Martin-Daly.D.2024-11-29/image/large",
     "url": "https://www.oireachtas.ie/en/members/member/Martin-Daly.D.2024-11-29/"
   },
+  "path7": {
+    "seat_label": "path7",
+    "memberCode": "",
+    "name": "",
+    "party": "",
+    "constituency": "",
+    "image": "",
+    "url": ""
+  },
+  "path8": {
+    "seat_label": "path8",
+    "memberCode": "",
+    "name": "",
+    "party": "",
+    "constituency": "",
+    "image": "",
+    "url": ""
+  },
+  "path9": {
+    "seat_label": "path9",
+    "memberCode": "",
+    "name": "",
+    "party": "",
+    "constituency": "",
+    "image": "",
+    "url": ""
+  },
+  "path108": {
+    "seat_label": "path108",
+    "memberCode": "",
+    "name": "",
+    "party": "",
+    "constituency": "",
+    "image": "",
+    "url": ""
+  },
+  "path109": {
+    "seat_label": "path109",
+    "memberCode": "",
+    "name": "",
+    "party": "",
+    "constituency": "",
+    "image": "",
+    "url": ""
+  },
   "F-01": {
     "seat_label": "F-01",
     "memberCode": "Verona-Murphy.D.2020-02-08",
@@ -48798,375 +49249,810 @@
     "constituency": "Wexford",
     "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Verona-Murphy.D.2020-02-08/image/large",
     "url": "https://www.oireachtas.ie/en/members/member/Verona-Murphy.D.2020-02-08/"
-  },
-  "C-11": {
-    "seat_label": "C-11",
-    "memberCode": "Frank-Feighan.S.2002-09-12",
-    "name": "Frankie Feighan",
-    "party": "Fine Gael",
-    "constituency": "Sligo-Leitrim",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Frank-Feighan.S.2002-09-12/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/Frank-Feighan.S.2002-09-12/"
-  },
-  "A-08": {
-    "seat_label": "A-08",
-    "memberCode": "Emer-Higgins.D.2020-02-08",
-    "name": "Emer Higgins",
-    "party": "Fine Gael",
-    "constituency": "Dublin Mid-West",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Emer-Higgins.D.2020-02-08/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/Emer-Higgins.D.2020-02-08/"
-  },
-  "B-12": {
-    "seat_label": "B-12",
-    "memberCode": "Jim-O'Callaghan.D.2016-10-03",
-    "name": "Jim O'Callaghan",
-    "party": "Fianna Fáil",
-    "constituency": "Dublin Bay South",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Jim-O'Callaghan.D.2016-10-03/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/Jim-O'Callaghan.D.2016-10-03/"
-  },
-  "B-11": {
-    "seat_label": "B-11",
-    "memberCode": "James-Browne.D.2016-10-03",
-    "name": "James Browne",
-    "party": "Fianna Fáil",
-    "constituency": "Wexford",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/James-Browne.D.2016-10-03/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/James-Browne.D.2016-10-03/"
-  },
-  "B-10": {
-    "seat_label": "B-10",
-    "memberCode": "Jennifer-Carroll-MacNeill.D.2020-02-08",
-    "name": "Jennifer Carroll MacNeill",
-    "party": "Fine Gael",
-    "constituency": "Dún Laoghaire",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Jennifer-Carroll-MacNeill.D.2020-02-08/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/Jennifer-Carroll-MacNeill.D.2020-02-08/"
-  },
-  "B-09": {
-    "seat_label": "B-09",
-    "memberCode": "Patrick-O'Donovan.D.2011-03-09",
-    "name": "Patrick O'Donovan",
-    "party": "Fine Gael",
-    "constituency": "Limerick County",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Patrick-O'Donovan.D.2011-03-09/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/Patrick-O'Donovan.D.2011-03-09/"
-  },
-  "B-08": {
-    "seat_label": "B-08",
-    "memberCode": "Dara-Calleary.D.2007-06-14",
-    "name": "Dara Calleary",
-    "party": "Fianna Fáil",
-    "constituency": "Mayo",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Dara-Calleary.D.2007-06-14/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/Dara-Calleary.D.2007-06-14/"
-  },
-  "B-07": {
-    "seat_label": "B-07",
-    "memberCode": "Peter-Burke.D.2016-10-03",
-    "name": "Peter Burke",
-    "party": "Fine Gael",
-    "constituency": "Longford-Westmeath",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Peter-Burke.D.2016-10-03/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/Peter-Burke.D.2016-10-03/"
-  },
-  "B-06": {
-    "seat_label": "B-06",
-    "memberCode": "Norma-Foley.D.2020-02-08",
-    "name": "Norma Foley",
-    "party": "Fianna Fáil",
-    "constituency": "Kerry",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Norma-Foley.D.2020-02-08/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/Norma-Foley.D.2020-02-08/"
-  },
-  "B-05": {
-    "seat_label": "B-05",
-    "memberCode": "Darragh-O'Brien.D.2007-06-14",
-    "name": "Darragh O'Brien",
-    "party": "Fianna Fáil",
-    "constituency": "Dublin Fingal East",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Darragh-O'Brien.D.2007-06-14/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/Darragh-O'Brien.D.2007-06-14/"
-  },
-  "B-04": {
-    "seat_label": "B-04",
-    "memberCode": "Helen-McEntee.D.2013-03-27",
-    "name": "Helen McEntee",
-    "party": "Fine Gael",
-    "constituency": "Meath East",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Helen-McEntee.D.2013-03-27/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/Helen-McEntee.D.2013-03-27/"
-  },
-  "B-03": {
-    "seat_label": "B-03",
-    "memberCode": "Jack-Chambers.D.2016-10-03",
-    "name": "Jack Chambers",
-    "party": "Fianna Fáil",
-    "constituency": "Dublin West",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Jack-Chambers.D.2016-10-03/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/Jack-Chambers.D.2016-10-03/"
-  },
-  "B-13": {
-    "seat_label": "B-13",
-    "memberCode": "Martin-Heydon.D.2011-03-09",
-    "name": "Martin Heydon",
-    "party": "Fine Gael",
-    "constituency": "Kildare South",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Martin-Heydon.D.2011-03-09/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/Martin-Heydon.D.2011-03-09/"
-  },
-  "A-10": {
-    "seat_label": "A-10",
-    "memberCode": "James-Lawless.D.2016-10-03",
-    "name": "James Lawless",
-    "party": "Fianna Fáil",
-    "constituency": "Kildare North",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/James-Lawless.D.2016-10-03/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/James-Lawless.D.2016-10-03/"
-  },
-  "A-09": {
-    "seat_label": "A-09",
-    "memberCode": "Hildegarde-Naughton.S.2013-07-19",
-    "name": "Hildegarde Naughton",
-    "party": "Fine Gael",
-    "constituency": "Galway West",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Hildegarde-Naughton.S.2013-07-19/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/Hildegarde-Naughton.S.2013-07-19/"
-  },
-  "C-37": {
-    "seat_label": "C-37",
-    "memberCode": "Kevin-Boxer-Moran.D.2016-10-03",
-    "name": "Kevin Boxer Moran",
-    "party": "Independent",
-    "constituency": "Longford-Westmeath",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Kevin-Boxer-Moran.D.2016-10-03/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/Kevin-Boxer-Moran.D.2016-10-03/"
-  },
-  "E-27": {
-    "seat_label": "E-27",
-    "memberCode": "Michael-Healy-Rae.D.2011-03-09",
-    "name": "Michael Healy-Rae",
-    "party": "Independent",
-    "constituency": "Kerry",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Michael-Healy-Rae.D.2011-03-09/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/Michael-Healy-Rae.D.2011-03-09/"
-  },
-  "E-15": {
-    "seat_label": "E-15",
-    "memberCode": "Seán-Kyne.D.2011-03-09",
-    "name": "Seán Kyne",
-    "party": "Fine Gael",
-    "constituency": "Galway West",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Seán-Kyne.D.2011-03-09/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/Seán-Kyne.D.2011-03-09/"
-  },
-  "E-26": {
-    "seat_label": "E-26",
-    "memberCode": "Daniel-Ennis.D.2026-05-25",
-    "name": "Daniel Ennis",
-    "party": "Social Democrats",
-    "constituency": "Dublin Central",
-    "image": "https://data.oireachtas.ie/ie/oireachtas/member/id/Daniel-Ennis.D.2026-05-25/image/large",
-    "url": "https://www.oireachtas.ie/en/members/member/Daniel-Ennis.D.2026-05-25/"
-  },
-  "C-36": {
-    "seat_label": "C-36",
-    "memberCode": "",
-    "name": "",
-    "party": "",
-    "constituency": "",
-    "image": "",
-    "url": ""
   }
 };
 
-    const mapWrap = document.getElementById("map-wrap");
-    const mapFrame = document.getElementById("map-frame");
-    const partySummary = document.getElementById("party-summary");
-    let tooltipEl = null;
+  
+  const isIrish = /\/ga(\/|$)/.test(window.location.pathname);
 
-    function getSeatFill(seat) {
-      return partyColorMap[seat?.party] || "#d6d3d1";
+  const LANG = {
+    en: {
+      search_placeholder: 'Search Deputy, party or constituency',
+      search_label:          'Type to search by Deputy, party or constituency',
+      search_label_filtered: 'Type to search by Deputy or constituency within the selected party',
+      search_clear:       'Clear search',
+      all_parties:        'All parties',
+      filter_label:       'Filter by party',
+      map_label:          'Dáil Chamber seating map. Use arrow keys to navigate seats, Enter or Space to select.',
+      mobile_heading:     'Content not available on mobile',
+      mobile_text:        'This interactive map requires a screen width of at least 900px. Please use a larger device or browser window.',
+      empty_seat:         'Empty seat',
+      empty_seat_detail:  'No representative is assigned to this seat.',
+      view_profile:       'View profile',
+      close_popup:        'Close',
+      party_active:       (n) => `Showing ${n} — click to remove filter`,
+      party_inactive:     (n) => `Filter by ${n}`,
+      seat_aria:          (name, party, con, label) => `${name}, ${party}, ${con}, seat ${label}`,
+      empty_aria:         (label) => `Empty seat ${label}. No representative assigned.`,
+    },
+    ga: {
+      search_placeholder: 'Cuardaigh Teachta Dála, páirtí nó dáilcheantar',
+      search_label:          'Clóscríobh chun cuardach a dhéanamh de réir Teachta Dála, páirtí nó dáilcheantar',
+      search_label_filtered: 'Clóscríobh chun cuardach a dhéanamh de réir Teachta Dála nó dáilcheantar laistigh den pháirtí roghnaithe',
+      search_clear:       'Glan cuardach',
+      all_parties:        'Gach páirtí',
+      filter_label:       'Scag de réir páirtí',
+      map_label:          'Léarscáil suíocháin Sheomra Dála. Úsáid eochracha saighde chun bogadh, Enter nó Spás le roghnú.',
+      mobile_heading:     'Níl an t-ábhar ar fáil ar ghléasanna móibíleacha',
+      mobile_text:        'Teastaíonn leithead scáileáin 900px ar a laghad don léarscáil seo. Úsáid gléas nó fuinneog brabhsálaí níos mó.',
+      empty_seat:         'Suíochán folamh',
+      empty_seat_detail:  'Níl aon ionadaí sannta don suíochán seo.',
+      view_profile:       'Féach ar phróifíl',
+      close_popup:        'Dún',
+      party_active:       (n) => `Ag taispeáint ${n} — cliceáil le scagaire a bhaint`,
+      party_inactive:     (n) => `Scag de réir ${n}`,
+      seat_aria:          (name, party, con, label) => `${name}, ${party}, ${con}, suíochán ${label}`,
+      empty_aria:         (label) => `Suíochán folamh ${label}. Gan ionadaí sannta.`,
     }
+  };
 
-    function escapeHtml(str) {
-      return String(str ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#39;");
-    }
+  const lang = isIrish ? 'ga' : 'en';
+  const t = (key, ...args) => {
+    const val = LANG[lang][key];
+    return typeof val === 'function' ? val(...args) : (val ?? '');
+  };
 
-    function renderPartySummary() {
-      const counts = new Map();
+  
+  const partyColorMap = {
+    "Fianna Fáil":                     "#2c8737",
+    "Sinn Féin":                       "#088460",
+    "Fine Gael":                       "#303591",
+    "Independent":                     "#666666",
+    "Labour Party":                    "#c82832",
+    "Social Democrats":                "#782b81",
+    "Independent Ireland":             "#087b87",
+    "People Before Profit-Solidarity": "#be417d",
+    "Aontú":                           "#b35400",
+    "100% RDR":                        "#985564",
+    "Green Party":                     "#6c7e26",
+    "Human Dignity Alliance":          "#666666",
+  };
 
-      Object.values(seatData).forEach((seat) => {
-        if (!seat.party) return;
-        counts.set(seat.party, (counts.get(seat.party) || 0) + 1);
-      });
+  
+  let selectedSeat    = null;
+  let selectedPopupEl = null;
+  let partyFilter     = null;
+  let searchQuery     = '';
+  let tooltipEl       = null;
+  let seatElements    = [];
+  let internalFocusIdx = 0;   
 
-      const items = Array.from(counts.entries())
-        .map(([name, count]) => ({
-          name,
-          count,
-          color: partyColorMap[name] || "#d6d3d1"
-        }))
-        .sort((a, b) => b.count - a.count);
+  
+  let mapWrap, mapFrame, partySummaryEl, searchInput, searchClear,
+      toolbarEl, liveRegion;
 
-      partySummary.innerHTML = items
-        .map(
-          (item) => `
-            <div class="summary__item">
-              <span class="summary__dot" style="background:${item.color}"></span>
-              <span class="summary__name">${escapeHtml(item.name)}</span>
-              <span class="summary__count">${item.count}</span>
-            </div>
-          `
-        )
-        .join("");
-    }
+  
+  const escHtml = s => String(s ?? '')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 
-    function createTooltip(seat, x, y) {
-      destroyTooltip();
+  const getSeatFill = seat =>
+    (seat?.name ? (partyColorMap[seat.party] ?? '#d6d3d1') : '#d6d3d1');
 
-      const color = getSeatFill(seat);
-      const hasImage = Boolean(seat.image);
-      const isEmptySeat = !seat.name && !seat.party && !seat.constituency;
+  function announce(msg) {
+    if (!liveRegion) return;
+    liveRegion.textContent = '';
+    setTimeout(() => { liveRegion.textContent = msg; }, 20);
+  }
 
-      tooltipEl = document.createElement("div");
-      tooltipEl.className = "tooltip";
-      tooltipEl.style.left = `${x}px`;
-      tooltipEl.style.top = `${y}px`;
+  /* ─────────────────────────────────────────────────────────────────
+     SEAT VISIBILITY (search + party filter)
+  ───────────────────────────────────────────────────────────────── */
+  function isSeatVisible(seat) {
+    if (!seat) return false;
+    const hay = [seat.seat_label, seat.name, seat.party, seat.constituency]
+      .filter(Boolean).join(' ').toLowerCase();
+    return (!searchQuery || hay.includes(searchQuery.toLowerCase()))
+        && (!partyFilter || seat.party === partyFilter);
+  }
 
-      tooltipEl.innerHTML = `
-        <div class="tooltip__card">
-          ${
-            hasImage
-              ? `<img src="${escapeHtml(seat.image)}" alt="" class="tooltip__avatar" style="border-color:${color}">`
-              : `<div class="tooltip__avatar tooltip__avatar--empty" style="border-color:${color}">${isEmptySeat ? "—" : "TD"}</div>`
-          }
-          <div class="tooltip__body">
-            <div class="tooltip__name">${escapeHtml(isEmptySeat ? "Empty seat" : seat.name || "")}</div>
-            ${
-              seat.party
-                ? `<div class="tooltip__party">
-                    <span class="tooltip__chip" style="background:${color}"></span>
-                    ${escapeHtml(seat.party || "")}
-                  </div>`
-                : ""
-            }
-            ${
-              seat.constituency
-                ? `<div class="tooltip__constituency">${escapeHtml(seat.constituency)}</div>`
-                : ""
-            }
-          </div>
-        </div>
-      `;
+  /* ─────────────────────────────────────────────────────────────────
+     PAINT SEATS
+  ───────────────────────────────────────────────────────────────── */
+  const SHAPES = 'path, ellipse, rect, polygon, circle';
 
-      mapWrap.appendChild(tooltipEl);
-    }
+  function getShapes(el) {
+    return el.tagName.toLowerCase() === 'g'
+      ? Array.from(el.querySelectorAll(SHAPES))
+      : [el];
+  }
 
-    function moveTooltip(x, y) {
-      if (!tooltipEl) return;
-      tooltipEl.style.left = `${x}px`;
-      tooltipEl.style.top = `${y}px`;
-    }
+  function paintSeat(el) {
+    const label  = el.getAttribute('data-seat');
+    const seat   = seatData[label];
+    const fill   = getSeatFill(seat);
+    const vis    = isSeatVisible(seat);
+    const isSel  = label === selectedSeat;
+    const isEmpty = !seat?.name;
 
-    function destroyTooltip() {
-      if (tooltipEl) {
-        tooltipEl.remove();
-        tooltipEl = null;
+    el.classList.toggle('seat--selected', isSel);
+
+    getShapes(el).forEach(shape => {
+      if (isEmpty) {
+        // Empty seats: use the hatch pattern fill set in initSeats
+        shape.style.fill = 'url(#empty-hatch)';
+      } else {
+        shape.style.fill = fill;
       }
+      shape.style.opacity = (vis || isSel) ? '1' : '0.13';
+      if (isSel) {
+        shape.style.stroke      = '#111';
+        shape.style.strokeWidth = '4';
+        shape.style.paintOrder  = 'stroke fill';
+      } else {
+        shape.style.stroke      = '';
+        shape.style.strokeWidth = '';
+        shape.style.paintOrder  = '';
+        shape.style.filter      = '';
+      }
+    });
+
+    // Inactive seats (filtered out) are non-interactive — show default cursor
+    el.style.cursor = vis ? 'pointer' : 'default';
+    // Toggle interactive class so CSS hover/brightness only fires on active seats
+    el.classList.toggle('seat--interactive', vis);
+  }
+
+  function paintAllSeats() {
+    seatElements.forEach(el => paintSeat(el));
+    if (hoveredSeatEl && hoveredSeatEl.classList.contains('seat--interactive')) {
+      getShapes(hoveredSeatEl).forEach(s => { s.style.filter = 'brightness(1.4)'; });
+    }
+    if (kbdNav && document.activeElement === mapFrame) {
+      showSeatFocus(internalFocusIdx);
+    }
+  }
+
+  /* ─────────────────────────────────────────────────────────────────
+     KEYBOARD FOCUS (internal to map, no per-seat tabindex)
+  ───────────────────────────────────────────────────────────────── */
+  let kbdTooltipActive = false; // true while tooltip was opened by keyboard nav
+  let kbdNav = false;
+  let hoveredSeatEl = null;           // true when user is navigating by keyboard
+
+  function showSeatFocus(idx) {
+    const el = seatElements[idx];
+    if (!el) return;
+    el.classList.add('seat--focused', 'seat--active-focus');
+    el.setAttribute('aria-current', 'true');
+    // Apply focus ring directly via inline styles — most reliable on SVG
+    getShapes(el).forEach(shape => {
+      shape.style.stroke      = '#111';
+      shape.style.strokeWidth = '4';
+      shape.style.paintOrder  = 'stroke fill';
+      shape.style.opacity     = '1';
+    });
+    const label = el.getAttribute('data-seat');
+    const seat  = seatData[label];
+    const desc  = (seat?.name)
+      ? t('seat_aria', seat.name, seat.party ?? '', seat.constituency ?? '', label)
+      : t('empty_aria', label);
+    mapFrame.setAttribute('aria-label', desc);
+    announce(desc);
+
+    // Don't show hover tooltip if selected popup is already open
+    if (selectedPopupEl) return;
+    // Show tooltip positioned above the seat's bounding box
+    const seatRect = el.getBoundingClientRect();
+    const wrapRect = mapWrap.getBoundingClientRect();
+    const x = (seatRect.left + seatRect.right) / 2 - wrapRect.left;
+    const y = seatRect.top - wrapRect.top - 8;
+    showTooltip(seat, label, x, y);
+    kbdTooltipActive = true;
+  }
+
+  function clearSeatFocus(idx) {
+    const el = seatElements[idx];
+    if (!el) return;
+    el.classList.remove('seat--focused', 'seat--active-focus');
+    el.removeAttribute('aria-current');
+    // Only clear inline stroke if the seat isn't currently selected —
+    // selected seats keep their ring from paintSeat
+    const label = el.getAttribute('data-seat');
+    if (label !== selectedSeat) {
+      getShapes(el).forEach(shape => {
+        shape.style.stroke      = '';
+        shape.style.strokeWidth = '';
+        shape.style.paintOrder  = '';
+      });
+    }
+    // Only hide tooltip if we opened it — don't clobber an active pointer tooltip
+    if (kbdTooltipActive) { hideTooltip(); kbdTooltipActive = false; }
+  }
+
+  /* After filter/search changes, snap focus to nearest visible seat */
+  function snapFocusToVisible() {
+    if (isIdxVisible(internalFocusIdx)) return; // already on a visible seat
+    // search outward from current position
+    for (let d = 1; d < seatElements.length; d++) {
+      const fwd = internalFocusIdx + d;
+      const bwd = internalFocusIdx - d;
+      if (fwd < seatElements.length && isIdxVisible(fwd)) { internalFocusIdx = fwd; return; }
+      if (bwd >= 0                  && isIdxVisible(bwd)) { internalFocusIdx = bwd; return; }
+    }
+  }
+
+  function isIdxVisible(idx) {
+    const el   = seatElements[idx];
+    const seat = el ? seatData[el.getAttribute('data-seat')] : null;
+    return isSeatVisible(seat) || (!seat?.name && !partyFilter && !searchQuery);
+  }
+
+  function moveFocus(delta) {
+    clearSeatFocus(internalFocusIdx);
+    let next = internalFocusIdx + delta;
+    while (next >= 0 && next < seatElements.length) {
+      if (isIdxVisible(next)) break;
+      next += delta;
+    }
+    // if we walked off the end with no visible seat, stay put
+    if (next < 0 || next >= seatElements.length) next = internalFocusIdx;
+    internalFocusIdx = next;
+    showSeatFocus(internalFocusIdx);
+  }
+
+  function jumpFocus(idx) {
+    clearSeatFocus(internalFocusIdx);
+    // Home (idx=0): find first visible; End (idx=last): find last visible
+    const step = idx === 0 ? 1 : -1;
+    let candidate = idx;
+    while (candidate >= 0 && candidate < seatElements.length) {
+      if (isIdxVisible(candidate)) break;
+      candidate += step;
+    }
+    if (candidate < 0 || candidate >= seatElements.length) candidate = internalFocusIdx;
+    internalFocusIdx = candidate;
+    showSeatFocus(internalFocusIdx);
+  }
+
+  /* ─────────────────────────────────────────────────────────────────
+     TOOLTIP (pointer/hover)
+  ───────────────────────────────────────────────────────────────── */
+  function showTooltip(seat, label, x, y) {
+    hideTooltip();
+    const isEmpty = !seat?.name;
+    const color   = getSeatFill(seat);
+
+    tooltipEl = document.createElement('div');
+    tooltipEl.className = 'map-tooltip';
+    tooltipEl.setAttribute('aria-hidden', 'true');
+    tooltipEl.style.left = x + 'px';
+    tooltipEl.style.top  = y + 'px';
+
+    let avatarHtml, bodyHtml;
+
+    if (isEmpty) {
+      avatarHtml = `<div class="map-tooltip__avatar map-tooltip__avatar--empty map-tooltip__avatar--empty-seat"
+                       style="border-color:#d6d3d1"><svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 2c-4.4 0-8 1.8-8 4v1h16v-1c0-2.2-3.6-4-8-4z"/></svg></div>`;
+      bodyHtml = `
+        <div class="map-tooltip__card-body">
+          <div class="map-tooltip__name">${escHtml(t('empty_seat'))}</div>
+          <div class="map-tooltip__empty-label">${escHtml(t('empty_seat_detail'))}</div>
+        </div>`;
+    } else {
+      avatarHtml = seat.image
+        ? `<img src="${escHtml(seat.image)}" alt="" class="map-tooltip__avatar" style="border-color:${color}"
+               onerror="this.style.display='none'">`
+        : `<div class="map-tooltip__avatar map-tooltip__avatar--empty" style="border-color:${color}">TD</div>`;
+      bodyHtml = `
+        <div class="map-tooltip__card-body">
+          <div class="map-tooltip__name">${escHtml(seat.name)}</div>
+          <div class="map-tooltip__party">
+            ${escHtml(seat.party ?? '')}
+          </div>
+          ${seat.constituency
+            ? `<div class="map-tooltip__constituency">${escHtml(seat.constituency)}</div>` : ''}
+        </div>`;
     }
 
-    function initSeats() {
-      const svgRoot = mapFrame.querySelector("svg");
-      if (!svgRoot) return;
+    tooltipEl.innerHTML = `<div class="map-tooltip__card">${avatarHtml}${bodyHtml}</div>`;
+    mapWrap.appendChild(tooltipEl);
+  }
 
-      const seatEls = svgRoot.querySelectorAll(".seat[data-seat]");
-      const shapeSelector = "path, ellipse, rect, polygon, circle";
+  function moveTooltip(x, y) {
+    if (tooltipEl) { tooltipEl.style.left = x + 'px'; tooltipEl.style.top = y + 'px'; }
+  }
 
-      seatEls.forEach((el) => {
-        const seatLabel = el.getAttribute("data-seat");
-        const seat = seatData[seatLabel];
-        const fill = getSeatFill(seat);
+  function hideTooltip() {
+    if (tooltipEl) { tooltipEl.remove(); tooltipEl = null; }
+  }
 
-        const shapes =
-          el.tagName.toLowerCase() === "g"
-            ? el.querySelectorAll(shapeSelector)
-            : [el];
+  /* ─────────────────────────────────────────────────────────────────
+     SELECTED MINI CARD
+  ───────────────────────────────────────────────────────────────── */
+  function renderSelectedPopup(focusClose) {
+    // Remove any existing popup
+    if (selectedPopupEl) { selectedPopupEl.remove(); selectedPopupEl = null; }
 
-        shapes.forEach((shape) => {
-          shape.style.fill = fill;
-        });
+    const seat   = selectedSeat ? seatData[selectedSeat] : null;
+    if (!seat || !seat.name) return;
 
-        if (seat?.name || seat?.party || seat?.constituency) {
-          const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
-          title.textContent = [seat.name, seat.party, seat.constituency]
-            .filter(Boolean)
-            .join(" — ");
-          el.appendChild(title);
-        } else if (seat) {
-          const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
-          title.textContent = "Empty seat";
-          el.appendChild(title);
+    const color  = getSeatFill(seat);
+    const hasUrl = Boolean(seat.url);
+
+    const avatarHtml = seat.image
+      ? `<img src="${escHtml(seat.image)}" alt="" class="map-tooltip__avatar" style="border-color:${color}" onerror="this.style.display='none'">`
+      : `<div class="map-tooltip__avatar map-tooltip__avatar--empty" style="border-color:${color}">TD</div>`;
+
+    const bodyHtml = `
+      <div class="map-tooltip__card-body">
+        <div class="map-tooltip__header">
+          <div class="map-tooltip__name">${escHtml(seat.name)}</div>
+          <button type="button" class="map-tooltip__close-btn" aria-label="${escHtml(t('close_popup'))}">×</button>
+        </div>
+        <div class="map-tooltip__party">
+          ${escHtml(seat.party ?? '')}
+        </div>
+        ${seat.constituency ? `<div class="map-tooltip__constituency">${escHtml(seat.constituency)}</div>` : ''}
+        ${hasUrl ? `<div class="map-tooltip__actions"><a href="${escHtml(seat.url)}" class="map-tooltip__profile-link" rel="noopener noreferrer">${escHtml(t('view_profile'))}</a></div>` : ''}
+      </div>`;
+
+    selectedPopupEl = document.createElement('div');
+    selectedPopupEl.className = 'map-tooltip map-tooltip--selected';
+    selectedPopupEl.setAttribute('role', 'dialog');
+    selectedPopupEl.setAttribute('aria-label', seat.name);
+    selectedPopupEl.innerHTML = `<div class="map-tooltip__card">${avatarHtml}${bodyHtml}</div>`;
+    mapWrap.appendChild(selectedPopupEl);
+
+    // Position above the seat element
+    const seatEl = seatElements.find(el => el.getAttribute('data-seat') === selectedSeat);
+    if (seatEl) {
+      const seatRect = seatEl.getBoundingClientRect();
+      const wrapRect = mapWrap.getBoundingClientRect();
+      const x = (seatRect.left + seatRect.right) / 2 - wrapRect.left;
+      const y = seatRect.top - wrapRect.top - 8;
+      selectedPopupEl.style.left = x + 'px';
+      selectedPopupEl.style.top  = y + 'px';
+    }
+
+    // Close button: hide popup and return focus to map
+    const closeBtn = selectedPopupEl.querySelector('.map-tooltip__close-btn');
+    closeBtn.addEventListener('click', () => {
+      selectSeat(null);
+      mapFrame.focus({ preventScroll: true });
+    });
+
+    // Keyboard: focus the close button automatically
+    if (focusClose) closeBtn.focus();
+  }
+
+  /* ─────────────────────────────────────────────────────────────────
+     PARTY SUMMARY
+  ───────────────────────────────────────────────────────────────── */
+  function renderPartySummary(focusParty) {
+    if (!partySummaryEl) return;
+
+    const counts = new Map();
+    Object.values(seatData).forEach(seat => {
+      if (seat.party) counts.set(seat.party, (counts.get(seat.party) || 0) + 1);
+    });
+
+    const items = [...counts.entries()]
+      .map(([name, count]) => ({ name, count, color: partyColorMap[name] ?? '#d6d3d1' }))
+      .sort((a, b) => b.count - a.count);
+
+    const total = items.reduce((s, i) => s + i.count, 0);
+    items.unshift({ name: '__all__', label: t('all_parties'), count: total, color: '#7f6c2e' });
+
+    partySummaryEl.className = 'party-summary' + (partyFilter ? ' party-summary--has-active' : '');
+    partySummaryEl.setAttribute('role', 'group');
+    partySummaryEl.setAttribute('aria-label', t('filter_label'));
+
+    partySummaryEl.innerHTML = items.map(item => {
+      const isAll    = item.name === '__all__';
+      const isActive = isAll ? partyFilter === null : partyFilter === item.name;
+      const label    = item.label ?? item.name;
+      const ariaLbl  = isActive ? t('party_active', label) : t('party_inactive', label);
+      return `<button type="button"
+          class="party-summary__item${isActive ? ' party-summary__item--active' : ''}${isAll ? ' party-summary__item--all' : ''}"
+          data-party="${isAll ? '' : escHtml(item.name)}"
+          aria-pressed="${isActive}"
+          aria-label="${escHtml(ariaLbl)}">
+          <span class="party-summary__dot" style="background:${item.color}" aria-hidden="true"></span>
+          <span class="party-summary__name">${escHtml(label)}</span>
+          <span class="party-summary__count">${item.count}</span>
+        </button>`;
+    }).join('');
+
+    // Restore focus to the button that was just activated (prevents focus jumping to start)
+    if (focusParty !== undefined) {
+      const target = partySummaryEl.querySelector(`[data-party="${escHtml(focusParty ?? '')}"]`);
+      if (target) target.focus();
+    }
+
+    partySummaryEl.querySelectorAll('.party-summary__item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const party = btn.getAttribute('data-party');
+        partyFilter = party || null;
+        if (selectedSeat && partyFilter) {
+          const sel = seatData[selectedSeat];
+          if (sel?.party !== partyFilter) { selectedSeat = null; renderSelectedPopup(); }
         }
+        snapFocusToVisible();
+        updateSearchLabel();
+        renderPartySummary(party);
+        paintAllSeats();
+      });
+    });
+  }
 
-        el.style.cursor = seat ? "pointer" : "default";
+  function updateSearchLabel() {
+    const labelEl = document.querySelector('label[for="search-input"]');
+    if (labelEl) labelEl.textContent = partyFilter ? t('search_label_filtered') : t('search_label');
+  }
+
+  /* ─────────────────────────────────────────────────────────────────
+     SEARCH
+  ───────────────────────────────────────────────────────────────── */
+  function updateSearch(query) {
+    searchQuery = query;
+    searchClear.classList.toggle('search-clear--visible', Boolean(query));
+    snapFocusToVisible();
+    paintAllSeats();
+    if (selectedSeat && !isSeatVisible(seatData[selectedSeat])) {
+      selectedSeat = null; renderSelectedPopup();
+    }
+  }
+
+  /* ─────────────────────────────────────────────────────────────────
+     SEAT SELECTION
+  ───────────────────────────────────────────────────────────────── */
+  function selectSeat(label, focusClose = false) {
+    const seat = label ? seatData[label] : null;
+    if (label && seat?.name && !isSeatVisible(seat)) return;
+    selectedSeat = label ?? null;
+    paintAllSeats();
+    renderSelectedPopup(focusClose);
+  }
+
+  /* ─────────────────────────────────────────────────────────────────
+     INIT SEATS
+  ───────────────────────────────────────────────────────────────── */
+  function initSeats() {
+    const svgRoot = mapFrame.querySelector('svg');
+    if (!svgRoot) return;
+
+    /* Add SVG accessible title */
+    // Use aria-label on the SVG root for accessibility instead of a <title> element.
+    // <title> children on SVG elements cause unwanted native browser tooltips;
+    // we also strip all Inkscape-generated <title> elements for the same reason.
+    svgRoot.setAttribute('aria-label', t('map_label'));
+    svgRoot.querySelectorAll('title').forEach(el => el.remove());
+
+    /* Add empty-seat hatch pattern to SVG defs */
+    let defs = svgRoot.querySelector('defs');
+    if (!defs) {
+      defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+      svgRoot.insertBefore(defs, svgRoot.firstChild);
+    }
+    defs.insertAdjacentHTML('beforeend', `
+      <pattern id="empty-hatch" x="0" y="0" width="6" height="6"
+               patternUnits="userSpaceOnUse" patternTransform="rotate(45 0 0)">
+        <rect width="6" height="6" fill="#e5e2df"/>
+        <line x1="0" y1="0" x2="0" y2="6" stroke="#c5c2be" stroke-width="2.5"/>
+      </pattern>`);
+
+    /* Collect and sort seat elements */
+    seatElements = Array.from(svgRoot.querySelectorAll('.seat[data-seat]'))
+      .sort((a, b) => a.getAttribute('data-seat')
+        .localeCompare(b.getAttribute('data-seat'), undefined, { numeric: true }));
+
+    seatElements.forEach((el, idx) => {
+      const label   = el.getAttribute('data-seat');
+      const seat    = seatData[label];
+      const isEmpty = !seat?.name;
+
+      /* Initial paint */
+      getShapes(el).forEach(shape => {
+        shape.style.fill = isEmpty ? 'url(#empty-hatch)' : getSeatFill(seat);
       });
 
-      const findSeatEl = (target) => {
-        if (!(target instanceof Element)) return null;
-        return target.closest(".seat[data-seat]");
+      /* ARIA — explicitly tabindex="-1" so these never enter the browser
+         for AT context but browsers must not auto-focus these. */
+      el.setAttribute('tabindex', '-1');
+      if (isEmpty) {
+        el.setAttribute('aria-label', t('empty_aria', label));
+      } else {
+        el.setAttribute('aria-label',
+          t('seat_aria', seat.name ?? '', seat.party ?? '', seat.constituency ?? '', label));
+      }
+
+      /* SVG <title> for AT hover fallback */
+      const st = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+      st.textContent = isEmpty
+        ? `${t('seat_prefix')} ${label} — ${t('empty_seat')}`
+        : [seat.name, seat.party, seat.constituency].filter(Boolean).join(' — ');
+      el.insertBefore(st, el.firstChild);
+
+      el.style.cursor = 'pointer';
+    });
+
+    /* ── Map frame: single Tab stop ─────────────────────────────────────
+       mapFrame has tabindex="0" in HTML.  All arrow-key / Enter / Space
+       handling is on this container.  No mapHasFocus guard — if keydown
+       fires here, the frame is focused by definition.
+    ─────────────────────────────────────────────────────────────────── */
+    mapFrame.setAttribute('role', 'application');
+    mapFrame.setAttribute('aria-label', t('map_label'));
+
+    // Track pointer vs keyboard so focus ring only appears during keyboard nav
+    document.addEventListener('pointerdown', () => { kbdNav = false; });
+    mapFrame.addEventListener('keydown', () => { kbdNav = true; }, true);
+
+    mapFrame.addEventListener('focus', () => {
+      showSeatFocus(internalFocusIdx);
+    });
+
+    mapFrame.addEventListener('blur', () => {
+      clearSeatFocus(internalFocusIdx);
+    });
+
+    mapFrame.addEventListener('keydown', e => {
+      switch (e.key) {
+        case 'ArrowRight':
+        case 'ArrowDown':
+          e.preventDefault();
+          moveFocus(+1);
+          break;
+        case 'ArrowLeft':
+        case 'ArrowUp':
+          e.preventDefault();
+          moveFocus(-1);
+          break;
+        case 'Home':
+          e.preventDefault();
+          jumpFocus(0);
+          break;
+        case 'End':
+          e.preventDefault();
+          jumpFocus(seatElements.length - 1);
+          break;
+        case 'Enter':
+        case ' ':
+          e.preventDefault();
+          {
+            const el    = seatElements[internalFocusIdx];
+            const label = el?.getAttribute('data-seat');
+            if (label) {
+              const isDeselecting = selectedSeat === label;
+              selectSeat(isDeselecting ? null : label, !isDeselecting);
+            }
+          }
+          break;
+        case 'Escape':
+          if (selectedSeat) selectSeat(null);
+          break;
+        /* Tab — default behaviour moves focus out; no override needed */
+      }
+    });
+
+    /* ── Pointer events ── */
+    const findSeatEl = t =>
+      (t instanceof Element) ? t.closest('.seat[data-seat]') : null;
+
+    svgRoot.addEventListener('pointermove', e => {
+      kbdTooltipActive = false; // pointer has taken over
+      if (selectedPopupEl) { hideTooltip(); return; } // popup is open; no hover tooltip
+      const seatEl = findSeatEl(e.target);
+      if (!seatEl) { hideTooltip(); return; }
+
+      const label = seatEl.getAttribute('data-seat');
+      const seat  = seatData[label];
+
+      // When a filter is active, only show hover tooltip for matching seats
+      if (!isSeatVisible(seat)) { hideTooltip(); return; }
+
+      const rect  = mapWrap.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top - 14;
+
+      if (!tooltipEl) showTooltip(seat, label, x, y);
+      else moveTooltip(x, y);
+    });
+
+    svgRoot.addEventListener('pointerleave', () => {
+      if (hoveredSeatEl) {
+        if (!hoveredSeatEl.classList.contains('seat--active-focus')) {
+          getShapes(hoveredSeatEl).forEach(s => { s.style.filter = ''; });
+        }
+        hoveredSeatEl = null;
+      }
+      hideTooltip();
+    });
+
+    svgRoot.addEventListener('mouseover', e => {
+      const seatEl = findSeatEl(e.target);
+      if (seatEl === hoveredSeatEl) return;
+      if (hoveredSeatEl && !hoveredSeatEl.classList.contains('seat--active-focus')) {
+        getShapes(hoveredSeatEl).forEach(s => { s.style.filter = ''; });
+      }
+      hoveredSeatEl = seatEl && seatEl.classList.contains('seat--interactive') ? seatEl : null;
+      if (hoveredSeatEl) {
+        getShapes(hoveredSeatEl).forEach(s => { s.style.filter = 'brightness(1.4)'; });
+      }
+    });
+
+    /* Close selected popup when clicking outside the popup or an active seat */
+    document.addEventListener('click', e => {
+      if (!selectedSeat) return;
+      if (selectedPopupEl && selectedPopupEl.contains(e.target)) return;
+      // Only defer to the seat click handler for active (visible) occupied seats
+      const seatEl = (e.target instanceof Element) && e.target.closest('.seat[data-seat]');
+      if (seatEl) {
+        const s = seatData[seatEl.getAttribute('data-seat')];
+        if (s?.name && isSeatVisible(s)) return;
+      }
+      selectSeat(null);
+    });
+
+    svgRoot.addEventListener('click', e => {
+      const seatEl = findSeatEl(e.target);
+      if (!seatEl) return;
+      const label = seatEl.getAttribute('data-seat');
+      const seat  = seatData[label];
+
+      // Filtered-out occupied seat: non-interactive — let document listener
+      // handle popup dismissal and return before touching focus
+      if (seat?.name && !isSeatVisible(seat)) return;
+
+      // Move keyboard focus to the map frame so arrow keys work after a click
+      const seatIdx = seatElements.indexOf(seatEl);
+      if (seatIdx !== -1) {
+        clearSeatFocus(internalFocusIdx);
+        internalFocusIdx = seatIdx;
+      }
+      mapFrame.focus({ preventScroll: true });
+
+      // Empty seat: dismiss popup if one is open, then stop
+      if (!seat?.name) {
+        if (selectedSeat) selectSeat(null);
+        return;
+      }
+      selectSeat(selectedSeat === label ? null : label);
+    });
+  }
+
+  /* ─────────────────────────────────────────────────────────────────
+     LIVE API REFRESH
+     ─────────────────────────────────────────────────────────────────
+     How this works:
+     1. The page loads instantly with embedded (build-time) data — seats
+        are coloured and interactive immediately, with no network wait.
+
+     2. In the background we fetch the current Dáil session number from
+        https://api.oireachtas.ie/v1/houses  (same approach as the
+        Seanad example visualisation).
+
+     3. We then fetch the member list for that session:
+        https://api.oireachtas.ie/v1/members?chamber=dail&house_no=N&limit=200
+
+     4. We match each API member to an existing seat entry by memberCode
+        (e.g. "Simon-Harris.D.2011-03-09") and update party, constituency
+        and name in-place.  Seat assignments (which physical seat belongs
+        to which code) remain from the embedded CSV data — that spatial
+        mapping is not in the API.
+
+     5. If either fetch fails we silently keep the embedded data and mark
+        the status badge accordingly.
+  ───────────────────────────────────────────────────────────────── */
+  function normalisePartyName(raw) {
+    if (!raw) return '';
+    if (/100%|RDR/i.test(raw))                                    return '100% RDR';
+    if (/people before profit|solidarity/i.test(raw))             return 'People Before Profit-Solidarity';
+    if (/independent ireland/i.test(raw))                         return 'Independent Ireland';
+    if (/neamhspleách|independent/i.test(raw))                    return 'Independent';
+    if (/human dignity/i.test(raw))                               return 'Human Dignity Alliance';
+    return raw;
+  }
+
+  async function getMaxDailHouseNo() {
+    const res  = await fetch('https://api.oireachtas.ie/v1/houses');
+    if (!res.ok) throw new Error(`houses HTTP ${res.status}`);
+    const data = await res.json();
+    const nos  = (data.results ?? [])
+      .map(r => r.house)
+      .filter(h => h?.houseCode?.toLowerCase() === 'dail' && h.houseNo)
+      .map(h => parseInt(h.houseNo, 10))
+      .filter(n => !isNaN(n));
+    if (nos.length === 0) throw new Error('No Dáil house numbers found');
+    return Math.max(...nos);
+  }
+
+  async function refreshFromAPI() {
+    const houseNo = await getMaxDailHouseNo();
+    const url     = `https://api.oireachtas.ie/v1/members?chamber=dail&house_no=${houseNo}&limit=200`;
+    const res     = await fetch(url);
+    if (!res.ok) throw new Error(`members HTTP ${res.status}`);
+    const data    = await res.json();
+
+    /* Build memberCode → live info map */
+    const live = {};
+    (data.results ?? []).forEach(item => {
+      const m          = item.member;
+      const membership = m.memberships?.[0]?.membership;
+      const code       = m.memberCode ?? m.pId;
+      if (!code) return;
+      live[code] = {
+        name:         m.fullName ?? '',
+        party:        normalisePartyName(membership?.parties?.[0]?.party?.showAs ?? ''),
+        constituency: membership?.represents?.[0]?.represent?.showAs ?? '',
       };
+    });
 
-      svgRoot.addEventListener("pointermove", (event) => {
-        const seatEl = findSeatEl(event.target);
+    /* Update seatData in-place */
+    let changed = false;
+    Object.values(seatData).forEach(seat => {
+      const info = seat.memberCode ? live[seat.memberCode] : null;
+      if (!info) return;
+      if (info.name !== seat.name || info.party !== seat.party || info.constituency !== seat.constituency) {
+        seat.name         = info.name;
+        seat.party        = info.party;
+        seat.constituency = info.constituency;
+        changed = true;
+      }
+    });
 
-        if (!seatEl) {
-          destroyTooltip();
-          return;
-        }
-
-        const seatLabel = seatEl.getAttribute("data-seat");
-        const seat = seatData[seatLabel];
-        if (!seat) {
-          destroyTooltip();
-          return;
-        }
-
-        const containerRect = mapWrap.getBoundingClientRect();
-        const x = event.clientX - containerRect.left;
-        const y = event.clientY - containerRect.top - 14;
-
-        if (!tooltipEl) {
-          createTooltip(seat, x, y);
-        } else {
-          moveTooltip(x, y);
-        }
-      });
-
-      svgRoot.addEventListener("pointerleave", () => {
-        destroyTooltip();
-      });
-
-      svgRoot.addEventListener("click", (event) => {
-        const seatEl = findSeatEl(event.target);
-        if (!seatEl) return;
-
-        const seatLabel = seatEl.getAttribute("data-seat");
-        const seat = seatData[seatLabel];
-        if (!seat?.url) return;
-
-        window.open(seat.url, "_blank", "noopener,noreferrer");
-      });
+    if (changed) {
+      paintAllSeats();
+      renderPartySummary();
+      renderSelectedPopup();
     }
 
+  }
+
+  /* ─────────────────────────────────────────────────────────────────
+     BOOT
+  ───────────────────────────────────────────────────────────────── */
+  document.addEventListener('DOMContentLoaded', () => {
+    mapWrap        = document.getElementById('map-wrap');
+    mapFrame       = document.getElementById('map-frame');
+    partySummaryEl = document.getElementById('party-summary');
+    searchInput    = document.getElementById('search-input');
+    searchClear    = document.getElementById('search-clear');
+    toolbarEl      = document.getElementById('chamber-toolbar');
+    liveRegion     = document.getElementById('live-region');
+
+    /* Apply language to static text nodes */
+    document.documentElement.lang = lang;
+
+    document.querySelector('.mobile-notice__heading').textContent    = t('mobile_heading');
+    document.querySelector('.mobile-notice__text').textContent       = t('mobile_text');
+    searchInput.setAttribute('aria-label',  t('search_placeholder'));
+    searchClear.setAttribute('aria-label',  t('search_clear'));
+    document.querySelector('label[for="search-input"]').textContent  = partyFilter ? t('search_label_filtered') : t('search_label');
+
+    /* Search events */
+    searchInput.addEventListener('input', e => updateSearch(e.target.value));
+    searchClear.addEventListener('click', () => {
+      searchInput.value = ''; updateSearch(''); searchInput.focus();
+    });
+    searchInput.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { searchInput.value = ''; updateSearch(''); }
+    });
+
+    /* Initial render */
     renderPartySummary();
     initSeats();
+    paintAllSeats();
+    renderSelectedPopup();
+
+    /* Live API refresh (best-effort — fails silently) */
+    refreshFromAPI().catch(err => {
+      console.info('[chamber-map] Using embedded data. API refresh failed:', err.message);
+    });
+  });
+
+  })();
   </script>
-</body>
-</html>
+
+</div>
