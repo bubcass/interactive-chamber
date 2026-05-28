@@ -45,7 +45,7 @@ B-07,25,Norma Foley,Foley,Norma-Foley.D.2020-02-08,2025-11-25,2026-01-12
 B-06,52,Darragh O'Brien,O'Brien,Darragh-O'Brien.D.2007-06-14,2025-11-25,2026-01-12
 B-05,51,Helen McEntee,McEntee,Helen-McEntee.D.2013-03-27,2025-11-25,2026-01-12
 B-04,50,Jack Chambers,Chambers,Jack-Chambers.D.2016-10-03,2025-11-25,2026-01-12
-B-03,49,,,,2025-11-25,
+B-03,49,,,,2025-11-25,2026-01-12
 B-02,94,Simon Harris,Harris,Simon-Harris.D.2011-03-09,2025-11-25,
 B-01,93,Micheál Martin,Martin,Micheál-Martin.D.1989-06-29,2025-11-25,
 B-32,,,,,2025-11-25,
@@ -149,8 +149,8 @@ E-31,174,Brian Stanley,Stanley,Brian-Stanley.D.2011-03-09,2025-11-25,
 E-30,175,Roderic O'Gorman,O'Gorman,Roderic-O'Gorman.D.2020-02-08,2025-11-25,
 E-29,134,Michael Lowry,Lowry,Michael-Lowry.D.1987-03-10,2025-11-25,
 E-28,139,Gillian Toole,Toole,Gillian-Toole.D.2024-11-29,2025-11-25,
-E-27,138,,,,2025-11-25,
-E-26,137,,,,2025-11-25,
+E-27,138,,,,2025-11-25,2026-04-20
+E-26,137,,,,2025-11-25,2026-05-24
 E-25,135,Carol Nolan,Nolan,Carol-Nolan.D.2016-10-03,2025-11-25,
 E-24,133,Eoin Hayes,Hayes,Eoin-Hayes.D.2024-11-29,2025-11-25,
 E-23,136,John Paul O'Shea,O'Shea,John-Paul-O'Shea.D.2024-11-29,2025-11-25,
@@ -197,3 +197,5 @@ A-10,4,James Lawless,Lawless,James-Lawless.D.2016-10-03,2026-01-13,
 A-09,3,Hildegarde Naughton,Naughton,Hildegarde-Naughton.S.2013-07-19,2026-01-13,
 C-37,10,Kevin Boxer Moran,Moran,Kevin-Boxer-Moran.D.2016-10-03,2026-04-21,
 E-27,138,Michael Healy-Rae,Healy-Rae,Michael-Healy-Rae.D.2011-03-09,2026-04-21,
+E-15,44,Seán Kyne,Kyne,Seán-Kyne.D.2011-03-09,2026-05-25,
+E-26,137,Daniel,Ennis,Daniel-Ennis.D.2026-05-25,2026-05-25,
