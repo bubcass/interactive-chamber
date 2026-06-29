@@ -5,9 +5,26 @@ import { partiesPalette } from "../data/partiesPalette.js";
 import ChamberMap from "./ChamberMap.jsx";
 import membersJson from "../data/members.json";
 
+const CHAIR_SEAT_LABEL = "F-01";
+const CHAIR_ROLE = "Ceann Comhairle";
+const CHAIR_COLOR = "#7f6c2e";
+
 function buildMemberUrl(memberCode) {
   if (!memberCode) return "";
   return `https://www.oireachtas.ie/en/members/member/${memberCode}/`;
+}
+
+function isChairSeat(seatOrAssignment) {
+  return clean(seatOrAssignment?.seat_label) === CHAIR_SEAT_LABEL;
+}
+
+function getSeatParty(seat) {
+  if (isChairSeat(seat)) return null;
+  return seat?.member?.Party || null;
+}
+
+function getSeatRole(seat) {
+  return isChairSeat(seat) ? CHAIR_ROLE : "";
 }
 
 function resolveSeatForDate(rows, memberCode, targetDate) {
@@ -125,14 +142,14 @@ export default function DailExplorer() {
         seat.member?.Deputy,
         seat.member?.Party,
         seat.member?.Constituency,
+        getSeatRole(seat),
       ]
         .filter(Boolean)
         .join(" ")
         .toLowerCase()
         .includes(query.toLowerCase());
 
-      const matchesParty =
-        partyFilter === null || seat.member?.Party === partyFilter;
+      const matchesParty = partyFilter === null || getSeatParty(seat) === partyFilter;
 
       return matchesQuery && matchesParty;
     });
@@ -238,6 +255,12 @@ export default function DailExplorer() {
   const selectedMemberUrl = buildMemberUrl(
     selectedMember?.Code || selected?.assignment?.member_code,
   );
+  const selectedRole = getSeatRole(selected);
+  const selectedAccent =
+    isChairSeat(selected)
+      ? CHAIR_COLOR
+      : partiesPalette.find((party) => party.name === selectedMember?.Party)
+          ?.value || "#d6d3d1";
 
   return (
     <main className="layout layout--stacked">
@@ -332,12 +355,7 @@ export default function DailExplorer() {
                   {selectedMember.imageUrl ? (
                     <div
                       className="selected-mini-card__photo-ring"
-                      style={{
-                        borderColor:
-                          partiesPalette.find(
-                            (party) => party.name === selectedMember.Party,
-                          )?.value || "#d6d3d1",
-                      }}
+                      style={{ borderColor: selectedAccent }}
                     >
                       <img
                         src={selectedMember.imageUrl}
@@ -356,6 +374,9 @@ export default function DailExplorer() {
                   <div className="selected-mini-card__name">
                     {selectedMember.Deputy}
                   </div>
+                  {selectedRole ? (
+                    <div className="selected-mini-card__meta">{selectedRole}</div>
+                  ) : null}
                   <div className="selected-mini-card__meta">
                     {selectedMember.Party || "—"}
                   </div>
@@ -376,6 +397,9 @@ export default function DailExplorer() {
             selectedSeat={selectedSeat}
             onSelect={setSelectedSeat}
             partyFilter={partyFilter}
+            chairSeatLabel={CHAIR_SEAT_LABEL}
+            chairRole={CHAIR_ROLE}
+            chairColor={CHAIR_COLOR}
           />
         </div>
       </section>

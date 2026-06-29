@@ -8,6 +8,9 @@ export default function ChamberMap({
   selectedSeat,
   onSelect,
   partyFilter = null,
+  chairSeatLabel = "",
+  chairRole = "",
+  chairColor = "#7f6c2e",
 }) {
   const ref = useRef(null);
   const [tooltip, setTooltip] = useState(null);
@@ -25,6 +28,13 @@ export default function ChamberMap({
 
     const getSeatData = (seatLabel) =>
       allSeats.find((d) => d.seat_label === seatLabel) || null;
+    const isChairSeat = (seatLabel) => seatLabel === chairSeatLabel;
+    const getSeatParty = (seat) =>
+      isChairSeat(seat?.seat_label) ? null : seat?.member?.Party || null;
+    const getSeatColor = (seat) =>
+      isChairSeat(seat?.seat_label)
+        ? chairColor
+        : partyColorMap[seat?.member?.Party] || "#d6d3d1";
 
     const visibleSeatLabels = new Set(seats.map((d) => d.seat_label));
 
@@ -32,11 +42,11 @@ export default function ChamberMap({
       const seatLabel = el.getAttribute("data-seat");
       const seat = getSeatData(seatLabel);
 
-      const fill = partyColorMap[seat?.member?.Party] || "#d6d3d1";
+      const fill = getSeatColor(seat);
       const isSelected = seatLabel === selectedSeat;
       const isHovered = seatLabel === hoveredSeat;
       const passesSearch = visibleSeatLabels.has(seatLabel);
-      const passesParty = !partyFilter || seat?.member?.Party === partyFilter;
+      const passesParty = !partyFilter || getSeatParty(seat) === partyFilter;
 
       const dimmed = !passesSearch || !passesParty;
 
@@ -93,7 +103,7 @@ export default function ChamberMap({
       const seatLabel = seatEl.getAttribute("data-seat");
       const seat = getSeatData(seatLabel);
       const passesSearch = visibleSeatLabels.has(seatLabel);
-      const passesParty = !partyFilter || seat?.member?.Party === partyFilter;
+      const passesParty = !partyFilter || getSeatParty(seat) === partyFilter;
 
       if (!passesSearch || !passesParty) {
         setHoveredSeat(null);
@@ -117,8 +127,9 @@ export default function ChamberMap({
         y: event.clientY - containerRect.top - 14,
         name: seat.member.Deputy,
         party: seat.member.Party,
+        role: isChairSeat(seatLabel) ? chairRole : "",
         constituency: seat.member.Constituency || "",
-        color: partyColorMap[seat.member.Party] || "#666666",
+        color: getSeatColor(seat) || "#666666",
         image: seat.member.imageUrl || "",
       });
     };
@@ -135,7 +146,7 @@ export default function ChamberMap({
       const seatLabel = seatEl.getAttribute("data-seat");
       const seat = getSeatData(seatLabel);
       const passesSearch = visibleSeatLabels.has(seatLabel);
-      const passesParty = !partyFilter || seat?.member?.Party === partyFilter;
+      const passesParty = !partyFilter || getSeatParty(seat) === partyFilter;
 
       if (!passesSearch || !passesParty) return;
 
@@ -192,13 +203,19 @@ export default function ChamberMap({
             <div className="map-tooltip__card-body">
               <div className="map-tooltip__name">{tooltip.name}</div>
 
-              <div className="map-tooltip__party">
-                <span
-                  className="map-tooltip__chip"
-                  style={{ backgroundColor: tooltip.color }}
-                />
-                {tooltip.party}
-              </div>
+              {tooltip.role ? (
+                <div className="map-tooltip__party">
+                  <span
+                    className="map-tooltip__chip"
+                    style={{ backgroundColor: tooltip.color }}
+                  />
+                  {tooltip.role}
+                </div>
+              ) : null}
+
+              {tooltip.party ? (
+                <div className="map-tooltip__constituency">{tooltip.party}</div>
+              ) : null}
 
               {tooltip.constituency ? (
                 <div className="map-tooltip__constituency">
