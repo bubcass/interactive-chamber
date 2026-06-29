@@ -1,0 +1,362 @@
+[
+  {
+    "deputy": "Conor Murphy",
+    "party": "Sinn Féin",
+    "constituency": "Industrial and Commercial Panel",
+    "memberCode": "Conor-Murphy.S.2025-01-29"
+  },
+  {
+    "deputy": "Pauline Tully",
+    "party": "Sinn Féin",
+    "constituency": "Cultural and Educational Panel",
+    "memberCode": "Pauline-Tully.D.2020-02-08"
+  },
+  {
+    "deputy": "Laura Harmon",
+    "party": "Labour Party",
+    "constituency": "Industrial and Commercial Panel",
+    "memberCode": "Laura-Harmon.S.2025-01-29"
+  },
+  {
+    "deputy": "Michael McDowell",
+    "party": "Independent",
+    "constituency": "National University of Ireland",
+    "memberCode": "Michael-McDowell.D.1987-03-10"
+  },
+  {
+    "deputy": "Victor Boyhan",
+    "party": "Independent",
+    "constituency": "Agricultural Panel",
+    "memberCode": "Victor-Boyhan.S.2016-04-25"
+  },
+  {
+    "deputy": "Seán Kyne",
+    "party": "Fine Gael",
+    "constituency": "",
+    "memberCode": "Seán-Kyne.D.2011-03-09"
+  },
+  {
+    "deputy": "Maria Byrne",
+    "party": "Fine Gael",
+    "constituency": "Agricultural Panel",
+    "memberCode": "Maria-Byrne.S.2016-04-25"
+  },
+  {
+    "deputy": "Lorraine Clifford-Lee",
+    "party": "Fianna Fáil",
+    "constituency": "Nominated by the Taoiseach",
+    "memberCode": "Lorraine-Clifford-Lee.S.2016-04-25"
+  },
+  {
+    "deputy": "Niall Blaney",
+    "party": "Fianna Fáil",
+    "constituency": "Agricultural Panel",
+    "memberCode": "Niall-Blaney.D.2002-06-06"
+  },
+  {
+    "deputy": "Fiona O'Loughlin",
+    "party": "Fianna Fáil",
+    "constituency": "Administrative Panel",
+    "memberCode": "Fiona-O'Loughlin.D.2016-10-03"
+  },
+  {
+    "deputy": "Maria McCormack",
+    "party": "Sinn Féin",
+    "constituency": "Labour Panel",
+    "memberCode": "Maria-McCormack.S.2025-01-29"
+  },
+  {
+    "deputy": "Nicole Ryan",
+    "party": "Sinn Féin",
+    "constituency": "Administrative Panel",
+    "memberCode": "Nicole-Ryan.S.2025-01-29"
+  },
+  {
+    "deputy": "Joanne Collins",
+    "party": "Sinn Féin",
+    "constituency": "Agricultural Panel",
+    "memberCode": "Joanne-Collins.S.2025-01-29"
+  },
+  {
+    "deputy": "Nessa Cosgrove",
+    "party": "Labour Party",
+    "constituency": "Labour Panel",
+    "memberCode": "Nessa-Cosgrove.S.2025-01-29"
+  },
+  {
+    "deputy": "Malcolm Noonan",
+    "party": "Green Party",
+    "constituency": "Agricultural Panel",
+    "memberCode": "Malcolm-Noonan.D.2020-02-08"
+  },
+  {
+    "deputy": "Rónán Mullen",
+    "party": "Independent",
+    "constituency": "National University of Ireland",
+    "memberCode": "Rónán-Mullen.S.2007-07-23"
+  },
+  {
+    "deputy": "Gerard P. Craughwell",
+    "party": "Independent",
+    "constituency": "Labour Panel",
+    "memberCode": "Gerard-P-Craughwell.S.2014-10-10"
+  },
+  {
+    "deputy": "Garret Ahearn",
+    "party": "Fine Gael",
+    "constituency": "Administrative Panel",
+    "memberCode": "Garret-Ahearn.S.2020-03-30"
+  },
+  {
+    "deputy": "Joe O'Reilly",
+    "party": "Fine Gael",
+    "constituency": "Labour Panel",
+    "memberCode": "Joe-O'Reilly.S.1989-10-01"
+  },
+  {
+    "deputy": "Linda Nelson Murray",
+    "party": "Fine Gael",
+    "constituency": "Industrial and Commercial Panel",
+    "memberCode": "Linda-Nelson-Murray.S.2025-01-29"
+  },
+  {
+    "deputy": "Teresa Costello",
+    "party": "Fianna Fáil",
+    "constituency": "Agricultural Panel",
+    "memberCode": "Teresa-Costello.S.2025-01-29"
+  },
+  {
+    "deputy": "Alison Comyn",
+    "party": "Fianna Fáil",
+    "constituency": "Nominated by the Taoiseach",
+    "memberCode": "Alison-Comyn.S.2025-01-29"
+  },
+  {
+    "deputy": "Pat Casey",
+    "party": "Fianna Fáil",
+    "constituency": "Labour Panel",
+    "memberCode": "Pat-Casey.D.2016-10-03"
+  },
+  {
+    "deputy": "Paul Daly",
+    "party": "Fianna Fáil",
+    "constituency": "Agricultural Panel",
+    "memberCode": "Paul-Daly.S.2016-04-25"
+  },
+  {
+    "deputy": "Alice-Mary Higgins",
+    "party": "Independent",
+    "constituency": "National University of Ireland",
+    "memberCode": "Alice-Mary-Higgins.S.2016-04-25"
+  },
+  {
+    "deputy": "Lynn Ruane",
+    "party": "Independent",
+    "constituency": "University of Dublin",
+    "memberCode": "Lynn-Ruane.S.2016-04-25"
+  },
+  {
+    "deputy": "Frances Black",
+    "party": "Independent",
+    "constituency": "Industrial and Commercial Panel",
+    "memberCode": "Frances-Black.S.2016-04-25"
+  },
+  {
+    "deputy": "Eileen Flynn",
+    "party": "Independent",
+    "constituency": "Administrative Panel",
+    "memberCode": "Eileen-Flynn.S.2020-06-29"
+  },
+  {
+    "deputy": "Chris Andrews",
+    "party": "Sinn Féin",
+    "constituency": "Labour Panel",
+    "memberCode": "Chris-Andrews.D.2007-06-14"
+  },
+  {
+    "deputy": "Patricia Stephenson",
+    "party": "Social Democrats",
+    "constituency": "Labour Panel",
+    "memberCode": "Patricia-Stephenson.S.2025-01-29"
+  },
+  {
+    "deputy": "Aubrey McCarthy",
+    "party": "Independent",
+    "constituency": "University of Dublin",
+    "memberCode": "Aubrey-McCarthy.S.2025-01-29"
+  },
+  {
+    "deputy": "Joe Conway",
+    "party": "Independent",
+    "constituency": "Cultural and Educational Panel",
+    "memberCode": "Joe-Conway.S.2025-01-29"
+  },
+  {
+    "deputy": "Sharon Keogan",
+    "party": "Independent",
+    "constituency": "Industrial and Commercial Panel",
+    "memberCode": "Sharon-Keogan.S.2020-03-30"
+  },
+  {
+    "deputy": "Tom Clonan",
+    "party": "Independent",
+    "constituency": "University of Dublin",
+    "memberCode": "Tom-Clonan.S.2022-04-04"
+  },
+  {
+    "deputy": "Nikki Bradley",
+    "party": "Fine Gael",
+    "constituency": "Nominated by the Taoiseach",
+    "memberCode": "Nikki-Bradley.S.2024-07-10"
+  },
+  {
+    "deputy": "Evanne Ní Chuilinn",
+    "party": "Fine Gael",
+    "constituency": "Nominated by the Taoiseach",
+    "memberCode": "Evanne-Ní-Chuilinn.S.2025-01-29"
+  },
+  {
+    "deputy": "Mike Kennelly",
+    "party": "Fine Gael",
+    "constituency": "Labour Panel",
+    "memberCode": "Mike-Kennelly.S.2025-01-29"
+  },
+  {
+    "deputy": "Garret Kelleher",
+    "party": "Fine Gael",
+    "constituency": "Industrial and Commercial Panel",
+    "memberCode": "Garret-Kelleher.S.2025-01-29"
+  },
+  {
+    "deputy": "Paraic Brady",
+    "party": "Fine Gael",
+    "constituency": "Agricultural Panel",
+    "memberCode": "Paraic-Brady.S.2025-01-29"
+  },
+  {
+    "deputy": "Mary Fitzpatrick",
+    "party": "Fianna Fáil",
+    "constituency": "Industrial and Commercial Panel",
+    "memberCode": "Mary-Fitzpatrick.S.2020-06-29"
+  },
+  {
+    "deputy": "Aidan Davitt",
+    "party": "Fianna Fáil",
+    "constituency": "Industrial and Commercial Panel",
+    "memberCode": "Aidan-Davitt.S.2016-04-25"
+  },
+  {
+    "deputy": "Robbie Gallagher",
+    "party": "Fianna Fáil",
+    "constituency": "Labour Panel",
+    "memberCode": "Robbie-Gallagher.S.2016-04-25"
+  },
+  {
+    "deputy": "Shane Curley",
+    "party": "Fianna Fáil",
+    "constituency": "Cultural and Educational Panel",
+    "memberCode": "Shane-Curley.S.2025-01-29"
+  },
+  {
+    "deputy": "Ollie Crowe",
+    "party": "Fianna Fáil",
+    "constituency": "Industrial and Commercial Panel",
+    "memberCode": "Ollie-Crowe.S.2020-03-30"
+  },
+  {
+    "deputy": "Sarah O'Reilly",
+    "party": "Aontú",
+    "constituency": "Agricultural Panel",
+    "memberCode": "Sarah-O'Reilly.S.2025-01-29"
+  },
+  {
+    "deputy": "Martin Conway",
+    "party": "Independent",
+    "constituency": "Administrative Panel",
+    "memberCode": "Martin-Conway.S.2011-05-25"
+  },
+  {
+    "deputy": "Manus Boyle",
+    "party": "Fine Gael",
+    "constituency": "Nominated by the Taoiseach",
+    "memberCode": "Manus-Boyle.S.2025-01-29"
+  },
+  {
+    "deputy": "Gareth Scahill",
+    "party": "Fine Gael",
+    "constituency": "Nominated by the Taoiseach",
+    "memberCode": "Gareth-Scahill.S.2025-01-29"
+  },
+  {
+    "deputy": "P.J. Murphy",
+    "party": "Fine Gael",
+    "constituency": "Agricultural Panel",
+    "memberCode": "PJ-Murphy.S.2025-01-29"
+  },
+  {
+    "deputy": "Mark Duffy",
+    "party": "Fine Gael",
+    "constituency": "Labour Panel",
+    "memberCode": "Mark-Duffy.S.2025-01-29"
+  },
+  {
+    "deputy": "Cathal Byrne",
+    "party": "Fine Gael",
+    "constituency": "Cultural and Educational Panel",
+    "memberCode": "Cathal-Byrne.S.2025-01-29"
+  },
+  {
+    "deputy": "Noel O'Donovan",
+    "party": "Fine Gael",
+    "constituency": "Nominated by the Taoiseach",
+    "memberCode": "Noel-O'Donovan.S.2025-01-29"
+  },
+  {
+    "deputy": "Eileen Lynch",
+    "party": "Fine Gael",
+    "constituency": "Agricultural Panel",
+    "memberCode": "Eileen-Lynch.S.2025-01-29"
+  },
+  {
+    "deputy": "Anne Rabbitte",
+    "party": "Fianna Fáil",
+    "constituency": "Nominated by the Taoiseach",
+    "memberCode": "Anne-Rabbitte.D.2016-10-03"
+  },
+  {
+    "deputy": "Margaret Murphy O'Mahony",
+    "party": "Fianna Fáil",
+    "constituency": "Labour Panel",
+    "memberCode": "Margaret-Murphy-O'Mahony.D.2016-10-03"
+  },
+  {
+    "deputy": "Imelda Goldsboro",
+    "party": "Fianna Fáil",
+    "constituency": "Nominated by the Taoiseach",
+    "memberCode": "Imelda-Goldsboro.S.2025-01-29"
+  },
+  {
+    "deputy": "Joe Flaherty",
+    "party": "Fianna Fáil",
+    "constituency": "Nominated by the Taoiseach",
+    "memberCode": "Joe-Flaherty.D.2020-02-08"
+  },
+  {
+    "deputy": "Diarmuid Wilson",
+    "party": "Fianna Fáil",
+    "constituency": "Administrative Panel",
+    "memberCode": "Diarmuid-Wilson.S.2002-09-12"
+  },
+  {
+    "deputy": "Dee Ryan",
+    "party": "Fianna Fáil",
+    "constituency": "Nominated by the Taoiseach",
+    "memberCode": "Dee-Ryan.S.2025-01-29"
+  },
+  {
+    "deputy": "Mark Daly",
+    "party": "Fianna Fáil",
+    "constituency": "Administrative Panel",
+    "memberCode": "Mark-Daly.S.2007-07-23"
+  }
+]
