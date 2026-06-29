@@ -7,7 +7,7 @@ const CHAIR_ROLE = "Cathaoirleach";
 const CHAIR_COLOR = "#7f6c2e";
 const EMPTY_SEAT_TITLE = "Empty seat";
 const EMPTY_SEAT_MESSAGE = "No representative is assigned to this seat.";
-const EMPTY_SEAT_COLOR = "#d6d3d1";
+const EMPTY_SEAT_COLOR = "#ffffff";
 const FILTERED_SEAT_COLOR = "#e7e5e4";
 
 export default function ChamberMap({
@@ -55,7 +55,8 @@ export default function ChamberMap({
       const isSelected = seatLabel === selectedSeat;
       const isHovered = seatLabel === hoveredSeat;
       const passesSearch = visibleSeatLabels.has(seatLabel);
-      const passesParty = !partyFilter || getSeatParty(seat) === partyFilter;
+      const passesParty =
+        isEmptySeat(seat) || !partyFilter || getSeatParty(seat) === partyFilter;
 
       const dimmed = !passesSearch || !passesParty;
       const fill = dimmed ? FILTERED_SEAT_COLOR : baseFill;
@@ -119,7 +120,8 @@ export default function ChamberMap({
       const seatLabel = seatEl.getAttribute("data-seat");
       const seat = getSeatData(seatLabel);
       const passesSearch = visibleSeatLabels.has(seatLabel);
-      const passesParty = !partyFilter || getSeatParty(seat) === partyFilter;
+      const passesParty =
+        isEmptySeat(seat) || !partyFilter || getSeatParty(seat) === partyFilter;
 
       if (!passesSearch || !passesParty) {
         setHoveredSeat(null);
@@ -159,7 +161,8 @@ export default function ChamberMap({
       const seatLabel = seatEl.getAttribute("data-seat");
       const seat = getSeatData(seatLabel);
       const passesSearch = visibleSeatLabels.has(seatLabel);
-      const passesParty = !partyFilter || getSeatParty(seat) === partyFilter;
+      const passesParty =
+        isEmptySeat(seat) || !partyFilter || getSeatParty(seat) === partyFilter;
 
       if (!passesSearch || !passesParty) return;
 

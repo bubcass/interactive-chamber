@@ -2,6 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import chamberSvg from "../data/chamber.svg?raw";
 import { partyColorMap } from "../data/partiesPalette.js";
 
+const EMPTY_SEAT_TITLE = "Empty seat";
+const EMPTY_SEAT_MESSAGE = "No representative is assigned to this seat.";
+const EMPTY_SEAT_COLOR = "#ffffff";
+
 export default function ChamberMap({
   seats = [],
   allSeats = [],
@@ -29,10 +33,13 @@ export default function ChamberMap({
     const getSeatData = (seatLabel) =>
       allSeats.find((d) => d.seat_label === seatLabel) || null;
     const isChairSeat = (seatLabel) => seatLabel === chairSeatLabel;
+    const isEmptySeat = (seat) => !seat?.member;
     const getSeatParty = (seat) =>
       isChairSeat(seat?.seat_label) ? null : seat?.member?.Party || null;
     const getSeatColor = (seat) =>
-      isChairSeat(seat?.seat_label)
+      isEmptySeat(seat)
+        ? EMPTY_SEAT_COLOR
+        : isChairSeat(seat?.seat_label)
         ? chairColor
         : partyColorMap[seat?.member?.Party] || "#d6d3d1";
 
@@ -46,12 +53,14 @@ export default function ChamberMap({
       const isSelected = seatLabel === selectedSeat;
       const isHovered = seatLabel === hoveredSeat;
       const passesSearch = visibleSeatLabels.has(seatLabel);
-      const passesParty = !partyFilter || getSeatParty(seat) === partyFilter;
+      const passesParty =
+        isEmptySeat(seat) || !partyFilter || getSeatParty(seat) === partyFilter;
 
       const dimmed = !passesSearch || !passesParty;
 
       const applyStateToShape = (shape) => {
         shape.style.fill = fill;
+        shape.setAttribute("fill", fill);
         shape.style.transition =
           "fill 0.25s ease, opacity 0.2s ease, stroke 0.2s ease, filter 0.2s ease";
 
@@ -103,7 +112,8 @@ export default function ChamberMap({
       const seatLabel = seatEl.getAttribute("data-seat");
       const seat = getSeatData(seatLabel);
       const passesSearch = visibleSeatLabels.has(seatLabel);
-      const passesParty = !partyFilter || getSeatParty(seat) === partyFilter;
+      const passesParty =
+        isEmptySeat(seat) || !partyFilter || getSeatParty(seat) === partyFilter;
 
       if (!passesSearch || !passesParty) {
         setHoveredSeat(null);
@@ -115,22 +125,18 @@ export default function ChamberMap({
         setHoveredSeat(seatLabel);
       }
 
-      if (!seat?.member) {
-        setTooltip(null);
-        return;
-      }
-
       const containerRect = root.getBoundingClientRect();
 
       setTooltip({
         x: event.clientX - containerRect.left,
         y: event.clientY - containerRect.top - 14,
-        name: seat.member.Deputy,
-        party: seat.member.Party,
+        name: seat?.member?.Deputy || EMPTY_SEAT_TITLE,
+        party: seat?.member?.Party || "",
         role: isChairSeat(seatLabel) ? chairRole : "",
-        constituency: seat.member.Constituency || "",
+        constituency: seat?.member?.Constituency || "",
+        message: isEmptySeat(seat) ? EMPTY_SEAT_MESSAGE : "",
         color: getSeatColor(seat) || "#666666",
-        image: seat.member.imageUrl || "",
+        image: seat?.member?.imageUrl || "",
       });
     };
 
@@ -146,7 +152,8 @@ export default function ChamberMap({
       const seatLabel = seatEl.getAttribute("data-seat");
       const seat = getSeatData(seatLabel);
       const passesSearch = visibleSeatLabels.has(seatLabel);
-      const passesParty = !partyFilter || getSeatParty(seat) === partyFilter;
+      const passesParty =
+        isEmptySeat(seat) || !partyFilter || getSeatParty(seat) === partyFilter;
 
       if (!passesSearch || !passesParty) return;
 
@@ -195,9 +202,7 @@ export default function ChamberMap({
                 className="map-tooltip__avatar map-tooltip__avatar--large map-tooltip__avatar--empty"
                 style={{ borderColor: tooltip.color }}
                 aria-hidden="true"
-              >
-                TD
-              </div>
+              />
             )}
 
             <div className="map-tooltip__card-body">
@@ -220,6 +225,12 @@ export default function ChamberMap({
               {tooltip.constituency ? (
                 <div className="map-tooltip__constituency">
                   {tooltip.constituency}
+                </div>
+              ) : null}
+
+              {tooltip.message ? (
+                <div className="map-tooltip__constituency">
+                  {tooltip.message}
                 </div>
               ) : null}
             </div>

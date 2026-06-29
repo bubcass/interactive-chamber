@@ -3,11 +3,19 @@ import { loadCsv } from "../lib/csv.js";
 import { normaliseMemberApiRows, clean } from "../lib/joins.js";
 import { partiesPalette } from "../data/partiesPalette.js";
 import ChamberMap from "./ChamberMap.jsx";
+import chamberSvg from "../data/chamber.svg?raw";
 import membersJson from "../data/members.json";
 
 const CHAIR_SEAT_LABEL = "F-01";
 const CHAIR_ROLE = "Ceann Comhairle";
 const CHAIR_COLOR = "#7f6c2e";
+const EMPTY_SEAT_TITLE = "Empty seat";
+const EMPTY_SEAT_MESSAGE = "No representative is assigned to this seat.";
+const STAMPED_SEAT_LABELS = Array.from(
+  new Set(
+    [...chamberSvg.matchAll(/data-seat="([^"]+)"/g)].map((match) => match[1]),
+  ),
+);
 
 function buildMemberUrl(memberCode) {
   if (!memberCode) return "";
@@ -27,15 +35,39 @@ function getSeatRole(seat) {
   return isChairSeat(seat) ? CHAIR_ROLE : "";
 }
 
-function resolveSeatForDate(rows, memberCode, targetDate) {
-  if (!memberCode || !targetDate) return null;
+function isEmptySeat(seat) {
+  return !seat?.member;
+}
+
+function parseDate(value) {
+  const cleaned = clean(value);
+  if (!cleaned) return null;
+
+  const date = new Date(cleaned);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function isActiveSeatRow(row, today = new Date()) {
+  const startDate = parseDate(row.start_date);
+  const endDate = parseDate(row.end_date);
+
+  if (startDate && startDate > today) return false;
+  if (endDate && endDate < today) return false;
+
+  return true;
+}
+
+function getSeatPartyForTotals(seat) {
+  return seat?.member?.Party || null;
+}
+
+function resolveSeatForDate(rows, seatLabel, targetDate) {
+  if (!seatLabel || !targetDate) return null;
 
   const targetTime = new Date(targetDate).getTime();
 
   return rows.find((row) => {
-    const rowMemberCode = clean(row.member_code ?? row.memberCode);
-
-    if (rowMemberCode !== clean(memberCode)) return false;
+    if (clean(row.seat_label) !== clean(seatLabel)) return false;
 
     const start = new Date(row.start_date).getTime();
     const end = row.end_date ? new Date(row.end_date).getTime() : Infinity;
@@ -118,21 +150,33 @@ export default function DailExplorer() {
   }, []);
 
   const seats = useMemo(() => {
+    const membersByCode = new Map(
+      members.map((member) => [member.Code, member]),
+    );
     const today = new Date().toISOString().slice(0, 10);
+    const activeAssignments = assignments.filter(
+      (assignment) =>
+        assignment.seat_label &&
+        isActiveSeatRow(assignment, new Date(today)),
+    );
+    const assignmentsBySeat = new Map(
+      activeAssignments.map((assignment) => [assignment.seat_label, assignment]),
+    );
 
-    return members
-      .map((member) => {
-        const assignment = resolveSeatForDate(assignments, member.Code, today);
+    return STAMPED_SEAT_LABELS.map((seatLabel) => {
+      const assignment =
+        assignmentsBySeat.get(seatLabel) ||
+        resolveSeatForDate(assignments, seatLabel, today) ||
+        null;
 
-        if (!assignment?.seat_label) return null;
-
-        return {
-          seat_label: clean(assignment.seat_label),
-          assignment,
-          member,
-        };
-      })
-      .filter(Boolean);
+      return {
+        seat_label: seatLabel,
+        assignment,
+        member: assignment
+          ? membersByCode.get(assignment.member_code) || null
+          : null,
+      };
+    });
   }, [assignments, members]);
 
   const visibleSeats = useMemo(() => {
@@ -140,9 +184,11 @@ export default function DailExplorer() {
       const matchesQuery = [
         seat.seat_label,
         seat.member?.Deputy,
+        seat.assignment?.deputy_name,
         seat.member?.Party,
         seat.member?.Constituency,
         getSeatRole(seat),
+        isEmptySeat(seat) ? EMPTY_SEAT_TITLE : "",
       ]
         .filter(Boolean)
         .join(" ")
@@ -159,7 +205,7 @@ export default function DailExplorer() {
     const counts = new Map();
 
     seats.forEach((seat) => {
-      const party = seat.member?.Party;
+      const party = getSeatPartyForTotals(seat);
       if (!party) return;
       counts.set(party, (counts.get(party) || 0) + 1);
     });
@@ -182,7 +228,7 @@ export default function DailExplorer() {
       ...partyItems,
       {
         name: "All parties",
-        count: seats.filter((seat) => seat.member?.Party).length,
+        count: seats.filter((seat) => getSeatPartyForTotals(seat)).length,
         color: "#7f6c2e",
         active: partyFilter === null,
         isAll: true,
@@ -250,7 +296,6 @@ export default function DailExplorer() {
   const selected =
     seats.find((seat) => seat.seat_label === selectedSeat) || null;
   const hasSelection = Boolean(selected);
-
   const selectedMember = selected?.member || null;
   const selectedMemberUrl = buildMemberUrl(
     selectedMember?.Code || selected?.assignment?.member_code,
@@ -343,49 +388,69 @@ export default function DailExplorer() {
             </div>
           </div>
 
-          {hasSelection && selectedMember ? (
+          {hasSelection ? (
             <aside className="panel panel--selected-mini">
-              <a
-                href={selectedMemberUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="selected-mini-card"
-              >
-                <div className="selected-mini-card__media">
-                  {selectedMember.imageUrl ? (
-                    <div
-                      className="selected-mini-card__photo-ring"
-                      style={{ borderColor: selectedAccent }}
-                    >
-                      <img
-                        src={selectedMember.imageUrl}
-                        alt={selectedMember.Deputy}
-                        className="selected-mini-card__photo"
-                      />
-                    </div>
-                  ) : (
-                    <div className="selected-mini-card__photo-ring selected-mini-card__photo-ring--empty">
-                      <div className="selected-mini-card__placeholder">TD</div>
-                    </div>
-                  )}
-                </div>
+              {selectedMember ? (
+                <a
+                  href={selectedMemberUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="selected-mini-card"
+                >
+                  <div className="selected-mini-card__media">
+                    {selectedMember.imageUrl ? (
+                      <div
+                        className="selected-mini-card__photo-ring"
+                        style={{ borderColor: selectedAccent }}
+                      >
+                        <img
+                          src={selectedMember.imageUrl}
+                          alt={selectedMember.Deputy}
+                          className="selected-mini-card__photo"
+                        />
+                      </div>
+                    ) : (
+                      <div className="selected-mini-card__photo-ring selected-mini-card__photo-ring--empty">
+                        <div className="selected-mini-card__placeholder">TD</div>
+                      </div>
+                    )}
+                  </div>
 
-                <div className="selected-mini-card__body">
-                  <div className="selected-mini-card__name">
-                    {selectedMember.Deputy}
+                  <div className="selected-mini-card__body">
+                    <div className="selected-mini-card__name">
+                      {selectedMember.Deputy}
+                    </div>
+                    {selectedRole ? (
+                      <div className="selected-mini-card__meta">{selectedRole}</div>
+                    ) : null}
+                    <div className="selected-mini-card__meta">
+                      {selectedMember.Party || "—"}
+                    </div>
+                    <div className="selected-mini-card__meta">
+                      {selectedMember.Constituency || "—"}
+                    </div>
+                    <div className="selected-mini-card__link">Profile ↗</div>
                   </div>
-                  {selectedRole ? (
-                    <div className="selected-mini-card__meta">{selectedRole}</div>
-                  ) : null}
-                  <div className="selected-mini-card__meta">
-                    {selectedMember.Party || "—"}
+                </a>
+              ) : (
+                <div className="selected-mini-card" role="status">
+                  <div className="selected-mini-card__media">
+                    <div className="selected-mini-card__photo-ring selected-mini-card__photo-ring--empty">
+                      <div className="selected-mini-card__placeholder" />
+                    </div>
                   </div>
-                  <div className="selected-mini-card__meta">
-                    {selectedMember.Constituency || "—"}
+
+                  <div className="selected-mini-card__body">
+                    <div className="selected-mini-card__name">{EMPTY_SEAT_TITLE}</div>
+                    <div className="selected-mini-card__meta">
+                      {selected?.seat_label || "—"}
+                    </div>
+                    <div className="selected-mini-card__meta">
+                      {EMPTY_SEAT_MESSAGE}
+                    </div>
                   </div>
-                  <div className="selected-mini-card__link">Profile ↗</div>
                 </div>
-              </a>
+              )}
             </aside>
           ) : null}
         </div>

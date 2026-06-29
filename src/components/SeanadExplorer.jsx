@@ -10,7 +10,7 @@ const CHAIR_SEAT_LABEL = "F-01";
 const CHAIR_ROLE = "Cathaoirleach";
 const EMPTY_SEAT_TITLE = "Empty seat";
 const EMPTY_SEAT_MESSAGE = "No representative is assigned to this seat.";
-const EMPTY_SEAT_COLOR = "#d6d3d1";
+const EMPTY_SEAT_COLOR = "#ffffff";
 const STAMPED_SEAT_LABELS = Array.from(
   new Set(
     [...chamberSvg.matchAll(/data-seat="([^"]+)"/g)].map((match) => match[1]),
