@@ -306,7 +306,7 @@ export default function SeanadExplorer() {
     selectedMember?.Code || selected?.assignment?.member_code,
   );
   const selectedRole = getSeatRole(selected);
-  const selectedParty = getSeatParty(selected);
+  const selectedParty = selectedMember?.Party || getSeatParty(selected);
   const selectedGroup = getSeatGroup(selected);
   const selectedAccent =
     partiesPalette.find((party) => party.name === selectedParty)?.value ||
@@ -432,8 +432,11 @@ export default function SeanadExplorer() {
                         {selectedGroup}
                       </div>
                     ) : null}
+                    {selectedRole ? (
+                      <div className="selected-mini-card__meta">{selectedRole}</div>
+                    ) : null}
                     <div className="selected-mini-card__meta">
-                      {selectedRole || selectedParty || "—"}
+                      {selectedParty || "—"}
                     </div>
                     <div className="selected-mini-card__meta">
                       {selectedMember.Constituency || "—"}

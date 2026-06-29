@@ -140,7 +140,7 @@ export default function ChamberMap({
         y: event.clientY - containerRect.top - 14,
         name: seat?.member?.Deputy || EMPTY_SEAT_TITLE,
         group: seat.assignment?.group || "",
-        party: getSeatParty(seat),
+        party: seat?.member?.Party || "",
         role: isChairSeat(seatLabel) ? CHAIR_ROLE : "",
         constituency: seat?.member?.Constituency || "",
         message: isEmptySeat(seat) ? EMPTY_SEAT_MESSAGE : "",
@@ -221,14 +221,18 @@ export default function ChamberMap({
                 <div className="map-tooltip__constituency">{tooltip.group}</div>
               ) : null}
 
-              {tooltip.role || tooltip.party ? (
+              {tooltip.role ? (
                 <div className="map-tooltip__party">
                   <span
                     className="map-tooltip__chip"
                     style={{ backgroundColor: tooltip.color }}
                   />
-                  {tooltip.role || tooltip.party}
+                  {tooltip.role}
                 </div>
+              ) : null}
+
+              {tooltip.party ? (
+                <div className="map-tooltip__constituency">{tooltip.party}</div>
               ) : null}
 
               {tooltip.constituency ? (
